@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
 
-const formID = import.meta.env.VITE_FORM_ID;
+const formID = import.meta.env.VITE_FORM_KEY;
 
 export default function ContactForm({ removeActiveComponent }) {
   const [state, handleSubmit] = useForm(formID);
