@@ -3,7 +3,7 @@ import axios from "axios";
 export default async function LastGitPush() {
   try {
     const owner = "cherrydub";
-    const repo = "chriscoding";
+    const repo = "cherrydub98";
 
     const response = await axios.get(
       `https://api.github.com/repos/${owner}/${repo}/commits/main`
