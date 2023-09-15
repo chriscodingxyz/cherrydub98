@@ -1,0 +1,279 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "RobotoMonoRegular";
+  src: url("/fonts/RobotoMono-Regular.ttf") format("truetype");
+  /* Add other font variations if available (e.g., font-weight, font-style) */
+}
+
+@font-face {
+  font-family: "RobotoMonoMedium";
+  src: url("/fonts/RobotoMono-Medium.ttf") format("truetype");
+  /* Add other font variations if available (e.g., font-weight, font-style) */
+}
+
+body {
+  /*bungee shade as font*/
+
+  background: #fff;
+
+  /* 
+  background: #ffffff url("../../public/backgrounds/ashpika.jpg") repeat fixed
+    center;
+  background: #ffffff url("../../public/backgrounds/robocop.jpeg") repeat fixed
+    center;
+  background: #ffffff url("../../public/backgrounds/dbz1.png") repeat fixed
+    center;
+  background: #ffffff url("../../public/backgrounds/pepe1.png") repeat fixed
+    center;
+  background: #ffffff url("../../public/backgrounds/pepe3.png") repeat fixed
+    right;
+
+  background-size: auto 100vh; */
+
+  /* background: #ffffff url("../../public/backgrounds/dbz1.png") repeat fixed
+    center; */
+
+  /* background-size: 66px; */
+  /* Set the background image size to 50% of the container */
+  /* font-size: 12px; */
+
+  font-family: Arial;
+}
+
+.background-default {
+  background: #008080;
+}
+
+.background-ashpika {
+  background-image: url("/backgrounds/ashpika.jpg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: auto 100vh;
+}
+
+.background-robocop {
+  background-image: url("/backgrounds/robocop.jpeg");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: auto 100vh;
+}
+
+.background-dbz1 {
+  background-image: url("/backgrounds/dbz1.png");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: auto 100vh;
+}
+
+.background-pepe1 {
+  background-image: url("https://raw.githubusercontent.com/cherrydub/chriscoding/main/public/backgrounds/pepe1.png");
+  background-repeat: repeat;
+  background-position: center;
+  background-size: auto 100vh;
+}
+
+.background-pepe2 {
+  background-image: url("https://raw.githubusercontent.com/cherrydub/chriscoding/main/public/backgrounds/pepe2.png");
+  background-repeat: repeat;
+  background-position: right;
+  background-size: auto 100vh;
+}
+
+.background-pepe3 {
+  background-image: url("https://raw.githubusercontent.com/cherrydub/chriscoding/main/public/backgrounds/pepe3.png");
+  background-repeat: repeat;
+  background-position: right;
+  background-size: auto 100vh;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+/* @media only screen and (max-width: 420px) {
+  body {
+    background: #ffffff url("../../public/backgrounds/ashpika.jpg") repeat fixed
+      center;
+    background-size: auto 100vh;
+  }
+} */
+
+/* .font-arial {
+  font-family: sans-serif;
+}
+
+.font-roboto-mono {
+  font-family: "Roboto Mono", sans-serif;
+} */
+
+/* Left Desktop Nav */
+.navigation-desktop {
+  font-size: 10px;
+  text-align: left;
+  /* font-weight: bold; */
+}
+
+/* Bottomn Desktop Bar stuff */
+.start-bar {
+  padding: 1px;
+  /* margin-bottom: 5px; */
+  box-shadow: inset 1px 0 #fff;
+  /* display: block; */
+  background-color: silver;
+  max-height: 118px;
+  /* max-height: 28px; */
+
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid #f4f4f4;
+  border-bottom: 1px solid #4e4e4e;
+  position: fixed;
+  z-index: 99999;
+}
+
+.start-button-wrapper {
+  margin-left: 2px;
+  /* margin-bottom: 2px; */
+  /* vertical-align: middle; */
+  /* display: inline-block; */
+  padding: 2px 6px 3px;
+  background-color: silver;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  box-shadow: inset 1px 1px #dfdfdf, 1px 0 #000, 0 1px #000, 1px 1px #000;
+  min-width: 42px;
+  margin-right: px;
+  color: #000;
+}
+
+.start-bar-time,
+.start-bar-window {
+  vertical-align: middle;
+  height: 18px;
+  line-height: 18px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+  font-family: Arial;
+  font-weight: 400;
+  color: #000;
+  font-size: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.start-bar-tabs {
+  /* vertical-align: middle; */
+  height: 18px;
+  line-height: 18px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+  font-family: Arial;
+  font-weight: 400;
+  color: #000;
+  font-size: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width: 100px;
+}
+
+.start-bar-tabs-active {
+  /* vertical-align: middle; */
+  height: 18px;
+  line-height: 18px;
+  border-right: 1px solid #fff;
+  border-bottom: 1px solid #fff;
+  border-left: 1px solid gray;
+  border-top: 1px solid gray;
+  font-family: Arial;
+  font-weight: 400;
+  color: #000;
+  font-size: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width: 100px;
+}
+
+.start-bar-tabs-inactive {
+  /* vertical-align: middle; */
+  height: 18px;
+  line-height: 18px;
+  border-top: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid gray;
+  border-bottom: 1px solid gray;
+  font-family: "Arial";
+  font-weight: 400;
+  color: #000;
+  font-size: 9px;
+  padding-left: 4px;
+  padding-right: 4px;
+  max-width: 100px;
+}
+
+pre {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 8px;
+}
+
+.preextra {
+  font-size: 10px;
+}
+
+/* .bottom-start-bar {
+  background-color: rgb(192, 192, 192);
+  border: 1px solid;
+  border-color: rgb(233, 233, 233) rgb(233, 233, 233) rgb(255, 255, 255)
+    rgb(233, 233, 233);
+} */
+.text-shadow-black {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* extra stuff that came with next.js */
+
+/*:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+*/
