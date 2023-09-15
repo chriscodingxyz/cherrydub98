@@ -8,7 +8,7 @@ export default function Projects({ activeComponents, removeActiveComponent }) {
       <WindowLayout
         activeComponents={activeComponents}
         removeActiveComponent={removeActiveComponent}
-        windowType={"Projects"}
+        windowType={"Contact"}
         windowIcon={
           "https://win98icons.alexmeub.com/icons/png/outlook_express-2.png"
         }
