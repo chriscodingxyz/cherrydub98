@@ -36,7 +36,7 @@ export default function CvContent() {
           >
             <img
               className="inline"
-              src="https://www.cherrydub.com/cv/images2/image9.png"
+              src="/cv/images2/image9.png"
               alt=""
               width={"15px"}
             />{" "}
@@ -49,7 +49,7 @@ export default function CvContent() {
           >
             <img
               className="inline"
-              src="https://www.cherrydub.com/cv/images2/image5.png"
+              src="/cv/images2/image5.png"
               alt=""
               width={"15px"}
             />{" "}
@@ -62,7 +62,7 @@ export default function CvContent() {
           >
             <img
               className="inline"
-              src="https://www.cherrydub.com/cv/images2/image1.png"
+              src="/cv/images2/image1.png"
               alt=""
               width={"15px"}
             />{" "}
@@ -103,7 +103,7 @@ export default function CvContent() {
             >
               <img
                 className="inline"
-                src="https://www.cherrydub.com/cv/images2/image1.png"
+                src="/cv/images2/image1.png"
                 alt=""
                 width={"15px"}
               />
@@ -121,7 +121,7 @@ export default function CvContent() {
             >
               <img
                 className="inline"
-                src="https://www.cherrydub.com/cv/images2/image1.png"
+                src="/cv/images2/image1.png"
                 alt=""
                 width={"15px"}
               />
@@ -139,7 +139,7 @@ export default function CvContent() {
             >
               <img
                 className="inline"
-                src="https://www.cherrydub.com/cv/images2/image1.png"
+                src="/cv/images2/image1.png"
                 alt=""
                 width={"15px"}
               />
@@ -156,7 +156,7 @@ export default function CvContent() {
             >
               <img
                 className="inline"
-                src="https://www.cherrydub.com/cv/images2/image1.png"
+                src="/cv/images2/image1.png"
                 alt=""
                 width={"15px"}
               />
@@ -174,7 +174,7 @@ export default function CvContent() {
             >
               <img
                 className="inline"
-                src="https://www.cherrydub.com/cv/images2/image1.png"
+                src="/cv/images2/image1.png"
                 alt=""
                 width={"15px"}
               />
