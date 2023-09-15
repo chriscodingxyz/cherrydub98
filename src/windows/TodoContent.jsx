@@ -7,7 +7,7 @@ export default function TodoContent({ setTaskTheme }) {
     "modern homepage",
     "send out cv's",
     "get hired",
-    "welcome and display window buttons ? X only",
+    "welcome and display window buttons ? X",
   ]);
   const [newTask, setNewTask] = useState("");
 
