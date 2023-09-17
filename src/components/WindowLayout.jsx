@@ -72,11 +72,6 @@ export default function WindowLayout({
             ></button> */}
           </div>
         </div>
-        {buttonLayout === "?" ? (
-          <div className="">{/* Your content for buttonLayout === '?' */}</div>
-        ) : (
-          <div className="">{/* Your content for buttonLayout !== '?' */}</div>
-        )}
         {children}
       </div>
     </div>
