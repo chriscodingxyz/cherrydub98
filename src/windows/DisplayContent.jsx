@@ -66,7 +66,7 @@ export default function DisplayContent({
           ]),
         ].map((choice) => (
           <option key={choice} value={choice}>
-            {choice.substring(11)}
+            {choice ? choice.substring(11) : ""}
           </option>
         ))}
       </select>
