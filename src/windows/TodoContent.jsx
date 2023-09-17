@@ -1,7 +1,8 @@
 import React, { useState } from "react";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function TodoContent({ setTaskTheme }) {
-  const [tasks, setTasks] = useState([
+  const [tasks, setTasks] = useLocalStorage("tasks", [
     "supbase logins",
     "CV update",
     "modern homepage",
