@@ -2,13 +2,17 @@ import { useState } from "react";
 import BottomDesktopBar from "./BottomDesktopBar";
 import LeftDesktopNav from "./LeftDesktopNav";
 import MainDesktop from "./MainDesktop";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function Home() {
   const [activeComponents, setActiveComponents] = useState([
     "Welcome",
     "Display",
   ]);
-  const [backgroundChoice, setBackgroundChoice] = useState("background-pepe3");
+  const [backgroundChoice, setBackgroundChoice] = useLocalStorage(
+    "backgroundChoice",
+    "background-pepe1"
+  );
 
   // const handleContactFormClose = (componentName) => {
   //   setActiveComponents((prevActiveComponents) =>
