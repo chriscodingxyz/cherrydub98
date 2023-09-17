@@ -6,10 +6,12 @@ export default function WindowLayout({
   windowType,
   windowIcon,
   windowTitle,
+  buttonLayout,
+  hyperlink,
   children,
 }) {
   const handleLinkClick = (event) => {
-    //this prevents any background event clickers to work, such as removing and readding the active component
+    // This prevents any background event clickers to work, such as removing and readding the active component
     event.stopPropagation();
     removeActiveComponent(windowType);
   };
@@ -28,7 +30,36 @@ export default function WindowLayout({
             {windowTitle ? windowTitle : windowType}
           </div>
           <div className="title-bar-controls">
-            <button
+            {buttonLayout === "?x" ? (
+              <>
+                {" "}
+                <a href={hyperlink} target="blank">
+                  <button className="bg-gray-300" aria-label="Help"></button>
+                </a>
+                <button
+                  onClick={handleLinkClick}
+                  className="bg-gray-300 btn hover:bg-gray-100"
+                  aria-label="Close"
+                ></button>
+              </>
+            ) : (
+              <>
+                {" "}
+                <button
+                  onClick={handleLinkClick}
+                  className="bg-gray-300 btn hover:bg-gray-100"
+                  aria-label="Minimize"
+                ></button>
+                <button className="bg-gray-300" aria-label="Maximize"></button>
+                <button
+                  onClick={handleLinkClick}
+                  className="bg-gray-300 btn hover:bg-gray-100"
+                  aria-label="Close"
+                ></button>
+              </>
+            )}
+
+            {/* <button
               onClick={handleLinkClick}
               className="bg-gray-300 btn hover:bg-gray-100"
               aria-label="Minimize"
@@ -38,9 +69,14 @@ export default function WindowLayout({
               onClick={handleLinkClick}
               className="bg-gray-300 btn hover:bg-gray-100"
               aria-label="Close"
-            ></button>
+            ></button> */}
           </div>
         </div>
+        {buttonLayout === "?" ? (
+          <div className="">{/* Your content for buttonLayout === '?' */}</div>
+        ) : (
+          <div className="">{/* Your content for buttonLayout !== '?' */}</div>
+        )}
         {children}
       </div>
     </div>

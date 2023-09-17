@@ -16,6 +16,8 @@ export default function Welcome({ activeComponents, removeActiveComponent }) {
         windowIcon={
           "https://win98icons.alexmeub.com/icons/png/console_prompt-1.png"
         }
+        buttonLayout={"?x"}
+        hyperlink={"https://crypto1.cherrydub.com/"}
       >
         <div>
           <WelcomeContent />

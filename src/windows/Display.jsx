@@ -18,6 +18,7 @@ export default function Display({
         windowIcon={
           "https://win98icons.alexmeub.com/icons/png/display_properties-1.png"
         }
+        buttonLayout={"?x"}
       >
         <div>
           <div className="window-body">
