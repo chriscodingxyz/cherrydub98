@@ -34,7 +34,7 @@ export default function Home() {
   };
 
   return (
-    <div className={`${backgroundChoice}`} style={{ height: "100lvh" }}>
+    <div className={`${backgroundChoice}`} style={{ height: "100dvh" }}>
       <LeftDesktopNav
         activeComponents={activeComponents}
         addActiveComponent={addActiveComponent}
