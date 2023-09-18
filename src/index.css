@@ -71,7 +71,7 @@ body {
 .background-pepe1 {
   background-image: url("https://raw.githubusercontent.com/cherrydub/chriscoding/main/public/backgrounds/pepe1.png");
   background-repeat: repeat;
-  background-position: right;
+  background-position: center;
   background-size: auto 100vh;
 }
 
