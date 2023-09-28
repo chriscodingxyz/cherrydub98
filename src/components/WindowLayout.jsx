@@ -33,7 +33,7 @@ export default function WindowLayout({
             {buttonLayout === "?x" ? (
               <>
                 {" "}
-                <a href={hyperlink} target="blank">
+                <a href={hyperlink} target="_blank">
                   <button className="bg-gray-300" aria-label="Help"></button>
                 </a>
                 <button
