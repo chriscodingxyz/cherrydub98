@@ -56,7 +56,7 @@ export default function ProjectsContent() {
         </div>
       </a>
 
-      <a target="_blank" href="https://ncgames.cherrydub.com/">
+      {/* <a target="_blank" href="https://ncgames.cherrydub.com/">
         <div className="flex flex-col items-center">
           <img
             src="https://win98icons.alexmeub.com/icons/png/html-5.png"
@@ -64,7 +64,7 @@ export default function ProjectsContent() {
           />
           <div className="text-center">NC Games</div>
         </div>
-      </a>
+      </a> */}
 
       {/* <a target="_blank" href="https://smartbrain.cherrydub.com/">
         <div className="flex flex-col items-center">
