@@ -13,7 +13,7 @@ export default function ProjectsContent() {
         </div>
       </a>
 
-      <a target="_blank" href="https://smartbrain.cherrydub.com/">
+      <a target="_blank" href="https://json.cherrydub.com/">
         <div className="flex flex-col items-center overflow-auto">
           <img
             src="https://win98icons.alexmeub.com/icons/png/html-5.png"
