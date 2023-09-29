@@ -65,7 +65,7 @@ export default function ESTtime() {
     );
   }
 
-  console.log("day week:", dayWeek);
+  // console.log("day week:", dayWeek);
 
   //if saturday or sunday
   if (dayWeek === 6 || dayWeek === 0) {

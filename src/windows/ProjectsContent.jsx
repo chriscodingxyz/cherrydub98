@@ -13,13 +13,13 @@ export default function ProjectsContent() {
         </div>
       </a>
 
-      <a target="_blank" href="https://crypto1.cherrydub.com/">
+      <a target="_blank" href="https://smartbrain.cherrydub.com/">
         <div className="flex flex-col items-center overflow-auto">
           <img
             src="https://win98icons.alexmeub.com/icons/png/html-5.png"
             alt=""
           />
-          <div className="text-center">Crypto App</div>
+          <div className="text-center">JSON formatter</div>
         </div>
       </a>
 
@@ -30,6 +30,16 @@ export default function ProjectsContent() {
             alt=""
           />
           <div className="text-center">Popcorn Time</div>
+        </div>
+      </a>
+
+      <a target="_blank" href="https://crypto1.cherrydub.com/">
+        <div className="flex flex-col items-center overflow-auto">
+          <img
+            src="https://win98icons.alexmeub.com/icons/png/html-5.png"
+            alt=""
+          />
+          <div className="text-center">Crypto App</div>
         </div>
       </a>
 
