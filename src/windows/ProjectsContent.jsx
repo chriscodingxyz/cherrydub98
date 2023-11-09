@@ -3,6 +3,16 @@ import React from "react";
 export default function ProjectsContent() {
   return (
     <div className="flex flex-wrap p-4 gap-4">
+      <a target="_blank" href="https://cherrydub.com/">
+        <div className="flex flex-col items-center overflow-auto">
+          <img
+            src="https://win98icons.alexmeub.com/icons/png/html-5.png"
+            alt=""
+          />
+          <div className="text-center">Portfolio</div>
+        </div>
+      </a>
+
       <a target="_blank" href="https://smartbrain.cherrydub.com/">
         <div className="flex flex-col items-center overflow-auto">
           <img
@@ -10,6 +20,16 @@ export default function ProjectsContent() {
             alt=""
           />
           <div className="text-center">Smart Brain</div>
+        </div>
+      </a>
+
+      <a target="_blank" href="https://worldwise.cherrydub.com/">
+        <div className="flex flex-col items-center overflow-auto">
+          <img
+            src="https://win98icons.alexmeub.com/icons/png/html-5.png"
+            alt=""
+          />
+          <div className="text-center">World Wise</div>
         </div>
       </a>
 
@@ -23,7 +43,7 @@ export default function ProjectsContent() {
         </div>
       </a>
 
-      <a target="_blank" href="https://popcorntime.cherrydub.com/">
+      {/* <a target="_blank" href="https://popcorntime.cherrydub.com/">
         <div className="flex flex-col items-center">
           <img
             src="https://win98icons.alexmeub.com/icons/png/html-5.png"
@@ -31,7 +51,7 @@ export default function ProjectsContent() {
           />
           <div className="text-center">Popcorn Time</div>
         </div>
-      </a>
+      </a> */}
 
       <a target="_blank" href="https://crypto1.cherrydub.com/">
         <div className="flex flex-col items-center overflow-auto">
