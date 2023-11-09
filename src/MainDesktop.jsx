@@ -21,12 +21,6 @@ export default function MainDesktop({
     removeActiveComponent(componentName);
     addActiveComponent(componentName);
   };
-  //chat gpt and speech stuff below
-  // const [transcript, setTranscript] = useState("");
-
-  // const handleTranscript = (newTranscript) => {
-  //   setTranscript(newTranscript);
-  // };
 
   return (
     <div className="">
