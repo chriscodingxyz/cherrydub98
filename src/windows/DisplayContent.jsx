@@ -21,22 +21,22 @@ export default function DisplayContent({
   }, []);
 
   const backgroundMobileArray = [
+    "background-default",
     "background-pepe1",
     "background-pepe3",
     "background-ashpika",
     "background-dbz1",
     "background-tron",
     "background-nyan",
-    "background-default",
   ];
 
   const backgroundDesktopArray = [
+    "background-default",
     "background-pepe1",
     "background-pepe3",
     "background-tron",
     "background-nyan",
     "background-future",
-    "background-default",
   ];
 
   // Retrieve the stored background choice from localStorage
