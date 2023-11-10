@@ -2,6 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+}
+
 @font-face {
   font-family: "RobotoMonoRegular";
   src: url("/fonts/RobotoMono-Regular.ttf") format("truetype");
@@ -14,10 +17,14 @@
   /* Add other font variations if available (e.g., font-weight, font-style) */
 }
 
+html {
+  background-color: #008080;
+}
+
 body {
   /*bungee shade as font*/
 
-  background: #fff;
+  /* background: #008080; */
 
   /* 
   background: #ffffff url("../../public/backgrounds/ashpika.jpg") repeat fixed
