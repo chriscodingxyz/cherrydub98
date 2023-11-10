@@ -13,7 +13,7 @@ export default function Links({ activeComponents, removeActiveComponent }) {
           "https://win98icons.alexmeub.com/icons/png/message_file-1.png"
         }
       >
-        <div className="window-body">
+        <div className="window-body" style={{ maxWidth: "80vw" }}>
           <div className="bg-white">
             <div className="bg-white border-l border-t border-gray-500">
               <LinksContent />
