@@ -49,7 +49,7 @@ body {
 }
 
 .background-pepe1 {
-  background-image: url("https://raw.githubusercontent.com/cherrydub/chriscoding/main/public/backgrounds/pepe1.png");
+  background-image: url("/backgrounds/pepe1.jpg");
   background-repeat: repeat;
   background-position: center;
   background-size: auto 100vh;
@@ -63,7 +63,7 @@ body {
 }
 
 .background-pepe3 {
-  background-image: url("https://raw.githubusercontent.com/cherrydub/chriscoding/main/public/backgrounds/pepe3.png");
+  background-image: url("/backgrounds/pepe3.jpg");
   background-repeat: repeat;
   background-position: right;
   background-size: auto 100vh;

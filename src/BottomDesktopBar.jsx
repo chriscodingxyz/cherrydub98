@@ -120,6 +120,13 @@ export default function BottomDesktopBar({
             <div className="flex items-start">
               <img
                 className="inline mr-1 hover:opacity-50"
+                onClick={() => handleLinkClick("Welcome")}
+                src="https://win98icons.alexmeub.com/icons/png/console_prompt-1.png"
+                alt=""
+                width="14px"
+              />
+              <img
+                className="inline mr-1 hover:opacity-50"
                 onClick={() => handleLinkClick("Display")}
                 src="https://win98icons.alexmeub.com/icons/png/display_properties-1.png"
                 alt=""
