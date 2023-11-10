@@ -93,14 +93,14 @@ export default function LeftDesktopNav({
         handleLinkClick={handleLinkClick}
       /> */}
 
-      <NavIconLayout
+      {/* <NavIconLayout
         iconSrc={"https://win98icons.alexmeub.com/icons/png/message_file-0.png"}
         alt={"Links"}
         title={"Links"}
         linkTo={"Links"}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
-      />
+      /> */}
     </div>
   );
 }

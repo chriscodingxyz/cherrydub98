@@ -21,7 +21,7 @@ export default function LinksContent() {
     <div
     //  className="flex flex-wrap p-4 gap-4"
     >
-      <div className="sunken-panel" style={{ overflow: "auto" }}>
+      <div className="sunken-panel">
         <table className="interactive">
           <thead>
             <tr>
