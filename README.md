@@ -18,5 +18,11 @@
    - A great library of various useful hooks for React.
 
 4. **98.css**
+
    - [98.css](https://jdan.github.io/98.css/)
    - Utilized for most of the CSS on my themed site.
+
+5. **win98icons**
+
+   - [win98icons](https://win98icons.alexmeub.com/)
+   - 98 styled icons used throughout this site
