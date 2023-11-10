@@ -16,13 +16,11 @@ export default function CvContent() {
 
   return (
     <div
-      className="bg-white p-4 text-black border-l border-t border-gray-500"
+      className="bg-white text-black border-l border-t border-gray-500"
       style={{
         height: "75vh",
         maxWidth: "80vw",
         overflow: "auto",
-        fontFamily: "RobotoMonoMedium",
-        fontSize: "10px",
         color: "black",
       }}
     >
@@ -30,9 +28,7 @@ export default function CvContent() {
         <Document file="/cv.pdf" onLoadSuccess={onDocumentLoadSuccess}>
           <Page pageNumber={pageNumber} />
         </Document>
-        <p>
-          Page {pageNumber} of {numPages}
-        </p>
+        <p>{/* Page {pageNumber} of {numPages} */}</p>
       </div>
     </div>
   );

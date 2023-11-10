@@ -35,9 +35,9 @@ export default function WelcomeContent() {
   }
 
   return (
-    <div className="text-whitefont-bold cursor-not-allowed">
+    <div className="text-white cursor-not-allowed">
       <pre className=" bg-black text-white text-center">
-        <div className="preextra">
+        <div className="pre-extra">
           <div className="flex">
             <div className="flex-initial">cherrydub©</div>
 
@@ -73,7 +73,7 @@ __  _  __ ____ |  |   ____  ____   _____   ____
              \\/          \\/            \\/     \\/
       `}
 
-        <div className="preextra text-left">
+        <div className="pre-extra text-left">
           C:\WINDOWS{">"}
           <span className="animate-blink">_</span>
         </div>

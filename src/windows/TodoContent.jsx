@@ -30,10 +30,12 @@ export default function TodoContent({ setTaskTheme }) {
     <>
       <div
         className="flex flex-col flex-wrap p-2 gap-2"
-        style={{
-          fontFamily: "RobotoMonoRegular",
-          // minWidth: "300px",
-        }}
+        style={
+          {
+            // fontFamily: "RobotoMonoRegular",
+            // minWidth: "300px",
+          }
+        }
       >
         <div>
           <div className="flex flex-row">

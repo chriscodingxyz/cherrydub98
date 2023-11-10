@@ -3,51 +3,24 @@
 @tailwind utilities;
 
 :root {
+  font-family: "Courier New", Courier, monospace;
 }
 
-@font-face {
+/* @font-face {
   font-family: "RobotoMonoRegular";
   src: url("/fonts/RobotoMono-Regular.ttf") format("truetype");
-  /* Add other font variations if available (e.g., font-weight, font-style) */
 }
 
 @font-face {
   font-family: "RobotoMonoMedium";
   src: url("/fonts/RobotoMono-Medium.ttf") format("truetype");
-  /* Add other font variations if available (e.g., font-weight, font-style) */
-}
+} */
 
 html {
-  background-color: #008080;
+  /* background-color: #008080; */
 }
 
 body {
-  /*bungee shade as font*/
-
-  /* background: #008080; */
-
-  /* 
-  background: #ffffff url("../../public/backgrounds/ashpika.jpg") repeat fixed
-    center;
-  background: #ffffff url("../../public/backgrounds/robocop.jpeg") repeat fixed
-    center;
-  background: #ffffff url("../../public/backgrounds/dbz1.png") repeat fixed
-    center;
-  background: #ffffff url("../../public/backgrounds/pepe1.png") repeat fixed
-    center;
-  background: #ffffff url("../../public/backgrounds/pepe3.png") repeat fixed
-    right;
-
-  background-size: auto 100vh; */
-
-  /* background: #ffffff url("../../public/backgrounds/dbz1.png") repeat fixed
-    center; */
-
-  /* background-size: 66px; */
-  /* Set the background image size to 50% of the container */
-  /* font-size: 12px; */
-
-  font-family: Arial;
 }
 
 .background-default {
@@ -130,27 +103,10 @@ body {
   animation: blink 1s infinite;
 }
 
-/* @media only screen and (max-width: 420px) {
-  body {
-    background: #ffffff url("../../public/backgrounds/ashpika.jpg") repeat fixed
-      center;
-    background-size: auto 100vh;
-  }
-} */
-
-/* .font-arial {
-  font-family: sans-serif;
-}
-
-.font-roboto-mono {
-  font-family: "Roboto Mono", sans-serif;
-} */
-
 /* Left Desktop Nav */
 .navigation-desktop {
   font-size: 10px;
   text-align: left;
-  /* font-weight: bold; */
 }
 
 /* Bottomn Desktop Bar stuff */
@@ -262,7 +218,7 @@ pre {
   font-size: 8px;
 }
 
-.preextra {
+.pre-extra {
   font-size: 10px;
 }
 
