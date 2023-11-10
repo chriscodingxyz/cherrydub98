@@ -29,6 +29,7 @@ export default function BottomDesktopBar({
     Todo: "https://win98icons.alexmeub.com/icons/png/notepad-3.png",
     Display:
       "https://win98icons.alexmeub.com/icons/png/display_properties-1.png",
+    Links: "https://win98icons.alexmeub.com/icons/png/message_file-1.png",
   };
 
   const [switchOn, setSwitchOn] = useState(false);

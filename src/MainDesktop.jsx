@@ -9,6 +9,7 @@ import Welcome from "./windows/Welcome.jsx";
 import IE from "./windows/IE.jsx";
 import Contact from "./windows/Contact.jsx";
 import Display from "./windows/Display.jsx";
+import Links from "./windows/Links.jsx";
 
 export default function MainDesktop({
   activeComponents,
@@ -111,6 +112,17 @@ export default function MainDesktop({
                 />
               );
               containerClassName = "ml-14 mt-12 absolute"; // Positioning for Timer component
+              break;
+
+            case "Links":
+              component = (
+                <Links
+                  key={componentName}
+                  activeComponents={activeComponents}
+                  removeActiveComponent={removeActiveComponent}
+                />
+              );
+              containerClassName = "absolute ml-14 top-1/2"; // UPDATING THIS SO MAYBE USE PADDING INSTAED OF MARGIN FOR RESIZING
               break;
             default:
               component = (
