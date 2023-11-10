@@ -24,19 +24,19 @@ export default function DisplayContent({
     "background-default",
     "background-pepe1",
     "background-pepe3",
-    "background-ashpika",
-    "background-dbz1",
-    "background-tron",
-    "background-nyan",
+    // "background-ashpika",
+    // "background-dbz1",
+    // "background-tron",
+    // "background-nyan",
   ];
 
   const backgroundDesktopArray = [
     "background-default",
     "background-pepe1",
     "background-pepe3",
-    "background-tron",
-    "background-nyan",
-    "background-future",
+    // "background-tron",
+    // "background-nyan",
+    // "background-future",
   ];
 
   // Retrieve the stored background choice from localStorage
