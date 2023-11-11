@@ -74,8 +74,8 @@ export default function LeftDesktopNav({
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
-      {/* 
-      <NavIconLayout
+
+      {/* <NavIconLayout
         iconSrc={"https://win98icons.alexmeub.com/icons/png/notepad_file-2.png"}
         alt={"Notes"}
         title={"Notes"}
@@ -92,8 +92,8 @@ export default function LeftDesktopNav({
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       /> */}
-
-      {/* <NavIconLayout
+      {/* 
+      <NavIconLayout
         iconSrc={"https://win98icons.alexmeub.com/icons/png/message_file-0.png"}
         alt={"Links"}
         title={"Links"}
