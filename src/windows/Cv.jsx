@@ -7,7 +7,7 @@ import WindowLayout from "../components/WindowLayout";
 export default function Cv({ activeComponents, removeActiveComponent }) {
   const handlePrintClick = () => {
     window.open(
-      "https://raw.githubusercontent.com/cherrydub/cherrydub/main/Chris_Wisniewski_CV.pdf",
+      "https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf",
       "_blank"
     );
   };
@@ -26,7 +26,7 @@ export default function Cv({ activeComponents, removeActiveComponent }) {
         </div>
         <div className="status-bar -mt-2 ">
           <span className="status-bar-field text-center">
-            <a href="https://raw.githubusercontent.com/cherrydub/cherrydub/main/Chris_Wisniewski_CV.pdf">
+            <a href="https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf">
               <img className="inline" src={floppy} width={"14px"} alt="" />
             </a>
           </span>
@@ -41,7 +41,7 @@ export default function Cv({ activeComponents, removeActiveComponent }) {
           <span className="status-bar-field text-center">
             <a
               target="_blank"
-              href="https://raw.githubusercontent.com/cherrydub/cherrydub/main/Chris_Wisniewski_CV.pdf"
+              href="https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf"
             >
               <img
                 className="inline"
