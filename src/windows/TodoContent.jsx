@@ -8,7 +8,7 @@ export default function TodoContent({ setTaskTheme }) {
     "get hired",
     "max button functionality",
     "astro blog",
-    "enjoy life :)",
+    "enjoy life",
   ]);
   const [newTask, setNewTask] = useState("");
 
