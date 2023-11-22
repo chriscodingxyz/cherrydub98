@@ -3,12 +3,12 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function TodoContent({ setTaskTheme }) {
   const [tasks, setTasks] = useLocalStorage("tasks", [
-    "supbase logins",
-    "CV update",
-    "modern homepage",
-    "send out cv's",
+    "user logins",
+    "send out CV",
     "get hired",
-    "welcome and display window buttons ? X",
+    "max button functionality",
+    "astro blog",
+    "enjoy life :)",
   ]);
   const [newTask, setNewTask] = useState("");
 

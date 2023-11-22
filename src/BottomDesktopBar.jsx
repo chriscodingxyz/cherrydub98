@@ -75,9 +75,9 @@ export default function BottomDesktopBar({
         </div> */}
 
         {activeComponents.map((window) => {
-          if (window === "Display") {
-            return null; // Skip rendering "Display" component
-          }
+          // if (window === "Display") {
+          //   return null; // Skip rendering "Display" component
+          // }
           return activeComponents[0] === window ? (
             <div
               className=" bg-gray-300 start-bar-tabs-active flex-auto text-center justify-center items-center inline cursor-default"
