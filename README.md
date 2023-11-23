@@ -26,3 +26,7 @@
 
    - [win98icons](https://win98icons.alexmeub.com/)
    - 98 styled icons used throughout this site
+
+6. **crt-screen-effect\***
+   - [flicker](https://aleclownes.com/2017/02/01/crt-display.html)
+   - oldschool CRT screen flicker effect
