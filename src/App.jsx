@@ -3,6 +3,7 @@ import BottomDesktopBar from "./BottomDesktopBar";
 import LeftDesktopNav from "./LeftDesktopNav";
 import MainDesktop from "./MainDesktop";
 import { useLocalStorage } from "@uidotdev/usehooks";
+import "./flicker.css";
 
 export default function Home() {
   const [activeComponents, setActiveComponents] = useState([
@@ -13,6 +14,7 @@ export default function Home() {
     "backgroundChoice",
     "background-pepe1"
   );
+  const [flicker, setFlicker] = useState(true);
 
   // const handleContactFormClose = (componentName) => {
   //   setActiveComponents((prevActiveComponents) =>
@@ -34,7 +36,10 @@ export default function Home() {
   };
 
   return (
-    <div className={`${backgroundChoice}`} style={{ height: "100svh" }}>
+    <div
+      className={`${backgroundChoice} ${flicker ? "crt" : ""}`}
+      style={{ height: "100vh" }}
+    >
       <LeftDesktopNav
         activeComponents={activeComponents}
         addActiveComponent={addActiveComponent}
@@ -45,6 +50,8 @@ export default function Home() {
         addActiveComponent={addActiveComponent}
         removeActiveComponent={removeActiveComponent}
         setBackgroundChoice={setBackgroundChoice}
+        flicker={flicker}
+        setFlicker={setFlicker}
       />
       <BottomDesktopBar
         activeComponents={activeComponents}

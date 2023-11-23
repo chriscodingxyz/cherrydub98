@@ -18,6 +18,8 @@ export default function MainDesktop({
   addActiveComponent,
   backgroundChoice,
   setBackgroundChoice,
+  flicker,
+  setFlicker,
 }) {
   const handleLinkClick = (componentName) => {
     removeActiveComponent(componentName);
@@ -100,6 +102,8 @@ export default function MainDesktop({
                   removeActiveComponent={removeActiveComponent}
                   backgroundChoice={backgroundChoice}
                   setBackgroundChoice={setBackgroundChoice}
+                  flicker={flicker}
+                  setFlicker={setFlicker}
                 />
               );
               containerClassName = "ml-14 bottom-1/4 right-1/2 absolute"; // Positioning for Cv component

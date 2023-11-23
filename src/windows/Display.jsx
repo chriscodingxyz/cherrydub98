@@ -8,6 +8,8 @@ export default function Display({
   removeActiveComponent,
   backgroundChoice,
   setBackgroundChoice,
+  flicker,
+  setFlicker,
 }) {
   return (
     <div>
@@ -25,6 +27,8 @@ export default function Display({
             <DisplayContent
               backgroundChoice={backgroundChoice}
               setBackgroundChoice={setBackgroundChoice}
+              flicker={flicker}
+              setFlicker={setFlicker}
             />
           </div>
         </div>

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 export default function DisplayContent({
   backgroundChoice,
   setBackgroundChoice,
+  flicker,
+  setFlicker,
 }) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -49,6 +51,10 @@ export default function DisplayContent({
     setBackgroundChoice(event.target.value);
   };
 
+  const toggleFlicker = () => {
+    setFlicker(!flicker);
+  };
+
   return (
     <div>
       <p>{isMobile ? "Mobile" : "Desktop"} wallpapers:</p>
@@ -70,6 +76,14 @@ export default function DisplayContent({
           </option>
         ))}
       </select>
+      <br />
+      <input
+        type="checkbox"
+        id="flicker"
+        checked={flicker}
+        onChange={toggleFlicker}
+      />
+      <label htmlFor="flicker">CRT screen effect</label>
     </div>
   );
 }
