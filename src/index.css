@@ -21,7 +21,8 @@ html {
 }
 
 body {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
+  overflow: hidden;
 }
 
 .background-default {
