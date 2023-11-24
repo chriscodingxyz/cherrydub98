@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LocalTime from "./components/LocalTime";
 import displayicon from "/icons/16x16/display-tab.png";
 
@@ -16,6 +16,22 @@ export default function BottomDesktopBar({
       addActiveComponent(componentName);
     }
   };
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const icons = {
     Welcome: "https://win98icons.alexmeub.com/icons/png/console_prompt-1.png",
@@ -90,7 +106,7 @@ export default function BottomDesktopBar({
                 alt=""
                 width={"14px"}
               />{" "}
-              <span className="font-bold ">{window}</span>
+              {!isMobile && <span className="font-bold ">{window}</span>}
             </div>
           ) : (
             <div
@@ -104,7 +120,7 @@ export default function BottomDesktopBar({
                 alt=""
                 width={"14px"}
               />{" "}
-              {window}
+              {!isMobile && <span>{window}</span>}
             </div>
           );
 
