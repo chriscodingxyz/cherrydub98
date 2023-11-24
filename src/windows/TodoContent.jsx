@@ -3,12 +3,12 @@ import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function TodoContent({ setTaskTheme }) {
   const [tasks, setTasks] = useLocalStorage("tasks", [
-    "user logins",
-    "send out CV",
-    "get hired",
-    "max button functionality",
-    "astro blog",
-    "enjoy life",
+    "add your todos",
+    "they are stored locally",
+    "only for you to access",
+    "they will be here next time",
+    "you can click to delete/complete",
+    "enjoy!",
   ]);
   const [newTask, setNewTask] = useState("");
 
