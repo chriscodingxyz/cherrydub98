@@ -5,7 +5,7 @@ import MainDesktop from "./MainDesktop";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import "./flicker.css";
 
-export default function Home() {
+export default function App() {
   const [activeComponents, setActiveComponents] = useState([
     "Welcome",
     "Display",
