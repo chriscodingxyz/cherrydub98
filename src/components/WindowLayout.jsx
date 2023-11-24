@@ -1,7 +1,8 @@
 import React from "react";
+import { activeComponents } from "../signals";
 
 export default function WindowLayout({
-  activeComponents,
+  // activeComponents,
   removeActiveComponent,
   windowType,
   windowIcon,
@@ -17,7 +18,8 @@ export default function WindowLayout({
   };
 
   const isActive =
-    (activeComponents ?? []).length > 0 && activeComponents[0] === windowType;
+    (activeComponents.value ?? []).length > 0 &&
+    activeComponents.value[0] === windowType;
   const titleBarClassName = `title-bar${isActive ? "" : " inactive"}`;
 
   return (

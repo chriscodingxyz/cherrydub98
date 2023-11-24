@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import LocalTime from "./components/LocalTime";
 import displayicon from "/icons/16x16/display-tab.png";
+import { activeComponents } from "./signals";
 
 export default function BottomDesktopBar({
-  activeComponents,
-  setActiveComponents,
+  // activeComponents,
+  // setActiveComponents,
   addActiveComponent,
   removeActiveComponent,
 }) {
   const handleLinkClick = (componentName) => {
-    if (activeComponents.includes(componentName)) {
+    if (activeComponents.value.includes(componentName)) {
       removeActiveComponent(componentName);
       addActiveComponent(componentName);
     } else {
@@ -38,14 +39,23 @@ export default function BottomDesktopBar({
   const toggleSwitch = () => {
     setSwitchOn((prevState) => !prevState);
     if (switchOn) {
-      setActiveComponents([]);
+      activeComponents.value = [];
+      // setActiveComponents([]);
     } else {
-      addActiveComponent("Cv");
-      addActiveComponent("Projects");
-      addActiveComponent("Todo");
-      addActiveComponent("Contact");
-      addActiveComponent("Display");
-      addActiveComponent("Welcome");
+      activeComponents.value = [
+        "Welcome",
+        "Display",
+        "Contact",
+        "Todo",
+        "Projects",
+        "Cv",
+      ];
+      // addActiveComponent("Cv");
+      // addActiveComponent("Projects");
+      // addActiveComponent("Todo");
+      // addActiveComponent("Contact");
+      // addActiveComponent("Display");
+      // addActiveComponent("Welcome");
     }
   };
 
@@ -75,11 +85,11 @@ export default function BottomDesktopBar({
           />
         </div> */}
 
-        {activeComponents.map((window) => {
+        {activeComponents.value.map((window) => {
           // if (window === "Display") {
           //   return null; // Skip rendering "Display" component
           // }
-          return activeComponents[0] === window ? (
+          return activeComponents.value[0] === window ? (
             <div
               className=" bg-gray-300 start-bar-tabs-active flex-auto text-center justify-center items-center inline cursor-default"
               key={window}

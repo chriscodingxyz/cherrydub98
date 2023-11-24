@@ -11,9 +11,10 @@ import Contact from "./windows/Contact.jsx";
 import Display from "./windows/Display.jsx";
 import Links from "./windows/Links.jsx";
 import Notes from "./windows/Notes.jsx";
+import { activeComponents } from "./signals.js";
 
 export default function MainDesktop({
-  activeComponents,
+  // activeComponents,
   removeActiveComponent,
   addActiveComponent,
   backgroundChoice,
@@ -29,7 +30,7 @@ export default function MainDesktop({
   return (
     <div className="">
       <div className="">
-        {activeComponents.map((componentName, index) => {
+        {activeComponents.value.map((componentName, index) => {
           let component = null;
           let containerClassName = "ml-14 absolute"; // Default container class name
 

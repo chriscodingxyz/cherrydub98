@@ -1,17 +1,18 @@
 import React from "react";
+import { activeComponents } from "../signals";
 
 export default function NavIconLayout({
   iconSrc,
   alt,
   title,
   linkTo,
-  activeComponents,
+  // activeComponents,
   handleLinkClick,
 }) {
   return (
     <div
       className={`mb-2 text-center flex flex-col items-center hover:bg-white hover:bg-opacity-25 p-1 cursor-pointer ${
-        activeComponents.includes(linkTo) ? "active" : ""
+        activeComponents.value.includes(linkTo) ? "active" : ""
       }`}
       onClick={() => handleLinkClick(linkTo)}
     >

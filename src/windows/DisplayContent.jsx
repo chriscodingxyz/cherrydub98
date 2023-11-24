@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { flicker } from "../signals";
 
 export default function DisplayContent({
   backgroundChoice,
   setBackgroundChoice,
-  flicker,
-  setFlicker,
+  // flicker,
+  // setFlicker,
 }) {
   const [isMobile, setIsMobile] = useState(false);
 
@@ -52,7 +53,7 @@ export default function DisplayContent({
   };
 
   const toggleFlicker = () => {
-    setFlicker(!flicker);
+    flicker.value = !flicker.value;
   };
 
   return (
@@ -80,7 +81,7 @@ export default function DisplayContent({
       <input
         type="checkbox"
         id="flicker"
-        checked={flicker}
+        checked={flicker.value}
         onChange={toggleFlicker}
       />
       <label htmlFor="flicker">CRT screen effect</label>

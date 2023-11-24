@@ -3,14 +3,15 @@ import React from "react";
 import computericon from "/icons/48x48/computer_explorer_cool-0copy.png";
 import NavIconLayout from "./components/NavIconLayout";
 import NavIconHrefLayout from "./components/NavIconHrefLayout";
+import { activeComponents } from "./signals";
 
 export default function LeftDesktopNav({
-  activeComponents,
+  // activeComponents,
   addActiveComponent,
   removeActiveComponent,
 }) {
   const handleLinkClick = (componentName) => {
-    if (activeComponents.includes(componentName)) {
+    if (activeComponents.value.includes(componentName)) {
       removeActiveComponent(componentName);
       addActiveComponent(componentName);
     } else {
@@ -34,7 +35,7 @@ export default function LeftDesktopNav({
         alt={"Projects"}
         title={"Projects"}
         linkTo={"Projects"}
-        activeComponents={activeComponents}
+        // activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
@@ -43,7 +44,7 @@ export default function LeftDesktopNav({
         alt={"CV"}
         title={"CV"}
         linkTo={"Cv"}
-        activeComponents={activeComponents}
+        // activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
@@ -52,7 +53,7 @@ export default function LeftDesktopNav({
         alt={"Todo"}
         title={"Todo"}
         linkTo={"Todo"}
-        activeComponents={activeComponents}
+        // activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
@@ -71,7 +72,7 @@ export default function LeftDesktopNav({
         alt={"Contact"}
         title={"Contact"}
         linkTo={"Contact"}
-        activeComponents={activeComponents}
+        // activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
