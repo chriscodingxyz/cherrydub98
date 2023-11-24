@@ -106,7 +106,10 @@ export default function BottomDesktopBar({
                 alt=""
                 width={"14px"}
               />{" "}
-              {!isMobile && <span className="font-bold ">{window}</span>}
+              {(!isMobile && <span className="font-bold ">{window}</span>) ||
+                (activeComponents.length <= 3 && (
+                  <span className="font-bold ">{window}</span>
+                ))}
             </div>
           ) : (
             <div
@@ -120,7 +123,8 @@ export default function BottomDesktopBar({
                 alt=""
                 width={"14px"}
               />{" "}
-              {!isMobile && <span>{window}</span>}
+              {(!isMobile && <span>{window}</span>) ||
+                (activeComponents.length <= 3 && <span>{window}</span>)}
             </div>
           );
 
