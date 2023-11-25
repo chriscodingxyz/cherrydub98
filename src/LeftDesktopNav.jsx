@@ -1,6 +1,4 @@
 import React from "react";
-//before hover/active
-import computericon from "/icons/48x48/computer_explorer_cool-0copy.png";
 import NavIconLayout from "./components/NavIconLayout";
 import NavIconHrefLayout from "./components/NavIconHrefLayout";
 

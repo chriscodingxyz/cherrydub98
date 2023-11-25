@@ -1,12 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import WindowLayout from "../components/WindowLayout";
-
-// const siteObj = {
-//   Portfolio: "https://portfolio.cherrydub.com",
-//   Crypto: "https://crypto1.cherrydub.com/",
-//   JSON: "https://json.cherrydub.com",
-//   Smartbrain: "https://smartbrain.cherrydub.com",
-// };
 
 export default function IE({
   activeComponents,
@@ -16,8 +9,6 @@ export default function IE({
   site,
   setSite,
 }) {
-  // const [site, setSite] = useState(siteObj.Portfolio);
-
   const openNewWindow = () => {
     window.open(site, "_blank");
   };
@@ -52,9 +43,9 @@ export default function IE({
 
         <iframe
           src={site}
+          style={{ backgroundColor: "white" }}
           width={windowSize.width - 62 < 700 ? windowSize.width - 62 : 700}
           height={windowSize.height - 150}
-          frameBorder="0"
         ></iframe>
         <input
           className="cursor-pointer hover:text-blue-700"
