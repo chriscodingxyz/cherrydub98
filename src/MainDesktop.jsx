@@ -77,7 +77,7 @@ export default function MainDesktop({
                   removeActiveComponent={removeActiveComponent}
                 />
               );
-              containerClassName = "left-1/2 top-1/3 absolute"; // Centering for Todo component
+              containerClassName = "left-1/4 top-1/3 absolute"; // Centering for Todo component
               break;
             case "Memes":
               component = (
