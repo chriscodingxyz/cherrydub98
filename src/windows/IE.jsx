@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import WindowLayout from "../components/WindowLayout";
 
-const siteObj = {
-  Portfolio: "https://portfolio.cherrydub.com",
-  Smartbrain: "https://smartbrain.cherrydub.com",
-  Crypto: "https://crypto1.cherrydub.com/",
-  JSON: "https://json.cherrydub.com",
-  // BlockList: "https://northcoders.com/projects/may-2023/blocklist",
-  // GitHub: "https://github.com/cherrydub",
-};
+// const siteObj = {
+//   Portfolio: "https://portfolio.cherrydub.com",
+//   Crypto: "https://crypto1.cherrydub.com/",
+//   JSON: "https://json.cherrydub.com",
+//   Smartbrain: "https://smartbrain.cherrydub.com",
+// };
 
 export default function IE({
   activeComponents,
   removeActiveComponent,
   windowSize,
+  siteObj,
+  site,
+  setSite,
 }) {
-  const [site, setSite] = useState(siteObj.Portfolio);
+  // const [site, setSite] = useState(siteObj.Portfolio);
 
   const openNewWindow = () => {
     window.open(site, "_blank");
@@ -41,7 +42,7 @@ export default function IE({
           {Object.keys(siteObj).map((key) => (
             <button
               key={key}
-              className={site === siteObj[key] ? "active" : ""}
+              className={site === siteObj[key] ? "active font-bold" : ""}
               onClick={() => setSite(siteObj[key])}
             >
               {key}

@@ -7,9 +7,10 @@ import "./flicker.css";
 
 const siteObj = {
   Portfolio: "https://portfolio.cherrydub.com",
-  Smartbrain: "https://smartbrain.cherrydub.com",
+
   Crypto: "https://crypto1.cherrydub.com/",
   JSON: "https://json.cherrydub.com",
+  Smartbrain: "https://smartbrain.cherrydub.com",
   // BlockList: "https://northcoders.com/projects/may-2023/blocklist",
   // GitHub: "https://github.com/cherrydub",
 };
@@ -64,9 +65,10 @@ export default function App() {
         setBackgroundChoice={setBackgroundChoice}
         flicker={flicker}
         setFlicker={setFlicker}
-        sites={site}
-        setSites={setSite}
+        site={site}
+        setSite={setSite}
         windowSize={windowSize}
+        siteObj={siteObj}
       />
       <BottomDesktopBar
         activeComponents={activeComponents}

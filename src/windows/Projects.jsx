@@ -2,7 +2,14 @@ import React from "react";
 import ProjectsContent from "./ProjectsContent";
 import WindowLayout from "../components/WindowLayout";
 
-export default function Projects({ activeComponents, removeActiveComponent }) {
+export default function Projects({
+  activeComponents,
+  removeActiveComponent,
+  site,
+  setSite,
+  addActiveComponent,
+  siteObj,
+}) {
   return (
     <div>
       <WindowLayout
@@ -16,7 +23,12 @@ export default function Projects({ activeComponents, removeActiveComponent }) {
         <div className="window-body">
           <div className="bg-white">
             <div className="bg-white border-l border-t border-gray-500">
-              <ProjectsContent />
+              <ProjectsContent
+                site={site}
+                setSite={setSite}
+                addActiveComponent={addActiveComponent}
+                siteObj={siteObj}
+              />
             </div>
           </div>
         </div>

@@ -23,6 +23,7 @@ export default function MainDesktop({
   site,
   setSite,
   windowSize,
+  siteObj,
 }) {
   const handleLinkClick = (componentName) => {
     removeActiveComponent(componentName);
@@ -42,9 +43,11 @@ export default function MainDesktop({
                 <Projects
                   key={componentName}
                   activeComponents={activeComponents}
+                  addActiveComponent={addActiveComponent}
                   removeActiveComponent={removeActiveComponent}
-                  sites={site}
-                  setSites={setSite}
+                  site={site}
+                  setSite={setSite}
+                  siteObj={siteObj}
                 />
               );
               containerClassName = "absolute ml-14 top-1/4"; // UPDATING THIS SO MAYBE USE PADDING INSTAED OF MARGIN FOR RESIZING
@@ -96,6 +99,9 @@ export default function MainDesktop({
                   activeComponents={activeComponents}
                   removeActiveComponent={removeActiveComponent}
                   windowSize={windowSize}
+                  site={site}
+                  setSite={setSite}
+                  siteObj={siteObj}
                 />
               );
               containerClassName = "ml-14  absolute"; // Positioning for IE component
