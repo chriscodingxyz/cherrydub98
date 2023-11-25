@@ -39,7 +39,7 @@ export default function ProjectsContent() {
             src="https://win98icons.alexmeub.com/icons/png/html-5.png"
             alt=""
           />
-          <div className="text-center">JSON formatter</div>
+          <div className="text-center">JSON</div>
         </div>
       </a>
 

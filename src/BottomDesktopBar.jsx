@@ -37,7 +37,7 @@ export default function BottomDesktopBar({
     Welcome: "https://win98icons.alexmeub.com/icons/png/console_prompt-1.png",
     Contact: "https://win98icons.alexmeub.com/icons/png/outlook_express-2.png",
     Cv: "https://win98icons.alexmeub.com/icons/png/message_file-1.png",
-    IE: "https://win98icons.alexmeub.com/icons/png/message_file-1.png",
+    IE: "https://win98icons.alexmeub.com/icons/png/msie1-4.png",
     Memes: "https://win98icons.alexmeub.com/icons/png/briefcase-1.png",
     Projects:
       "https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-3.png",
@@ -56,10 +56,11 @@ export default function BottomDesktopBar({
     if (switchOn) {
       setActiveComponents([]);
     } else {
+      addActiveComponent("IE");
       addActiveComponent("Cv");
       addActiveComponent("Projects");
-      addActiveComponent("Todo");
       addActiveComponent("Contact");
+      addActiveComponent("Todo");
       addActiveComponent("Display");
       addActiveComponent("Welcome");
     }
@@ -157,11 +158,18 @@ export default function BottomDesktopBar({
               />
               <img
                 className="inline mr-1 hover:opacity-50"
+                onClick={() => handleLinkClick("IE")}
+                src="https://win98icons.alexmeub.com/icons/png/msie1-4.png"
+                alt=""
+                width="14px"
+              />
+              {/* <img
+                className="inline mr-1 hover:opacity-50"
                 // onClick={() => handleLinkClick("Timer")}
                 src="https://win98icons.alexmeub.com/icons/png/time_and_date-1.png"
                 alt=""
                 width="14px"
-              />
+              /> */}
             </div>
           </div>
           <LocalTime />

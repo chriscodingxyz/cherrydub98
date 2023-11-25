@@ -1,53 +1,68 @@
-import React from "react";
-import IEContent from "./IEContent";
+import React, { useState } from "react";
+import WindowLayout from "../components/WindowLayout";
 
-export default function IE({ activeComponents, removeActiveComponent }) {
-  const handleLinkClick = (event) => {
-    //this prevents any background event clickers to work, such as removing and readding the active component
-    event.stopPropagation();
-    removeActiveComponent("IE");
+const siteObj = {
+  Portfolio: "https://portfolio.cherrydub.com",
+  Smartbrain: "https://smartbrain.cherrydub.com",
+  Crypto: "https://crypto1.cherrydub.com/",
+  JSON: "https://json.cherrydub.com",
+  // BlockList: "https://northcoders.com/projects/may-2023/blocklist",
+  // GitHub: "https://github.com/cherrydub",
+};
+
+export default function IE({
+  activeComponents,
+  removeActiveComponent,
+  windowSize,
+}) {
+  const [site, setSite] = useState(siteObj.Portfolio);
+
+  const openNewWindow = () => {
+    window.open(site, "_blank");
   };
 
-  const handleSizeClick = () => {};
-
-  const isActive =
-    (activeComponents ?? []).length > 0 && activeComponents[0] === "IE";
-  const titleBarClassName = `title-bar${isActive ? "" : " inactive"}`;
-
   return (
-    <div className="">
-      {/* <div className="flex justify-center"> */}
-      <div
-        className="window"
-        // style={{ minWidth: "85vw", maxWidth: "100%" }}
+    <div>
+      <WindowLayout
+        activeComponents={activeComponents}
+        removeActiveComponent={removeActiveComponent}
+        windowType={"IE"}
+        windowTitle={"Internet Explorer"}
+        windowIcon={"https://win98icons.alexmeub.com/icons/png/msie1-4.png"}
       >
-        <div className={titleBarClassName}>
-          <div className="title-bar-text flex cursor-default">
-            <img
-              className="btn pr-1"
-              src="https://win98icons.alexmeub.com/icons/png/message_file-1.png"
-              alt=""
-            />
-            IE
-          </div>
-          <div className="title-bar-controls">
-            <button className="bg-gray-300" aria-label="Minimize"></button>
+        <input
+          className="cursor-pointer hover:text-blue-700"
+          onClick={openNewWindow}
+          type="text"
+          value={site}
+          // readOnly
+        />
+        <div>
+          {Object.keys(siteObj).map((key) => (
             <button
-              onClick={handleSizeClick}
-              className="bg-gray-300"
-              aria-label="Maximize"
-            ></button>
-            <button
-              onClick={handleLinkClick}
-              className="bg-gray-300 btn"
-              aria-label="Close"
-            ></button>
-          </div>
+              key={key}
+              className={site === siteObj[key] ? "active" : ""}
+              onClick={() => setSite(siteObj[key])}
+            >
+              {key}
+            </button>
+          ))}
         </div>
-        <div className="window-body">
-          <IEContent />
-        </div>
-      </div>
+
+        <iframe
+          src={site}
+          width={windowSize.width - 62 < 700 ? windowSize.width - 62 : 700}
+          height={windowSize.height - 150}
+          frameBorder="0"
+        ></iframe>
+        <input
+          className="cursor-pointer hover:text-blue-700"
+          onClick={openNewWindow}
+          type="text"
+          value={site}
+          readOnly
+        />
+      </WindowLayout>
     </div>
   );
 }

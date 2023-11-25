@@ -2,8 +2,17 @@ import { useState } from "react";
 import BottomDesktopBar from "./BottomDesktopBar";
 import LeftDesktopNav from "./LeftDesktopNav";
 import MainDesktop from "./MainDesktop";
-import { useLocalStorage } from "@uidotdev/usehooks";
+import { useLocalStorage, useWindowSize } from "@uidotdev/usehooks";
 import "./flicker.css";
+
+const siteObj = {
+  Portfolio: "https://portfolio.cherrydub.com",
+  Smartbrain: "https://smartbrain.cherrydub.com",
+  Crypto: "https://crypto1.cherrydub.com/",
+  JSON: "https://json.cherrydub.com",
+  // BlockList: "https://northcoders.com/projects/may-2023/blocklist",
+  // GitHub: "https://github.com/cherrydub",
+};
 
 export default function App() {
   const [activeComponents, setActiveComponents] = useState([
@@ -15,6 +24,9 @@ export default function App() {
     "background-pepe1"
   );
   const [flicker, setFlicker] = useState(true);
+  const windowSize = useWindowSize();
+
+  const [site, setSite] = useState(siteObj.Portfolio);
 
   // const handleContactFormClose = (componentName) => {
   //   setActiveComponents((prevActiveComponents) =>
@@ -52,6 +64,9 @@ export default function App() {
         setBackgroundChoice={setBackgroundChoice}
         flicker={flicker}
         setFlicker={setFlicker}
+        sites={site}
+        setSites={setSite}
+        windowSize={windowSize}
       />
       <BottomDesktopBar
         activeComponents={activeComponents}

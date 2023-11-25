@@ -20,6 +20,9 @@ export default function MainDesktop({
   setBackgroundChoice,
   flicker,
   setFlicker,
+  site,
+  setSite,
+  windowSize,
 }) {
   const handleLinkClick = (componentName) => {
     removeActiveComponent(componentName);
@@ -40,6 +43,8 @@ export default function MainDesktop({
                   key={componentName}
                   activeComponents={activeComponents}
                   removeActiveComponent={removeActiveComponent}
+                  sites={site}
+                  setSites={setSite}
                 />
               );
               containerClassName = "absolute ml-14 top-1/4"; // UPDATING THIS SO MAYBE USE PADDING INSTAED OF MARGIN FOR RESIZING
@@ -72,7 +77,7 @@ export default function MainDesktop({
                   removeActiveComponent={removeActiveComponent}
                 />
               );
-              containerClassName = "left-1/4 top-1/2 absolute"; // Centering for Todo component
+              containerClassName = "right-1/4 top-1/3 absolute"; // Centering for Todo component
               break;
             case "Memes":
               component = (
@@ -90,9 +95,10 @@ export default function MainDesktop({
                   key={componentName}
                   activeComponents={activeComponents}
                   removeActiveComponent={removeActiveComponent}
+                  windowSize={windowSize}
                 />
               );
-              containerClassName = "ml-14 absolute"; // Positioning for Cv component
+              containerClassName = "ml-14  absolute"; // Positioning for IE component
               break;
             case "Display":
               component = (
@@ -106,7 +112,7 @@ export default function MainDesktop({
                   setFlicker={setFlicker}
                 />
               );
-              containerClassName = "ml-14 bottom-1/4 right-1/2 absolute"; // Positioning for Cv component
+              containerClassName = "ml-4 bottom-1/4  absolute"; // Positioning for Cv component
               break;
             case "Contact":
               component = (
@@ -116,7 +122,7 @@ export default function MainDesktop({
                   removeActiveComponent={removeActiveComponent}
                 />
               );
-              containerClassName = "ml-14 top-1/4 absolute"; // Positioning for Cv component
+              containerClassName = "ml-14 bottom-0 right-1/4 absolute"; // Positioning for Cv component
               break;
             case "Timer":
               component = (

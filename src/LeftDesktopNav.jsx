@@ -74,6 +74,24 @@ export default function LeftDesktopNav({
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
+      {/* <NavIconLayout
+        iconSrc={
+          "https://win98icons.alexmeub.com/icons/png/outlook_express-4.png"
+        }
+        alt={"Memes"}
+        title={"Memes"}
+        linkTo={"Memes"}
+        activeComponents={activeComponents}
+        handleLinkClick={handleLinkClick}
+      /> */}
+      {/* <NavIconLayout
+        iconSrc={"https://win98icons.alexmeub.com/icons/png/msie1-2.png"}
+        alt={"IE"}
+        title={"IE"}
+        linkTo={"IE"}
+        activeComponents={activeComponents}
+        handleLinkClick={handleLinkClick}
+      /> */}
 
       {/* <NavIconLayout
         iconSrc={"https://win98icons.alexmeub.com/icons/png/notepad_file-2.png"}
