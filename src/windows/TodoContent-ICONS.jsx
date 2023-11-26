@@ -32,32 +32,22 @@ export default function TodoContent({ setTaskTheme }) {
 
   return (
     <>
-      <div
-        className="flex flex-col flex-wrap p-2 gap-2"
-        style={
-          {
-            // fontFamily: "RobotoMonoRegular",
-            // minWidth: "300px",
-          }
-        }
-      >
+      <div className="flex flex-col flex-wrap p-2 gap-2">
         <div>
-          <div className="flex flex-row">
-            {/* <div className="">theme color:</div> */}
-          </div>
-
-          <ul className="pl-5 list-disc">
+          <ul className="">
             {tasks.map((task, index) => (
-              <div className="flex">
-                <li
-                  key={index}
-                  className="border-b border-blue-700 flex-grow"
-                  onClick={() => handleTaskClick(index)}
-                  style={{ maxWidth: "200px", wordWrap: "break-word" }} // Add this style for word wrapping
-                >
-                  {task}
-                </li>
-                <span className="pl-2">
+              <li
+                key={index}
+                className="border-b border-blue-700 flex justify-between items-center"
+                style={{
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
+                  maxWidth: "200px",
+                }}
+              >
+                <span>{task}</span>
+                <span className="text-right">
                   <i
                     className="pl-2 las la-copy hover:text-blue-700"
                     onClick={() => handleCopyTask(task)}
@@ -71,7 +61,7 @@ export default function TodoContent({ setTaskTheme }) {
                     title="Delete"
                   ></i>
                 </span>
-              </div>
+              </li>
             ))}
           </ul>
         </div>
@@ -83,7 +73,6 @@ export default function TodoContent({ setTaskTheme }) {
                 className="flex-grow"
                 type="text"
                 placeholder="task"
-                // style={{ background: "transparent" }}
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
               />
