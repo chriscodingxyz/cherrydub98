@@ -20,48 +20,44 @@ export default function TodoContent({ setTaskTheme }) {
     }
   };
 
-  const handleTaskClick = (index) => {
+  const handleTaskDelete = (index) => {
     const updatedTasks = [...tasks];
     updatedTasks.splice(index, 1);
     setTasks(updatedTasks);
   };
 
+  const handleCopyTask = (taskText) => {
+    navigator.clipboard.writeText(taskText);
+  };
+
   return (
     <>
-      <div
-        className="flex flex-col flex-wrap p-2 gap-2"
-        style={
-          {
-            // fontFamily: "RobotoMonoRegular",
-            // minWidth: "300px",
-          }
-        }
-      >
+      <div className="flex flex-col flex-wrap p-2 gap-2">
         <div>
-          <div className="flex flex-row">
-            {/* <div className="">theme color:</div> */}
-          </div>
-
-          <ol className="pl-5 list-disc">
+          <ul className="">
             {tasks.map((task, index) => (
               <li
                 key={index}
-                className="border-b border-blue-700"
-                style={{}}
-                onClick={() => handleTaskClick(index)}
-                onMouseEnter={(e) => {
-                  e.target.style.textDecoration = "line-through";
-                  e.target.style.cursor = "pointer";
-                }}
-                onMouseLeave={(e) => {
-                  e.target.style.textDecoration = "none";
-                  e.target.style.cursor = "auto";
-                }}
+                className="border-b border-blue-700 flex justify-between items-center"
               >
-                {task}
+                <span>{task}</span>
+                <span className="text-right">
+                  <i
+                    className="pl-2 las la-copy hover:text-blue-700"
+                    onClick={() => handleCopyTask(task)}
+                    style={{ cursor: "pointer" }}
+                    title="Copy"
+                  ></i>
+                  <i
+                    onClick={() => handleTaskDelete(index)}
+                    className="pl-2 las la-trash-alt mr-2 hover:text-red-700"
+                    style={{ cursor: "pointer" }}
+                    title="Delete"
+                  ></i>
+                </span>
               </li>
             ))}
-          </ol>
+          </ul>
         </div>
 
         <form onSubmit={handleAddTask}>
@@ -71,7 +67,6 @@ export default function TodoContent({ setTaskTheme }) {
                 className="flex-grow"
                 type="text"
                 placeholder="task"
-                // style={{ background: "transparent" }}
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
               />
@@ -81,39 +76,6 @@ export default function TodoContent({ setTaskTheme }) {
             </div>
           </div>
         </form>
-
-        {/* <div>
-          <div className="flex flex-row flex-grow justify-around items-center">
-            <div
-              onClick={() => setTaskTheme("bg-red-200")}
-              className="w-2 h-2 bg-red-200 border border-black cursor-pointer"
-            ></div>
-            <div
-              onClick={() => setTaskTheme("bg-orange-200")}
-              className="w-2 h-2 bg-orange-200 border border-black cursor-pointer"
-            ></div>
-            <div
-              onClick={() => setTaskTheme("bg-yellow-100")}
-              className="w-2 h-2 bg-yellow-100 border border-black cursor-pointer"
-            ></div>
-            <div
-              onClick={() => setTaskTheme("bg-green-200")}
-              className="w-2 h-2 bg-green-200 border border-black cursor-pointer"
-            ></div>
-            <div
-              onClick={() => setTaskTheme("bg-blue-200")}
-              className="w-2 h-2 bg-blue-200 border border-black cursor-pointer"
-            ></div>
-            <div
-              onClick={() => setTaskTheme("bg-indigo-200")}
-              className="w-2 h-2 bg-indigo-200 border border-black cursor-pointer"
-            ></div>
-            <div
-              onClick={() => setTaskTheme("bg-violet-200")}
-              className="w-2 h-2 bg-violet-200 border border-black cursor-pointer"
-            ></div>
-          </div>
-        </div> */}
       </div>
     </>
   );
