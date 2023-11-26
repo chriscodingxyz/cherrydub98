@@ -23,7 +23,7 @@ export default function App() {
   ]);
   const [backgroundChoice, setBackgroundChoice] = useLocalStorage(
     "backgroundChoice",
-    "background-pepe1"
+    "background-default"
   );
   const [flicker, setFlicker] = useState(true);
   const windowSize = useWindowSize();
