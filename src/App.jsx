@@ -4,6 +4,7 @@ import LeftDesktopNav from "./LeftDesktopNav";
 import MainDesktop from "./MainDesktop";
 import { useLocalStorage, useWindowSize } from "@uidotdev/usehooks";
 import "./flicker.css";
+import Landing from "./components/Landing";
 
 const siteObj = {
   Portfolio: "https://portfolio.cherrydub.com",
@@ -29,11 +30,17 @@ export default function App() {
 
   const [site, setSite] = useState(siteObj.Portfolio);
 
+  const [isLoading, setIsLoading] = useState(true);
+
   // const handleContactFormClose = (componentName) => {
   //   setActiveComponents((prevActiveComponents) =>
   //     prevActiveComponents.filter((name) => name !== componentName)
   //   );
   // };
+
+  setTimeout(() => {
+    setIsLoading(false);
+  }, 3000);
 
   const addActiveComponent = (componentName) => {
     setActiveComponents((prevActiveComponents) => [
@@ -53,30 +60,33 @@ export default function App() {
       className={`${backgroundChoice} ${flicker ? "crt" : ""}`}
       style={{ height: "100vh" }}
     >
-      <LeftDesktopNav
-        activeComponents={activeComponents}
-        addActiveComponent={addActiveComponent}
-        removeActiveComponent={removeActiveComponent}
-      />
-      <MainDesktop
-        activeComponents={activeComponents}
-        addActiveComponent={addActiveComponent}
-        removeActiveComponent={removeActiveComponent}
-        setBackgroundChoice={setBackgroundChoice}
-        flicker={flicker}
-        setFlicker={setFlicker}
-        site={site}
-        setSite={setSite}
-        windowSize={windowSize}
-        siteObj={siteObj}
-      />
-      <BottomDesktopBar
-        activeComponents={activeComponents}
-        setActiveComponents={setActiveComponents}
-        addActiveComponent={addActiveComponent}
-        backgroundChoice={backgroundChoice}
-        removeActiveComponent={removeActiveComponent}
-      />
+      {isLoading && <Landing />}
+      <div className="main-app">
+        <LeftDesktopNav
+          activeComponents={activeComponents}
+          addActiveComponent={addActiveComponent}
+          removeActiveComponent={removeActiveComponent}
+        />
+        <MainDesktop
+          activeComponents={activeComponents}
+          addActiveComponent={addActiveComponent}
+          removeActiveComponent={removeActiveComponent}
+          setBackgroundChoice={setBackgroundChoice}
+          flicker={flicker}
+          setFlicker={setFlicker}
+          site={site}
+          setSite={setSite}
+          windowSize={windowSize}
+          siteObj={siteObj}
+        />
+        <BottomDesktopBar
+          activeComponents={activeComponents}
+          setActiveComponents={setActiveComponents}
+          addActiveComponent={addActiveComponent}
+          backgroundChoice={backgroundChoice}
+          removeActiveComponent={removeActiveComponent}
+        />
+      </div>
     </div>
   );
 }

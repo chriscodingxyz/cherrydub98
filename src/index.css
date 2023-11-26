@@ -248,3 +248,52 @@ button.active {
   box-shadow: inset -1px -1px #ffffff, inset 1px 1px #0a0a0a,
     inset -2px -2px #dfdfdf, inset 2px 2px #808080;
 }
+
+.landing {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  z-index: 999;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.loading-bar-container {
+  width: 200px;
+  height: 12px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  border-radius: 5px;
+}
+
+.loading-bar {
+  width: 0;
+  height: 100%;
+  background-color: white;
+  animation: progress 3s ease-in-out;
+}
+
+@keyframes progress {
+  0% {
+    width: 0;
+  }
+  50% {
+    width: 70%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+.main-app {
+  opacity: 0;
+  animation: fadeIn 0s 3s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
