@@ -53,11 +53,15 @@ export default function TodoContent({ setTaskTheme }) {
                   key={index}
                   className="border-b border-blue-700 flex-grow"
                   onClick={() => handleTaskClick(index)}
-                  style={{ width: "150px", wordWrap: "break-word" }} // Add this style for word wrapping
+                  style={{
+                    width: "175px",
+                    wordWrap: "break-word",
+                    lineHeight: "1rem",
+                  }} // Add this style for word wrapping
                 >
                   {task}
                 </li>
-                <span className="pl-2 flex items-center">
+                <span className=" flex items-center">
                   <i
                     className="pl-2 las la-copy hover:text-blue-700"
                     onClick={() => handleCopyTask(task)}
