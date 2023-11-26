@@ -46,7 +46,7 @@ export default function TodoContent({ setTaskTheme }) {
             {/* <div className="">theme color:</div> */}
           </div>
 
-          <ul className="pl-5 list-disc">
+          <ul className="pl-4 list-disc">
             {tasks.map((task, index) => (
               <div className="flex">
                 <li
@@ -57,7 +57,7 @@ export default function TodoContent({ setTaskTheme }) {
                     width: "175px",
                     wordWrap: "break-word",
                     lineHeight: "1rem",
-                  }} // Add this style for word wrapping
+                  }}
                 >
                   {task}
                 </li>
@@ -86,7 +86,8 @@ export default function TodoContent({ setTaskTheme }) {
               <input
                 className="flex-grow"
                 type="text"
-                placeholder="task"
+                placeholder=" task / note"
+                style={{ paddingLeft: "10px" }}
                 // style={{ background: "transparent" }}
                 value={newTask}
                 onChange={(e) => setNewTask(e.target.value)}
