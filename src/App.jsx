@@ -8,12 +8,9 @@ import Landing from "./components/Landing";
 
 const siteObj = {
   Portfolio: "https://portfolio.cherrydub.com",
-
   Crypto: "https://crypto1.cherrydub.com/",
   JSON: "https://json.cherrydub.com",
   Smartbrain: "https://smartbrain.cherrydub.com",
-  // BlockList: "https://northcoders.com/projects/may-2023/blocklist",
-  // GitHub: "https://github.com/cherrydub",
 };
 
 export default function App() {
@@ -27,9 +24,7 @@ export default function App() {
   );
   const [flicker, setFlicker] = useState(true);
   const windowSize = useWindowSize();
-
   const [site, setSite] = useState(siteObj.Portfolio);
-
   const [isLoading, setIsLoading] = useState(true);
 
   // const handleContactFormClose = (componentName) => {
