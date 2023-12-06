@@ -8,6 +8,7 @@ import Landing from "./components/Landing";
 
 const siteObj = {
   Portfolio: "https://portfolio.cherrydub.com",
+  PizzaShop: "https://pizza.cherrydub.com",
   Crypto: "https://crypto1.cherrydub.com/",
   JSON: "https://json.cherrydub.com",
   Smartbrain: "https://smartbrain.cherrydub.com",

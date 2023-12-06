@@ -298,3 +298,29 @@ button.active {
     opacity: 1;
   }
 }
+/* 
+.active img {
+  filter: brightness(120%) blue; 
+}
+
+.active p {
+  background-color: blue;
+  border: 1px dotted white;
+} */
+
+/* Add these styles to your stylesheet */
+/* .active {
+  background-color: blue !important;
+} */
+
+.active-img {
+  /* filter: hue-rotate(240deg); */
+  /* outline: 1px dotted white; */
+  /* background-color: blue; */
+}
+
+.active-text {
+  background-color: rgb(2, 2, 208);
+  outline: 1px dotted white;
+  padding: 0, 5px;
+}

@@ -92,6 +92,22 @@ export default function ProjectsContent({
 
       {/* </a> */}
 
+      <div
+        onClick={() => {
+          setSite(siteObj.PizzaShop);
+          setTimeout(() => {
+            addActiveComponent("IE");
+          }, 100);
+        }}
+        className="flex flex-col items-center overflow-auto hover:cursor-pointer"
+      >
+        <img
+          src="https://win98icons.alexmeub.com/icons/png/html-5.png"
+          alt=""
+        />
+        <div className="text-center">Pizza Shop</div>
+      </div>
+
       <a
         target="_blank"
         href="https://northcoders.com/projects/may-2023/blocklist"
@@ -105,7 +121,7 @@ export default function ProjectsContent({
         </div>
       </a>
 
-      <a target="_blank" href="https://worldwise.cherrydub.com/">
+      {/* <a target="_blank" href="https://worldwise.cherrydub.com/">
         <div className="flex flex-col items-center overflow-auto">
           <img
             src="https://win98icons.alexmeub.com/icons/png/html2_new-4.png"
@@ -113,7 +129,7 @@ export default function ProjectsContent({
           />
           <div className="text-center">World Wise</div>
         </div>
-      </a>
+      </a> */}
 
       {/* <a target="_blank" href="https://ncgames.cherrydub.com/">
         <div className="flex flex-col items-center">
