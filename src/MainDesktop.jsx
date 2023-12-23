@@ -11,6 +11,7 @@ import Contact from "./windows/Contact.jsx";
 import Display from "./windows/Display.jsx";
 import Links from "./windows/Links.jsx";
 import Notes from "./windows/Notes.jsx";
+import Crypto from "./windows/Crypto.jsx";
 
 export default function MainDesktop({
   activeComponents,
@@ -81,6 +82,16 @@ export default function MainDesktop({
                 />
               );
               containerClassName = "left-1/4 top-1/3 absolute"; // Centering for Todo component
+              break;
+            case "Crypto":
+              component = (
+                <Crypto
+                  key={componentName}
+                  activeComponents={activeComponents}
+                  removeActiveComponent={removeActiveComponent}
+                />
+              );
+              containerClassName = "ml-14 absolute";
               break;
             case "Memes":
               component = (

@@ -26,7 +26,12 @@ export default function WindowLayout({
       <div className="window inline-flex flex-col">
         <div className={titleBarClassName}>
           <div className="title-bar-text flex cursor-default">
-            <img className="btn pr-1" src={windowIcon} alt={windowType} />
+            <img
+              className="btn pr-1"
+              src={windowIcon}
+              alt={windowType}
+              width={"20px"}
+            />
             {windowTitle ? windowTitle : windowType}
           </div>
           <div className="title-bar-controls">

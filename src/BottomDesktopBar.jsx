@@ -47,6 +47,8 @@ export default function BottomDesktopBar({
       "https://win98icons.alexmeub.com/icons/png/display_properties-1.png",
     Links: "https://win98icons.alexmeub.com/icons/png/message_file-1.png",
     Notes: "https://win98icons.alexmeub.com/icons/png/notepad_file-1.png",
+    Crypto:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png",
   };
 
   const [switchOn, setSwitchOn] = useState(false);
