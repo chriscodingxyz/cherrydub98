@@ -47,7 +47,7 @@ export default function CryptoContent({
       {/* <section>nft</section> */}
       <section>
         {/* twitter */}
-        <TwitterEmbed />
+        {/* <TwitterEmbed /> */}
       </section>
     </div>
   );

@@ -73,7 +73,7 @@ export default function LeftDesktopNav({
         handleLinkClick={handleLinkClick}
       />
 
-      {/* <NavIconLayout
+      <NavIconLayout
         iconSrc={
           "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png"
         }
@@ -82,7 +82,7 @@ export default function LeftDesktopNav({
         linkTo={"Crypto"}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
-      /> */}
+      />
       {/* <NavIconLayout
         iconSrc={
           "https://win98icons.alexmeub.com/icons/png/outlook_express-4.png"
