@@ -36,7 +36,10 @@ export default function CryptoContent({
   }, [url]);
 
   return (
-    <div className="flex flex-col p-4 gap-4" style={{ height: "75vh" }}>
+    <div
+      className="flex flex-col p-4 gap-4"
+      style={{ height: "75vh", minWidth: "400px" }}
+    >
       <section>
         {/* crypto prices */}
         <CryptoList coins={coins} />
