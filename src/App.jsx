@@ -5,6 +5,7 @@ import MainDesktop from "./MainDesktop";
 import { useLocalStorage, useWindowSize } from "@uidotdev/usehooks";
 import "./flicker.css";
 import Landing from "./components/Landing";
+import scriptjs from "scriptjs";
 
 const siteObj = {
   Portfolio: "https://portfolio.cherrydub.com",

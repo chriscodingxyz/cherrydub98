@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import TwitterEmbed from "../components/TwitterEmbed";
 import axios from "axios";
 import CryptoList from "../components/CryptoList";
+import scriptjs from "scriptjs";
 
 export default function CryptoContent({
   site,

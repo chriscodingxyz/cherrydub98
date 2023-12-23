@@ -1,5 +1,6 @@
 import React from "react";
 import { TwitterTimelineEmbed } from "react-twitter-embed";
+import scriptjs from "scriptjs";
 
 export default function TwitterEmbed() {
   return (
