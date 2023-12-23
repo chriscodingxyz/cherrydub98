@@ -20,10 +20,10 @@ export default function CryptoList({ coins }) {
     <div className="flex flex-col">
       <div className="flex justify-between bg-gray-200 p-1">
         <div className="flex items-center space-x-2 flex-1">
-          <div className="flex-1"># Coin</div>
+          <div className="flex-1 font-bold"># Coin</div>
         </div>
-        <div className="flex-1 text-right">Price</div>
-        <div className="flex-1 text-right">Market Cap</div>
+        <div className="flex-1 text-right font-bold">Price</div>
+        <div className="flex-1 text-right font-bold">Market Cap</div>
       </div>
 
       {coins.map((coin, index) => (
