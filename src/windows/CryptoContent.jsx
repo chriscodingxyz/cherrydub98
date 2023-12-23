@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import TwitterEmbed from "../components/TwitterEmbed";
 import axios from "axios";
 import CryptoList from "../components/CryptoList";
-import scriptjs from "scriptjs";
 
 export default function CryptoContent({
   site,
@@ -50,7 +49,7 @@ export default function CryptoContent({
       <section>
         {/* twitter */}
         {/* {windowSize.width > 600 && <TwitterEmbed />} */}
-        <TwitterEmbed />
+        {/* <TwitterEmbed /> */}
       </section>
     </div>
   );
