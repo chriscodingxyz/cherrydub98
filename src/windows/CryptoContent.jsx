@@ -44,13 +44,12 @@ export default function CryptoContent({
       <section>
         {/* crypto prices */}
         <CryptoList coins={coins} />
-        <CryptoList coins={coins} />
-        <CryptoList coins={coins} />
       </section>
       {/* <section>nft</section> */}
       <section>
         {/* twitter */}
-        {windowSize.width > 600 && <TwitterEmbed />}
+        {/* {windowSize.width > 600 && <TwitterEmbed />} */}
+        <TwitterEmbed />
       </section>
     </div>
   );
