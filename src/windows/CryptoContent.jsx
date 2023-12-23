@@ -44,6 +44,8 @@ export default function CryptoContent({
       <section>
         {/* crypto prices */}
         <CryptoList coins={coins} />
+        <CryptoList coins={coins} />
+        <CryptoList coins={coins} />
       </section>
       {/* <section>nft</section> */}
       <section>
