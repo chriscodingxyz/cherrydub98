@@ -89,6 +89,7 @@ export default function MainDesktop({
                   key={componentName}
                   activeComponents={activeComponents}
                   removeActiveComponent={removeActiveComponent}
+                  windowSize={windowSize}
                 />
               );
               containerClassName = "ml-14 absolute";

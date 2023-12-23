@@ -17,40 +17,39 @@ const abbreviateNumber = (value) => {
 
 export default function CryptoList({ coins }) {
   return (
-    <div className="flex flex-col space-y-1">
+    <div className="flex flex-col">
       <div className="flex justify-between bg-gray-200 p-1">
-        <div className="flex items-center space-x-2">
-          <div>#</div>
-          <div className="hidden">Logo</div>
-          <div>Symbol</div>
+        <div className="flex items-center space-x-2 flex-1">
+          <div className="flex-1"># Coin</div>
         </div>
-        <div>Price</div>
-        <div>Market Cap</div>
+        <div className="flex-1 text-right">Price</div>
+        <div className="flex-1 text-right">Market Cap</div>
       </div>
+
       {coins.map((coin, index) => (
         <div
           key={coin.id}
-          className="flex items-center justify-between border rounded-md shadow-md p-1"
+          className="flex items-center justify-between rounded-md shadow-md p-1 border"
         >
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-2  flex-1">
             <div className="text-gray-600">{index + 1}</div>
             <img
               src={coin.image}
               alt={coin.name}
               className="w-4 h-4 rounded-full"
             />
-            <span className="text-md ">{coin.symbol}</span>
+            <span className="text-md">{coin.symbol}</span>
           </div>
 
-          <div className="text-md text-left ">
-            $
+          <div className="flex-1 text-md text-right">
             {coin.current_price.toLocaleString("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             })}
+            $
           </div>
 
-          <div className="text-md text-left">
+          <div className="flex-1 text-md text-right ">
             {abbreviateNumber(coin.market_cap)}
           </div>
         </div>

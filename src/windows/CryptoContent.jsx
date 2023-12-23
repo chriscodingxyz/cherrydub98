@@ -8,6 +8,7 @@ export default function CryptoContent({
   setSite,
   siteObj,
   addActiveComponent,
+  windowSize,
 }) {
   const [displayAmount, setDisplayAmount] = useState(10);
   const [currency, setCurrency] = useState("usd");
@@ -38,7 +39,7 @@ export default function CryptoContent({
   return (
     <div
       className="flex flex-col p-4 gap-4"
-      style={{ height: "75vh", minWidth: "300px" }}
+      // style={{ maxHeightheight: "75vh", minWidth: "300px" }}
     >
       <section>
         {/* crypto prices */}
@@ -47,7 +48,7 @@ export default function CryptoContent({
       {/* <section>nft</section> */}
       <section>
         {/* twitter */}
-        {/* <TwitterEmbed /> */}
+        {windowSize.width > 600 && <TwitterEmbed />}
       </section>
     </div>
   );

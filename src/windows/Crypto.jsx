@@ -9,6 +9,7 @@ export default function Crypto({
   setSite,
   addActiveComponent,
   siteObj,
+  windowSize,
 }) {
   return (
     <div>
@@ -23,10 +24,15 @@ export default function Crypto({
         <div className="window-body">
           <div
             className="bg-white border-l border-t border-gray-500"
-            style={{ overflow: "auto" }}
+            style={{
+              overflow: "auto",
+              maxHeightheight: "75vh",
+              minWidth: "300px",
+            }}
           >
             <CryptoContent
               site={site}
+              windowSize={windowSize}
               setSite={setSite}
               addActiveComponent={addActiveComponent}
               siteObj={siteObj}
