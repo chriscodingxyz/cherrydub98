@@ -97,12 +97,28 @@ body {
   background-size: auto 100vh;
 }
 
+.background-cryptopunk-mobile {
+  background-color: #a79aff;
+  background-image: url("/backgrounds/cryptopunk.png");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+}
+
 .background-cryptoadz {
   background-color: #bfbb98;
   background-image: url("/backgrounds/cryptoadz.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: auto 100vh;
+}
+
+.background-cryptoadz-mobile {
+  background-color: #bfbb98;
+  background-image: url("/backgrounds/cryptoadz.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
 }
 
 @keyframes blink {

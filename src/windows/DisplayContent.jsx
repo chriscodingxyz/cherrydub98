@@ -24,8 +24,8 @@ export default function DisplayContent({
 
   const backgroundMobileArray = [
     "background-default",
-    "background-cryptopunk",
-    "background-cryptoadz",
+    "background-cryptopunk-mobile",
+    "background-cryptoadz-mobile",
     "background-pepe1",
     "background-pepe3",
     // "background-ashpika",
