@@ -52,9 +52,9 @@ export default function CryptoList({
         <div className="flex-1">
           display amount
           <select name="" id="" onChange={displayOnChange}>
-            <option value="10">10</option>
             <option value="25">25</option>
             <option value="100">100</option>
+            <option value="250">250</option>
           </select>
         </div>
       </div>
