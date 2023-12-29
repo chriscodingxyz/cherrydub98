@@ -24,6 +24,8 @@ export default function DisplayContent({
 
   const backgroundMobileArray = [
     "background-default",
+    "background-cryptopunk",
+    "background-cryptoadz",
     "background-pepe1",
     "background-pepe3",
     // "background-ashpika",
@@ -34,8 +36,11 @@ export default function DisplayContent({
 
   const backgroundDesktopArray = [
     "background-default",
+    "background-cryptopunk",
+    "background-cryptoadz",
     "background-pepe1",
     "background-pepe3",
+
     // "background-tron",
     // "background-nyan",
     // "background-future",

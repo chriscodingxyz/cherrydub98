@@ -89,6 +89,22 @@ body {
   background-size: auto 100vh;
 }
 
+.background-cryptopunk {
+  background-color: #a79aff;
+  background-image: url("/backgrounds/cryptopunk.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100vh;
+}
+
+.background-cryptoadz {
+  background-color: #bfbb98;
+  background-image: url("/backgrounds/cryptoadz.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: auto 100vh;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;

@@ -26,7 +26,6 @@ export default function CryptoList({
   currency,
   setCurrency,
   setDisplayAmount,
-  setOrderSort,
 }) {
   function currencyOnChange(e) {
     setCurrency(e.target.value);
@@ -58,15 +57,6 @@ export default function CryptoList({
             <option value="100">100</option>
           </select>
         </div>
-        {/* <div className="flex-1">
-          ASC / DESC
-          <button value="asc" onClick={sortOnClick}>
-            asc
-          </button>
-          <button value="desc" onClick={sortOnClick}>
-            desc
-          </button>
-        </div> */}
       </div>
       <div className="flex flex-col">
         <div className="flex justify-between bg-gray-200 p-1">

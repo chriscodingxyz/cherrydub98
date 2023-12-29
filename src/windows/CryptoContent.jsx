@@ -10,9 +10,8 @@ export default function CryptoContent({
   addActiveComponent,
   windowSize,
 }) {
-  const [displayAmount, setDisplayAmount] = useState(10);
+  const [displayAmount, setDisplayAmount] = useState(25);
   const [currency, setCurrency] = useState("usd");
-  const [orderSort, setOrderSort] = useState("desc");
 
   const currencySymbol = {
     usd: "$",
@@ -22,7 +21,7 @@ export default function CryptoContent({
 
   const [coins, setCoins] = useState([]);
 
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_${orderSort}&per_page=${displayAmount}&page=1&sparkline=false&locale=en`;
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_asc&per_page=${displayAmount}&page=1&sparkline=false&locale=en`;
 
   useEffect(() => {
     axios
@@ -48,7 +47,6 @@ export default function CryptoContent({
           coins={coins}
           setDisplayAmount={setDisplayAmount}
           setCurrency={setCurrency}
-          setOrderSort={setOrderSort}
         />
       </section>
       {/* <section>nft</section> */}
