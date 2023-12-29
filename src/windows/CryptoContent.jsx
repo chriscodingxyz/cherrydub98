@@ -43,14 +43,20 @@ export default function CryptoContent({
     >
       <section>
         {/* crypto prices */}
-        <CryptoList coins={coins} />
+        <CryptoList
+          currency={currency}
+          coins={coins}
+          setDisplayAmount={setDisplayAmount}
+          setCurrency={setCurrency}
+          setOrderSort={setOrderSort}
+        />
       </section>
       {/* <section>nft</section> */}
-      <section>
-        {/* twitter */}
-        {/* {windowSize.width > 600 && <TwitterEmbed />} */}
-        {/* <TwitterEmbed /> */}
-      </section>
+      {/* <section> */}
+      {/* twitter */}
+      {/* {windowSize.width > 600 && <TwitterEmbed />} */}
+      {/* <TwitterEmbed /> */}
+      {/* </section> */}
     </div>
   );
 }

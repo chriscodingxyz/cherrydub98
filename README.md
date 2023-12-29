@@ -31,4 +31,11 @@
    - [flicker](https://aleclownes.com/2017/02/01/crt-display.html)
    - oldschool CRT screen flicker effect
 
+7. **react-twitter-embed**
+   - [react-twitter-embed](https://github.com/saurabhnemade/react-twitter-embed)
+   - add twitter timelines in react, not only certain tweets
+
+
+
+
 More features to come...

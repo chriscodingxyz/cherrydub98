@@ -26,7 +26,7 @@ export default function Crypto({
             className="bg-white border-l border-t border-gray-500"
             style={{
               overflow: "auto",
-              maxHeight: "75vh",
+              height: "50vh",
               minWidth: "300px",
             }}
           >
