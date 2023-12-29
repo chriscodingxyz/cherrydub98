@@ -101,7 +101,7 @@ body {
   background-color: #a79aff;
   background-image: url("/backgrounds/cryptopunk.png");
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   background-size: contain;
 }
 
