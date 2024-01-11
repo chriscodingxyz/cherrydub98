@@ -20,7 +20,7 @@ export default function ConsoleCrypto() {
   }, [url, page]);
 
   const goToPrevPage = () => {
-    setPage((prevPage) => Math.max(prevPage - 1, 1));
+    setPage((prevPage) => prevPage - 1);
   };
 
   const goToNextPage = () => {
