@@ -3,8 +3,9 @@ import axios from "axios";
 
 export default function ConsoleCrypto() {
   const [coins, setCoins] = useState([]);
+  const [page, setPage] = useState(1);
 
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=1&sparkline=false&locale=en`;
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&locale=en`;
 
   useEffect(() => {
     axios
@@ -16,7 +17,15 @@ export default function ConsoleCrypto() {
       .catch((err) => {
         console.log("error:", err);
       });
-  }, [url]);
+  }, [url, page]);
+
+  const goToPrevPage = () => {
+    setPage((prevPage) => Math.max(prevPage - 1, 1));
+  };
+
+  const goToNextPage = () => {
+    setPage((prevPage) => prevPage + 1);
+  };
 
   return (
     <div>
@@ -46,6 +55,23 @@ export default function ConsoleCrypto() {
       ) : (
         <>fetching prices...</>
       )}
+
+      {coins.length > 0 && (
+        <div className="mt-2 text-right">
+          {page > 1 && (
+            <span onClick={goToPrevPage} className="cursor-pointer">
+              {"<< "}
+            </span>
+          )}
+
+          <span>page {page}</span>
+          <span onClick={goToNextPage} className="cursor-pointer">
+            {" >>"}
+          </span>
+        </div>
+      )}
+
+      <br />
     </div>
   );
 }
