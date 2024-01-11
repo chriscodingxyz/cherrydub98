@@ -45,12 +45,12 @@ export default function WelcomeContent() {
       <pre className=" bg-black text-white text-center">
         <div className="pre-extra">
           <div className="flex">
-            <div className="flex-initial">cherrydub©</div>
+            <div className=" flex-1 text-left">cherrydub©</div>
 
             <div
               style={{ cursor: "pointer" }}
               onClick={() => toggleCrypto()}
-              className="flex-grow text-right"
+              className="flex-1 text-right border border-dotted border-r-0 border-t-0"
             >
               {openCrypto ? (
                 "close [x]"
