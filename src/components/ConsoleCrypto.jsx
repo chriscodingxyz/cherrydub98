@@ -33,7 +33,7 @@ export default function ConsoleCrypto() {
         coins.map((coin, index) => (
           <div key={coin.id} className="flex items-center p-1">
             <div className="flex items-center space-x-2  flex-1  ">
-              <div className="text-gray-600">{index + 1}</div>
+              <div className="text-gray-600">{coin.rank}</div>
               <img
                 src={coin.image}
                 alt={coin.name}
