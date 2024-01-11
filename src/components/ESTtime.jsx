@@ -1,127 +1,90 @@
 import { useState, useEffect } from "react";
 
 export default function ESTtime() {
-  const [time, setTime] = useState(null);
+  const [nycTime, setNYCTime] = useState(null);
   const [dayWeek, setDayWeek] = useState(null);
   const [dayYear, setDayYear] = useState(null);
 
   useEffect(() => {
-    const fetchTime = async () => {
+    const fetchNYCTime = async () => {
       try {
         const response = await fetch(
           "https://worldtimeapi.org/api/timezone/America/New_York"
         );
         const data = await response.json();
-        const datetime = data.datetime;
+        const datetime = new Date(data.utc_datetime);
         const dayweek = data.day_of_week;
         const dayyear = data.day_of_year;
-        setTime(datetime);
+        setNYCTime(datetime);
         setDayWeek(dayweek);
         setDayYear(dayyear);
       } catch (error) {
-        console.error("Error fetching time:", error);
+        console.error("Error fetching NYC time:", error);
       }
     };
 
-    fetchTime();
+    fetchNYCTime();
 
     const interval = setInterval(() => {
-      fetchTime();
+      fetchNYCTime();
     }, 15000);
 
     return () => clearInterval(interval);
   }, []);
 
   // Display loading state until time is fetched
-  if (!time) {
+  if (!nycTime) {
     return <div>Loading... </div>;
   }
 
-  const formattedTime = time.split("T")[1].substring(0, 5);
+  const openingTime = { hours: 9, minutes: 30 };
+  const closingTime = { hours: 16, minutes: 0 };
 
-  const openingTime = "09:30";
-  const closingTime = "16:00";
+  const formattedTime = nycTime.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+    hour12: false,
+    timeZone: "America/New_York",
+  });
 
-  //US holidays (non leap years)
-  if (
-    dayYear === 2 ||
-    dayYear === 16 ||
-    dayYear === 51 ||
-    dayYear === 97 ||
-    dayYear === 149 ||
-    dayYear === 170 ||
-    dayYear === 185 ||
-    dayYear === 248 ||
-    dayYear === 327 ||
-    dayYear === 359
-  ) {
-    return (
-      <div className="flex">
-        <div className="flex-initial">
-          {formattedTime} EST <span className="text-red-600">Holiday</span>
-        </div>
-        <div className="flex-grow text-right">Opens @ 9:30 EST</div>
-      </div>
-    );
-  }
+  const holidays2024 = [2, 15, 50, 96, 148, 169, 184, 247, 326, 358];
 
-  // console.log("day week:", dayWeek);
+  const isHoliday = holidays2024.includes(dayYear);
+  const isWeekend = dayWeek === 6 || dayWeek === 0;
+  const isFridayBeforeOpening =
+    dayWeek === 5 && nycTime.getHours() < openingTime.hours;
 
-  //if saturday or sunday
-  if (dayWeek === 6 || dayWeek === 0) {
-    return (
-      <div className="flex">
-        <div className="flex-initial">
-          {formattedTime} EST <span className="text-red-600">Weekend</span>
-        </div>
-        <div className="flex-grow text-right">Opens @ 9:30 EST Monday</div>
-      </div>
-    );
-  }
+  const isOpeningTime =
+    nycTime.getHours() === openingTime.hours &&
+    nycTime.getMinutes() >= openingTime.minutes;
 
-  //if during opening times on weekday
-  if (formattedTime >= openingTime && formattedTime < closingTime) {
-    return (
-      <div className="flex">
-        <div className="flex-initial">
-          {formattedTime} NYC <span className="text-green-600">Open</span>
-        </div>
-        <div className="flex-grow text-right">Closes @ 16:00 NYC</div>
-      </div>
-    );
-  }
+  const isWeekdayOpen =
+    nycTime.getHours() > openingTime.hours &&
+    nycTime.getHours() < closingTime.hours;
 
-  //if not between those times and weekday is before friday
-  if (dayWeek < 4) {
-    return (
-      <div className="flex">
-        <div className="flex-initial">
-          {formattedTime} NYC <span className="text-red-600">Closed</span>
-        </div>
-        <div className="flex-grow text-right">Opens 09:30 NYC</div>
-      </div>
-    );
-  }
+  const status = isHoliday
+    ? "Holiday"
+    : isWeekend
+    ? "Weekend"
+    : isFridayBeforeOpening
+    ? "Closed"
+    : isOpeningTime || isWeekdayOpen
+    ? "Open"
+    : "Closed";
 
-  //friday before opening time
-  if (dayWeek === 5 && formattedTime < openingTime) {
-    return (
-      <div className="flex">
-        <div className="flex-initial">
-          {formattedTime} NYC <span className="text-red-600">Closed</span>
-        </div>
-        <div className="flex-grow text-right">Opens 09:30 NYC</div>
-      </div>
-    );
-  }
-
-  //everything else
   return (
     <div className="flex">
       <div className="flex-initial">
-        {formattedTime} NYC <span className="text-red-600">Closed</span>
+        {formattedTime} NYC{" "}
+        <span className={status === "Open" ? "text-green-600" : "text-red-600"}>
+          {status}
+        </span>
       </div>
-      <div className="flex-grow text-right">Opens 09:30 NYC Monday</div>
+      <div className="flex-grow text-right">
+        {status === "Open"
+          ? `Closes @ ${closingTime.hours}:${closingTime.minutes} NYC`
+          : `Opens 09:30 NYC${isWeekend ? " Monday" : ""}`}
+      </div>
     </div>
   );
 }

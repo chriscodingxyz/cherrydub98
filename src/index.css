@@ -290,6 +290,7 @@ button.active {
   width: 100%;
   z-index: 999;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  /* background-color: #0000ad; */
   background-color: black;
 }
 
