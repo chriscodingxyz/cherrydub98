@@ -22,8 +22,8 @@ export default function ConsoleCrypto() {
     <div>
       {coins.length ? (
         coins.map((coin, index) => (
-          <div key={coin.id} className="flex items-center p-1 border">
-            <div className="flex items-center space-x-2  flex-1">
+          <div key={coin.id} className="flex items-center p-1">
+            <div className="flex items-center space-x-2  flex-1  ">
               <div className="text-gray-600">{index + 1}</div>
               <img
                 src={coin.image}
@@ -32,8 +32,9 @@ export default function ConsoleCrypto() {
               />
               <span className="text-md font-bold">{coin.symbol}</span>
             </div>
+            <div></div>
 
-            <div className="flex-1 text-md text-right">
+            <div className="flex-1 text-md text-right border border-dotted border-x-0 border-t-0">
               {coin.current_price.toLocaleString("en-US", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2,

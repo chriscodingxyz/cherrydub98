@@ -52,13 +52,17 @@ export default function WelcomeContent() {
               onClick={() => toggleCrypto()}
               className="flex-grow text-right"
             >
-              {/* <a href="https://crypto1.cherrydub.com/" target="_blank"> */}
-              ₿: {btcPrice} Ξ: {ethPrice}
-              {ethPrice > 1800 && btcPrice > 27000 ? " 🙂" : " 🙃"}
-              {/* </a> */}
-              {openCrypto && <ConsoleCrypto />}
+              {openCrypto ? (
+                "close [x]"
+              ) : (
+                <>
+                  ₿: {btcPrice} Ξ: {ethPrice}
+                  {ethPrice > 1800 && btcPrice > 27000 ? " 🙂" : " 🙃"}
+                </>
+              )}
             </div>
           </div>
+          <div>{openCrypto && <ConsoleCrypto />}</div>
           <div className="text-left">
             <ESTtime />
           </div>
