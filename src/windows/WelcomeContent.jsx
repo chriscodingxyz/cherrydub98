@@ -5,12 +5,14 @@ import {
 } from "../components/cryptoPrices";
 import LastGitPush from "../components/LastGitPush";
 import ESTtime from "../components/ESTtime";
+import ConsoleCrypto from "../components/ConsoleCrypto";
 
 export default function WelcomeContent() {
   const [btcPrice, setBtcPrice] = useState(null);
   const [ethPrice, setEthPrice] = useState(null);
   const [lastPushTime, setLastPushTime] = useState(null);
   const [error, setError] = useState(null);
+  const [openCrypto, setOpenCrypto] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -30,6 +32,10 @@ export default function WelcomeContent() {
     fetchData();
   }, []);
 
+  const toggleCrypto = () => {
+    setOpenCrypto((curr) => !curr);
+  };
+
   if (error) {
     return <div>Error: {error}</div>;
   }
@@ -41,11 +47,16 @@ export default function WelcomeContent() {
           <div className="flex">
             <div className="flex-initial">cherrydub©</div>
 
-            <div className="flex-grow text-right">
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={() => toggleCrypto()}
+              className="flex-grow text-right"
+            >
               {/* <a href="https://crypto1.cherrydub.com/" target="_blank"> */}
               ₿: {btcPrice} Ξ: {ethPrice}
               {ethPrice > 1800 && btcPrice > 27000 ? " 🙂" : " 🙃"}
               {/* </a> */}
+              {openCrypto && <ConsoleCrypto />}
             </div>
           </div>
           <div className="text-left">

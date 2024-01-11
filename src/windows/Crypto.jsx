@@ -30,13 +30,7 @@ export default function Crypto({
               minWidth: "300px",
             }}
           >
-            <CryptoContent
-              site={site}
-              windowSize={windowSize}
-              setSite={setSite}
-              addActiveComponent={addActiveComponent}
-              siteObj={siteObj}
-            />
+            <CryptoContent />
           </div>
         </div>
       </WindowLayout>

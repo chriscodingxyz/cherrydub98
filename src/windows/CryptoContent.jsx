@@ -3,13 +3,7 @@ import TwitterEmbed from "../components/TwitterEmbed";
 import axios from "axios";
 import CryptoList from "../components/CryptoList";
 
-export default function CryptoContent({
-  site,
-  setSite,
-  siteObj,
-  addActiveComponent,
-  windowSize,
-}) {
+export default function CryptoContent({}) {
   const [displayAmount, setDisplayAmount] = useState(25);
   const [currency, setCurrency] = useState("usd");
 
