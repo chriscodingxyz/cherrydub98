@@ -63,12 +63,12 @@ export default function ESTtime() {
   // Console logs for troubleshooting
   console.clear();
   console.log("Formatted Time:", formattedTime);
-  console.log("Is Holiday:", isHoliday);
-  console.log("Is Weekend:", isWeekend);
-  console.log("Is Before Opening:", isBeforeOpening);
-  console.log("Is During Opening:", isDuringOpening);
-  console.log("Is Before Friday:", isBeforeFriday);
-  console.log("Is Friday Before Opening:", isFridayBeforeOpening);
+  console.log("Holiday:", isHoliday);
+  console.log("Weekend:", isWeekend);
+  console.log("Before Opening:", isBeforeOpening);
+  console.log("During Opening:", isDuringOpening);
+  console.log("Before Friday:", isBeforeFriday);
+  console.log("Friday Before Opening:", isFridayBeforeOpening);
 
   return (
     <div className="flex">

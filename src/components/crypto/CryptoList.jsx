@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 // Function to abbreviate numbers (e.g., 10K, 1M, 1.3M)
 const abbreviateNumber = (value) => {
@@ -21,12 +22,39 @@ const currencyObj = {
   gbp: "£",
 };
 
-export default function CryptoList({
-  coins,
-  currency,
-  setCurrency,
-  setDisplayAmount,
-}) {
+export default function CryptoList(
+  {
+    // coins,
+    // currency,
+    // setCurrency,
+    // setDisplayAmount,
+  }
+) {
+  const [displayAmount, setDisplayAmount] = useState(25);
+  const [currency, setCurrency] = useState("usd");
+
+  const currencySymbol = {
+    usd: "$",
+    gbp: "£",
+    eur: "€",
+  };
+
+  const [coins, setCoins] = useState([]);
+
+  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${displayAmount}&page=1&sparkline=false&locale=en`;
+
+  useEffect(() => {
+    axios
+      .get(url)
+      .then((res) => {
+        setCoins(res.data);
+        console.log("data:", res.data);
+      })
+      .catch((err) => {
+        console.log("error:", err);
+      });
+  }, [url]);
+
   function currencyOnChange(e) {
     setCurrency(e.target.value);
   }
