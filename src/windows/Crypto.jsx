@@ -27,7 +27,8 @@ export default function Crypto({
             style={{
               overflow: "auto",
               height: "50vh",
-              minWidth: "325px",
+              minWidth: "300px",
+              maxWidth: "300px",
             }}
           >
             <CryptoContent />
