@@ -50,7 +50,7 @@ export default function WelcomeContent() {
             <div
               style={{ cursor: "pointer" }}
               onClick={() => toggleCrypto()}
-              className="flex-1 text-right border border-dotted border-r-0 border-t-0"
+              className="flex-1 text-right border border-dotted border-x-0 border-t-0"
             >
               {openCrypto ? (
                 "close [x]"
