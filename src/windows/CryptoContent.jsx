@@ -33,7 +33,7 @@ export default function CryptoContent({}) {
 
   return (
     <div
-      className="flex flex-col p-4 gap-4"
+      className="flex flex-col p-0 gap-4"
       // style={{ maxHeightheight: "75vh", minWidth: "300px" }}
     >
       <div className="flex justify-center">
@@ -52,18 +52,22 @@ export default function CryptoContent({}) {
       </div>
 
       <div className="flex justify-around">
-        <img
-          className="rounded-full"
-          src="https://i.seadn.io/gae/0gdZ45HaU-bK930OyA9Lu5g5YpQ1Yady6vpd441zbjUBELN4hzI8FeIY99MItiVJXw1-l3o210uu67sTM9nkGiG8?auto=format&dpr=1&w=1000"
-          alt=""
-          width={"50px"}
-        />
-        <img
-          className="rounded-full"
-          src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png"
-          alt=""
-          width={"50px"}
-        />
+        {choice === "nft" && (
+          <img
+            className="rounded-full"
+            src="https://i.seadn.io/gae/0gdZ45HaU-bK930OyA9Lu5g5YpQ1Yady6vpd441zbjUBELN4hzI8FeIY99MItiVJXw1-l3o210uu67sTM9nkGiG8?auto=format&dpr=1&w=1000"
+            alt=""
+            width={"50px"}
+          />
+        )}
+        {choice === "crypto" && (
+          <img
+            className="rounded-full"
+            src="https://cdn-icons-png.flaticon.com/512/2473/2473354.png"
+            alt=""
+            width={"50px"}
+          />
+        )}
       </div>
       <section>
         {/* crypto prices */}

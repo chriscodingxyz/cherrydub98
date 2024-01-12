@@ -69,7 +69,7 @@ export default function CryptoList(
   return (
     <>
       <div className="flex">
-        <div className="flex-1">
+        <div className="flex-1 text-center">
           currency{" "}
           <select name="" id="" onChange={currencyOnChange} value={currency}>
             <option value="usd">$</option>

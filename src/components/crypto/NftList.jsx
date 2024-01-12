@@ -16,7 +16,7 @@ const handleImageError = (event) => {
 };
 
 const abbreviateNumber = (value) => {
-  const suffixes = ["", "K", "M", "B", "T"];
+  const suffixes = ["", "k", "M", "B", "T"];
   let tier = (Math.log10(Math.abs(value)) / 3) | 0;
 
   if (tier === 0) return value;
@@ -51,7 +51,7 @@ export default function NftList() {
     <>
       {/* <div> */}
       <div className="selected-div">
-        <button
+        {/* <button
           className={inEth ? "selected" : ""}
           onClick={() => setInEth(true)}
         >
@@ -62,29 +62,50 @@ export default function NftList() {
           onClick={() => setInEth(false)}
         >
           USD
-        </button>
+        </button> */}
       </div>
       {/* </div> */}
 
       {nftArr ? (
         // Render your nft data here
         <div>
-          <h4>Top 100 NFTs by Ranking</h4>
+          {/* <div></div> */}
+          <h4 className="text-center">Top 100 NFTs</h4>
+          {/* currency{" "}
+          <select
+            name=""
+            id=""
+            //  onChange={currencyOnChange} value={currency}
+          >
+            <option value="usd">$</option>
+            <option value="gbp">£</option>
+            <option value="eur">€</option>
+          </select> */}
           <table>
             <thead>
               <tr>
                 <th>#</th>
                 <th>Name</th>
-                <th>Floor {inEth ? "ETH" : "USD"}</th>
-                <th>Supply</th>
+                <th
+                  onClick={() => setInEth((curr) => !curr)}
+                  className="text-right cursor-pointer"
+                >
+                  Floor{" "}
+                  {inEth ? (
+                    <i class="lab la-ethereum"></i>
+                  ) : (
+                    <i class="las la-dollar-sign"></i>
+                  )}
+                </th>
+                <th className="text-right">Supply</th>
                 {/* <th>MCap {inEth ? "ETH" : "USD"}</th> */}
               </tr>
             </thead>
             <tbody>
               {nftData.map((item) => (
                 <tr key={item.ranking}>
-                  <td>{item.ranking}</td>
-                  <td>
+                  <td className="border">{item.ranking}</td>
+                  <td className="border">
                     <div className="flex">
                       <div>
                         <img
@@ -92,8 +113,8 @@ export default function NftList() {
                             // border: "3px solid white",
                             // borderRadius: "10%",
                             width: "20px",
-                            height: "auto",
-                            padding: "2px",
+                            height: "20px",
+                            padding: "1px",
                           }}
                           onError={handleImageError}
                           src={item.image}
@@ -108,19 +129,21 @@ export default function NftList() {
                       </div>
                     </div>
                   </td>
-
                   {inEth ? (
-                    <td>{item.floorEth.toFixed(2)} E</td>
+                    <td className="text-right border">
+                      {item.floorEth.toFixed(2)}
+                      <i class="lab la-ethereum"></i>
+                    </td>
                   ) : (
-                    <td className="text-right">
-                      {item.floorUsd.toLocaleString()} $
+                    <td className="text-right border">
+                      {abbreviateNumber(item.floorUsd.toFixed(0))}{" "}
+                      <i class="las la-dollar-sign"></i>
                     </td>
                   )}
 
-                  <td className="text-right">
+                  <td className="text-right border">
                     {item.totalSupply.toLocaleString()}
                   </td>
-
                   {/* {inEth ? (
                     <td>
                       {Number(
