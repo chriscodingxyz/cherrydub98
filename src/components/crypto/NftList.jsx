@@ -70,7 +70,7 @@ export default function NftList() {
         // Render your nft data here
         <div>
           {/* <div></div> */}
-          <h4 className="text-center">Top 100 NFTs</h4>
+          <h4 className="text-left">Top 100 NFTs</h4>
           {/* currency{" "}
           <select
             name=""
@@ -85,7 +85,7 @@ export default function NftList() {
             <thead>
               <tr>
                 <th>#</th>
-                <th className="col-span-2">Name</th>
+                <th className="">Name</th>
                 <th
                   onClick={() => setInEth((curr) => !curr)}
                   className="text-right cursor-pointer"
@@ -106,7 +106,7 @@ export default function NftList() {
                 <tr key={item.ranking}>
                   <td className="border">{item.ranking}</td>
                   <td className="border">
-                    <div className="flex col-span-2">
+                    <div className="flex">
                       <div>
                         <img
                           style={{

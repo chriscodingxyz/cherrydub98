@@ -56,7 +56,8 @@ export default function WelcomeContent() {
                 "close [x]"
               ) : (
                 <>
-                  ₿: {btcPrice} Ξ: {ethPrice}
+                  <i class="lab la-bitcoin"></i> {btcPrice}{" "}
+                  <i class="lab la-ethereum"></i> {ethPrice}
                   {ethPrice > 1800 && btcPrice > 27000 ? " 🙂" : " 🙃"}
                 </>
               )}

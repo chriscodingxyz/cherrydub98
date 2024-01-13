@@ -23,7 +23,7 @@ export default function App() {
     "backgroundChoice",
     "background-default"
   );
-  const [flicker, setFlicker] = useState(true);
+  const [flicker, setFlicker] = useState(false);
   const windowSize = useWindowSize();
   const [site, setSite] = useState(siteObj.Portfolio);
   const [isLoading, setIsLoading] = useState(true);

@@ -31,13 +31,16 @@ export default function CryptoContent({}) {
   // }, [url]);
   const [choice, setChoice] = useState("nft");
 
+  const [isCryptoHovered, setIsCryptoHovered] = useState(false);
+  const [isNftHovered, setIsNftHovered] = useState(false);
+
   return (
     <div
       className="flex flex-col p-0 gap-4"
       // style={{ maxHeightheight: "75vh", minWidth: "300px" }}
     >
       <div className="flex justify-center">
-        <button
+        {/* <button
           className={choice === "nft" && "active font-bold"}
           onClick={() => setChoice("nft")}
         >
@@ -48,24 +51,38 @@ export default function CryptoContent({}) {
           onClick={() => setChoice("crypto")}
         >
           Crypto
-        </button>
+        </button> */}
       </div>
 
       <div className="flex justify-around">
         {choice === "nft" && (
           <img
-            className="rounded-full"
-            src="https://i.seadn.io/gae/0gdZ45HaU-bK930OyA9Lu5g5YpQ1Yady6vpd441zbjUBELN4hzI8FeIY99MItiVJXw1-l3o210uu67sTM9nkGiG8?auto=format&dpr=1&w=1000"
+            onClick={() => setChoice("crypto")}
+            className="rounded-full cursor-pointer"
+            src={
+              isNftHovered
+                ? "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png"
+                : "https://i.seadn.io/gae/0gdZ45HaU-bK930OyA9Lu5g5YpQ1Yady6vpd441zbjUBELN4hzI8FeIY99MItiVJXw1-l3o210uu67sTM9nkGiG8?auto=format&dpr=1&w=1000"
+            }
             alt=""
             width={"50px"}
+            onMouseEnter={() => setIsNftHovered(true)}
+            onMouseLeave={() => setIsNftHovered(false)}
           />
         )}
         {choice === "crypto" && (
           <img
-            className="rounded-full"
-            src="https://cdn-icons-png.flaticon.com/512/2473/2473354.png"
+            onClick={() => setChoice("nft")}
+            className="rounded-full cursor-pointer"
+            src={
+              isNftHovered
+                ? "https://i.seadn.io/gae/0gdZ45HaU-bK930OyA9Lu5g5YpQ1Yady6vpd441zbjUBELN4hzI8FeIY99MItiVJXw1-l3o210uu67sTM9nkGiG8?auto=format&dpr=1&w=1000"
+                : "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1200px-Bitcoin.svg.png"
+            }
             alt=""
             width={"50px"}
+            onMouseEnter={() => setIsNftHovered(true)}
+            onMouseLeave={() => setIsNftHovered(false)}
           />
         )}
       </div>
