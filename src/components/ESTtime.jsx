@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 
+// Function to get formatted time from datetime
 const getFormattedTime = (datetime) => {
   return datetime.split("T")[1].substring(0, 5);
 };
 
+// Function to check if the current time is within opening hours
 const isOpeningTime = (formattedTime, openingTime, closingTime) => {
   return formattedTime >= openingTime && formattedTime < closingTime;
 };
@@ -31,6 +33,7 @@ export default function ESTtime() {
 
     fetchTime();
 
+    // Update time every 15 seconds
     const interval = setInterval(() => {
       fetchTime();
     }, 15000);
@@ -43,47 +46,33 @@ export default function ESTtime() {
     return <div>Loading... </div>;
   }
 
+  // Get formatted time, opening time, and closing time
   const formattedTime = getFormattedTime(time);
   const openingTime = "09:30";
   const closingTime = "16:00";
 
-  const isHoliday = [2, 15, 50, 96, 148, 169, 184, 247, 326, 358].includes(
-    dayYear
-  );
+  // Define conditions for weekend and during opening hours
   const isWeekend = dayWeek === 6 || dayWeek === 0;
-  const isBeforeOpening = formattedTime < openingTime;
-  const isDuringOpening = isOpeningTime(
-    formattedTime,
-    openingTime,
-    closingTime
-  );
+  const isDuringOpening = isWeekend
+    ? false // Weekends are closed
+    : isOpeningTime(formattedTime, openingTime, closingTime);
+
+  // Define conditions for special cases
   const isBeforeFriday = dayWeek < 4;
   const isFridayBeforeOpening = dayWeek === 5 && formattedTime < openingTime;
 
   // Console logs for troubleshooting
   console.clear();
   console.log("Formatted Time:", formattedTime);
-  console.log("Holiday:", isHoliday);
   console.log("Weekend:", isWeekend);
-  console.log("Before Opening:", isBeforeOpening);
   console.log("During Opening:", isDuringOpening);
-  console.log("Before Friday:", isBeforeFriday);
-  console.log("Friday Before Opening:", isFridayBeforeOpening);
 
   return (
     <div className="flex">
       <div className="flex-initial">
         {formattedTime} NYC{" "}
         <span className={isDuringOpening ? "text-green-600" : "text-red-600"}>
-          {isHoliday
-            ? "Holiday"
-            : isWeekend
-            ? "Weekend"
-            : isBeforeOpening
-            ? "Closed"
-            : isDuringOpening
-            ? "Open"
-            : "Closed"}
+          {isWeekend ? "Weekend" : isDuringOpening ? "Open" : "Closed"}
         </span>
       </div>
       <div className="flex-grow text-right">
