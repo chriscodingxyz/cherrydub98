@@ -111,11 +111,13 @@ export default function NftList() {
                         <img
                           style={{
                             // border: "3px solid white",
-                            // borderRadius: "10%",
+                            border: "1px solid black",
+
                             width: "20px",
                             height: "20px",
                             padding: "0px",
                             margin: "1px",
+                            // borderRadius: "50%",
                           }}
                           onError={handleImageError}
                           src={item.image}
@@ -123,10 +125,23 @@ export default function NftList() {
                         ></img>
                       </div>
                       <div className="font-bold ml-1">
-                        {" "}
-                        {item.name.length > MAX_NAME_LENGTH
-                          ? `${item.name.slice(0, MAX_NAME_LENGTH)}...`
-                          : item.name}
+                        {item.name.length > MAX_NAME_LENGTH ? (
+                          <a
+                            href={item.OSURL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {`${item.name.slice(0, MAX_NAME_LENGTH)}...`}
+                          </a>
+                        ) : (
+                          <a
+                            href={item.OSURL}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            {item.name}
+                          </a>
+                        )}
                       </div>
                     </div>
                   </td>
