@@ -40,7 +40,7 @@ export default function CryptoContent({}) {
       // style={{ maxHeightheight: "75vh", minWidth: "300px" }}
     >
       <div className="flex justify-center">
-        {/* <button
+        <button
           className={choice === "nft" && "active font-bold"}
           onClick={() => setChoice("nft")}
         >
@@ -51,7 +51,7 @@ export default function CryptoContent({}) {
           onClick={() => setChoice("crypto")}
         >
           Crypto
-        </button> */}
+        </button>
       </div>
 
       <div className="flex justify-around">

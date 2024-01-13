@@ -114,14 +114,15 @@ export default function NftList() {
                             // borderRadius: "10%",
                             width: "20px",
                             height: "20px",
-                            padding: "1px",
+                            padding: "0px",
+                            margin: "1px",
                           }}
                           onError={handleImageError}
                           src={item.image}
                           //  alt={item.image}
                         ></img>
                       </div>
-                      <div>
+                      <div className="font-bold ml-1">
                         {" "}
                         {item.name.length > MAX_NAME_LENGTH
                           ? `${item.name.slice(0, MAX_NAME_LENGTH)}...`

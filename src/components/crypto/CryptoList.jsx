@@ -81,8 +81,8 @@ export default function CryptoList() {
             <th>#</th>
             <th className="col-span-2">Coin</th>{" "}
             {/* Use col-span-2 to span two columns */}
-            <th>Price</th>
-            <th>Market Cap</th>
+            <th className="text-right">Price</th>
+            <th className="text-right">Market Cap</th>
           </tr>
         </thead>
         <tbody>
