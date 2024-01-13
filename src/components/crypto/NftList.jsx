@@ -85,7 +85,7 @@ export default function NftList() {
             <thead>
               <tr>
                 <th>#</th>
-                <th>Name</th>
+                <th className="col-span-2">Name</th>
                 <th
                   onClick={() => setInEth((curr) => !curr)}
                   className="text-right cursor-pointer"
@@ -106,7 +106,7 @@ export default function NftList() {
                 <tr key={item.ranking}>
                   <td className="border">{item.ranking}</td>
                   <td className="border">
-                    <div className="flex">
+                    <div className="flex col-span-2">
                       <div>
                         <img
                           style={{
