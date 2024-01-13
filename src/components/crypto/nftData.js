@@ -84935,14 +84935,14 @@ const nftArr = [
       "0x99a9b7c1116f9ceeb1652de04d5969cce509b069:466000000:466999999",
   },
 ];
+//old logic
+// const imgLink = (nftProject) =>
+//   `https://nftpricefloor.com/_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fcdn.nftpricefloor%2Fprojects%2Fv1%2F${nftProject}.png%3Fversion%3D6&w=256&q=75`;
 
-const imgLink = (nftProject) =>
-  `https://nftpricefloor.com/_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fcdn.nftpricefloor%2Fprojects%2Fv1%2F${nftProject}.png%3Fversion%3D6&w=256&q=75`;
-
-const imgFunction = (name) => {
-  const nftProject = name.split(" ").join("-").toLowerCase();
-  return imgLink(nftProject);
-};
+// const imgFunction = (name) => {
+//   const nftProject = name.split(" ").join("-").toLowerCase();
+//   return imgLink(nftProject);
+// };
 
 const extractedData = nftArr.map((item) => ({
   name: item.name,
@@ -84951,7 +84951,8 @@ const extractedData = nftArr.map((item) => ({
   floorEth: item.stats.floorInfo.currentFloorEth,
   floorUsd: item.stats.floorInfo.currentFloorUsd,
   count: item.stats.count,
-  image: imgFunction(item.name),
+  image: `https://nftpricefloor.com/_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fcdn.nftpricefloor%2Fprojects%2Fv1%2F${item.slug}.png%3Fversion%3D6&w=256&q=75`,
+  slug: item.slug,
 }));
 
 // Sort the data based on ranking in ascending order

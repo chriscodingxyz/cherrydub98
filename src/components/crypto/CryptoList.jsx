@@ -95,6 +95,7 @@ export default function CryptoList() {
                     src={coin.image}
                     alt={coin.name}
                     className="w-4 h-4 rounded-full "
+                    style={{ margin: "1px" }}
                   />
                   <span className="text-md font-bold">{coin.symbol}</span>
                 </div>
