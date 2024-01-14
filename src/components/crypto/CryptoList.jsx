@@ -56,7 +56,7 @@ export default function CryptoList() {
   return (
     <>
       <div className="flex">
-        <h4 className="text-center">Top 100 Crypto</h4>
+        <h4 className="text-center">Top {displayAmount} Crypto</h4>
         <div className="flex-1 text-center">
           Currency{" "}
           <select name="" id="" onChange={currencyOnChange} value={currency}>

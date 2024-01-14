@@ -9,7 +9,7 @@ const MAX_NAME_LENGTH = 15; // Set your desired maximum length for the name
 const handleImageError = (event) => {
   // Replace the broken image with an alternate image or a white background
   event.target.src =
-    "https://www.stoneykins.com/Patterns/product_images/e/031/Dead_Smiley_MOCK__15194_zoom.png";
+    "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png";
   // Replace with the path to your alternate image or use a white background
   // Alternatively, you can set a background color for the broken image
   // event.target.style.backgroundColor = 'white';
