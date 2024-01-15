@@ -84949,8 +84949,8 @@ const getImageUrl = (slug) =>
 
 // Function to generate the OpenSea collection URL based on the slug
 const getOpenSeaUrl = (slug) => {
-  slug = slug.split(" ").join("");
-  return `https://opensea.io/collection/${slug}`.toLowerCase();
+  // slug = slug.split(" ").join("");
+  return `https://nftpricefloor.com/${slug}`.toLowerCase();
 };
 
 const extractedData = nftArr.map((item) => ({
@@ -84962,7 +84962,7 @@ const extractedData = nftArr.map((item) => ({
   count: item.stats.count,
   image: getImageUrl(item.slug),
   slug: item.slug,
-  OSURL: getOpenSeaUrl(item.name),
+  OSURL: getOpenSeaUrl(item.slug),
 }));
 
 // Sort the data based on ranking in ascending order
