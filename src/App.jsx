@@ -38,6 +38,8 @@ export default function App() {
     setIsLoading(false);
   }, 3000);
 
+  console.log(new Date());
+
   const addActiveComponent = (componentName) => {
     setActiveComponents((prevActiveComponents) => [
       componentName,

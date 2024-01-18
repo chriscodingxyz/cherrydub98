@@ -33,6 +33,7 @@ const getOpenSeaUrl = (slug) =>
 export default function NftList() {
   const [nftStuff, setNftStuff] = useState(null);
   const [inEth, setInEth] = useState(true);
+  const [updatedTime, setUpdatedTime] = useState(null);
 
   useEffect(() => {
     axios
@@ -59,6 +60,8 @@ export default function NftList() {
         const nftData = sortedData.slice(0, 100);
 
         setNftStuff(nftData);
+        // console.log()
+        // setUpdatedTime(new Date());
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -199,14 +202,29 @@ export default function NftList() {
           </table>
         </div>
       ) : (
-        <div className="flex flex-grow flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center">
           <p>
             <img
               src="https://win98icons.alexmeub.com/icons/png/world_network_directories-4.png"
               alt=""
             />
           </p>
-          <p>Fetching...</p>
+
+          <br></br>
+          <p className="flex">
+            Fetching from{" "}
+            <a href="https://nftpricefloor.com/" target="_blank">
+              <img
+                style={{
+                  width: "20px",
+                  border: "1px solid black",
+                  marginLeft: "2px",
+                }}
+                src="https://pbs.twimg.com/profile_images/1671145224565841920/LLJEyIe__400x400.jpg"
+              ></img>
+            </a>
+          </p>
+          <br></br>
         </div>
       )}
     </>
