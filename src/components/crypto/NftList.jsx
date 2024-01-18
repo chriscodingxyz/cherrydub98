@@ -199,7 +199,15 @@ export default function NftList() {
           </table>
         </div>
       ) : (
-        <p>Loading...</p>
+        <div className="flex flex-grow flex-col items-center justify-center">
+          <p>
+            <img
+              src="https://win98icons.alexmeub.com/icons/png/world_network_directories-4.png"
+              alt=""
+            />
+          </p>
+          <p>Fetching...</p>
+        </div>
       )}
     </>
   );
