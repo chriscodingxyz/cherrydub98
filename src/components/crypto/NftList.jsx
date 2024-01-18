@@ -1,18 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { nftArr, nftData } from "./nftData";
 
-const apikey = import.meta.env.VITE_FORM_KEY;
+const apikey = import.meta.env.VITE_NFT_KEY;
 
-const MAX_NAME_LENGTH = 15; // Set your desired maximum length for the name
+const MAX_NAME_LENGTH = 15;
 
 const handleImageError = (event) => {
-  // Replace the broken image with an alternate image or a white background
   event.target.src =
     "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png";
-  // Replace with the path to your alternate image or use a white background
-  // Alternatively, you can set a background color for the broken image
-  // event.target.style.backgroundColor = 'white';
 };
 
 const abbreviateNumber = (value) => {
@@ -29,24 +24,47 @@ const abbreviateNumber = (value) => {
   return scaledValue.toFixed(1) + suffix;
 };
 
+const getImageUrl = (slug) =>
+  `https://nftpricefloor.com/_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fcdn.nftpricefloor%2Fprojects%2Fv1%2F${slug}.png%3Fversion%3D6&w=256&q=75`;
+
+const getOpenSeaUrl = (slug) =>
+  `https://nftpricefloor.com/${slug}`.toLowerCase();
+
 export default function NftList() {
   const [nftStuff, setNftStuff] = useState(null);
   const [inEth, setInEth] = useState(true);
 
-  // useEffect(() => {
-  //     axios
-  //       .get(`https://api.nftpricefloor.com/api/projects?qapikey=${apikey}`)
-  //       .then((res) => {
-  //         setNftStuff(res.data);
-  //         console.log("data here:", res.data);
-  //       })
-  //       .catch((error) => {
-  //         console.error("Error fetching data:", error);
-  //       });
-  //   }, []);
+  useEffect(() => {
+    axios
+      .get(`https://api.nftpricefloor.com/api/projects?qapikey=${apikey}`)
+      .then((res) => {
+        const nftArr = res.data;
 
-  // Render your nfts here using the nftStuff state
-  // For example:
+        console.log(res.data);
+
+        const extractedData = nftArr.map((item) => ({
+          name: item.name,
+          ranking: item.ranking,
+          totalSupply: item.stats.totalSupply,
+          floorEth: item.stats.floorInfo.currentFloorEth,
+          floorUsd: item.stats.floorInfo.currentFloorUsd,
+          count: item.stats.count,
+          image: getImageUrl(item.slug),
+          slug: item.slug,
+          OSURL: getOpenSeaUrl(item.slug),
+        }));
+
+        const sortedData = extractedData.sort((a, b) => a.ranking - b.ranking);
+
+        const nftData = sortedData.slice(0, 100);
+
+        setNftStuff(nftData);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       {/* <div> */}
@@ -66,7 +84,7 @@ export default function NftList() {
       </div>
       {/* </div> */}
 
-      {nftArr ? (
+      {nftStuff ? (
         // Render your nft data here
         <div>
           {/* <div></div> */}
@@ -102,7 +120,7 @@ export default function NftList() {
               </tr>
             </thead>
             <tbody>
-              {nftData.map((item) => (
+              {nftStuff.map((item) => (
                 <tr key={item.ranking}>
                   <td className="border">{item.ranking}</td>
                   <td className="border">
@@ -181,7 +199,6 @@ export default function NftList() {
           </table>
         </div>
       ) : (
-        // Show a loading message or spinner while fetching data
         <p>Loading...</p>
       )}
     </>
