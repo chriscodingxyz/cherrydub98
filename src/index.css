@@ -129,6 +129,14 @@ body {
   background-size: auto 100vh;
 }
 
+.background-numbers-mobile {
+  background-image: url("/backgrounds/numbers.gif");
+  background-repeat: no-repeat;
+  background-position: center;
+  /* background-size: contain; */
+  background-size: auto 100vh;
+}
+
 @keyframes blink {
   0% {
     opacity: 1;

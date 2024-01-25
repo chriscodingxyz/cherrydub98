@@ -29,6 +29,7 @@ export default function DisplayContent({
     "background-pepe1",
     "background-pepe3",
     "background-circuitpepe-mobile",
+    "background-numbers-mobile",
     // "background-ashpika",
     // "background-dbz1",
     // "background-tron",
