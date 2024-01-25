@@ -28,6 +28,7 @@ export default function DisplayContent({
     "background-cryptoadz-mobile",
     "background-pepe1",
     "background-pepe3",
+    "background-circuitpepe-mobile",
     // "background-ashpika",
     // "background-dbz1",
     // "background-tron",
@@ -60,6 +61,11 @@ export default function DisplayContent({
     setFlicker(!flicker);
   };
 
+  const formatOptionText = (text) => {
+    // Remove "background" and "-mobile" strings from the text
+    return text.replace("background-", "").replace("-mobile", "");
+  };
+
   return (
     <div>
       <p>{isMobile ? "Mobile" : "Desktop"} wallpapers:</p>
@@ -77,7 +83,7 @@ export default function DisplayContent({
           ]),
         ].map((choice) => (
           <option key={choice} value={choice}>
-            {choice ? choice.substring(11) : ""}
+            {formatOptionText(choice)}
           </option>
         ))}
       </select>
