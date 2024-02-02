@@ -22,13 +22,24 @@ export default function IE({
         windowTitle={"Internet Explorer"}
         windowIcon={"https://win98icons.alexmeub.com/icons/png/msie1-4.png"}
       >
-        <input
-          className="cursor-pointer hover:text-blue-700"
-          onClick={openNewWindow}
-          type="text"
-          value={site}
-          // readOnly
-        />
+        <div
+          className="relative flex hover:text-blue-700"
+          title="Open in new window/tab"
+        >
+          <input
+            className="cursor-pointer  pr-10 w-full" // Add padding for the icon
+            onClick={openNewWindow}
+            type="text"
+            value={site}
+            // readOnly
+          ></input>
+          <i
+            onClick={openNewWindow}
+            style={{ fontSize: "1.2rem" }}
+            className="cursor-pointer absolute right-0 top-1 bottom-0 m-auto mr-1 las la-external-link-square-alt "
+          ></i>
+        </div>
+
         <div>
           {/* <select
             value={site}
@@ -61,6 +72,7 @@ export default function IE({
         ></iframe>
         <input
           className="cursor-pointer hover:text-blue-700"
+          title="Open in new window/tab"
           onClick={openNewWindow}
           type="text"
           value={site}

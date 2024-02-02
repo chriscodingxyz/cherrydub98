@@ -62,9 +62,17 @@ export default function DisplayContent({
     setFlicker(!flicker);
   };
 
+  // const formatOptionText = (text) => {
+  //   // Remove "background" and "-mobile" strings from the text
+  //   return text.replace("background-", "").replace("-mobile", "");
+  // };
   const formatOptionText = (text) => {
-    // Remove "background" and "-mobile" strings from the text
-    return text.replace("background-", "").replace("-mobile", "");
+    if (text) {
+      // Remove "background" and "-mobile" strings from the text
+      return text.replace("background-", "").replace("-mobile", "");
+    } else {
+      return ""; // or handle the null case appropriately
+    }
   };
 
   return (
