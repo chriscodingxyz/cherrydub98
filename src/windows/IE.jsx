@@ -30,6 +30,18 @@ export default function IE({
           // readOnly
         />
         <div>
+          {/* <select
+            value={site}
+            onChange={(e) => setSite(e.target.value)}
+            className="border border-gray-300 px-3 py-1 w-full"
+          >
+            {Object.keys(siteObj).map((key) => (
+              <option key={key} value={siteObj[key]}>
+                {siteObj[key]}
+              </option>
+            ))}
+          </select> */}
+
           {Object.keys(siteObj).map((key) => (
             <button
               key={key}
