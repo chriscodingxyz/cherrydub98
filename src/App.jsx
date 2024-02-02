@@ -7,11 +7,12 @@ import "./flicker.css";
 import Landing from "./components/Landing";
 
 const siteObj = {
+  Nft: "https://nft.cherrydub.com",
   Portfolio: "https://portfolio.cherrydub.com",
-  PizzaShop: "https://pizza.cherrydub.com",
-  Crypto: "https://crypto1.cherrydub.com/",
   JSON: "https://json.cherrydub.com",
   Smartbrain: "https://smartbrain.cherrydub.com",
+  PizzaShop: "https://pizza.cherrydub.com",
+  Crypto: "https://crypto1.cherrydub.com/",
 };
 
 export default function App() {

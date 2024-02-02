@@ -11,6 +11,22 @@ export default function ProjectsContent({
       {/* <a target="_blank" href="https://portfolio.cherrydub.com/"> */}
       <div
         onClick={() => {
+          setSite(siteObj.Nft);
+          setTimeout(() => {
+            addActiveComponent("IE");
+          }, 100);
+        }}
+        className="flex flex-col items-center overflow-auto hover:cursor-pointer"
+      >
+        <img
+          src="https://win98icons.alexmeub.com/icons/png/html-5.png"
+          alt=""
+        />
+        <div className="text-center">NFT</div>
+      </div>
+
+      <div
+        onClick={() => {
           setSite(siteObj.Portfolio);
           setTimeout(() => {
             addActiveComponent("IE");
