@@ -25,10 +25,19 @@ export default function CvContent() {
       }}
     >
       <div className="flex flex-col flex-wrap">
-        <Document file="/cv.pdf" onLoadSuccess={onDocumentLoadSuccess}>
-          <Page pageNumber={pageNumber} />
+        <Document
+          file="https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf"
+          onLoadSuccess={onDocumentLoadSuccess}
+        >
+          {[...Array(numPages).keys()].map((pageIndex) => (
+            <Page key={`page_${pageIndex + 1}`} pageNumber={pageIndex + 1} />
+          ))}
         </Document>
-        <p>{/* Page {pageNumber} of {numPages} */}</p>
+        {numPages && (
+          <p>
+            Page {pageNumber} of {numPages}
+          </p>
+        )}
       </div>
     </div>
   );
