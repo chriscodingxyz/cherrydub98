@@ -168,7 +168,7 @@ export default function NftList() {
                   </td>
                   {inEth ? (
                     <td className="text-right border">
-                      {item.floorEth.toFixed(2)}
+                      {item.floorEth?.toFixed(2)}
                       <i class="lab la-ethereum"></i>
                     </td>
                   ) : (
