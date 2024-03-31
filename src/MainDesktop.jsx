@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Draggable from "react-draggable";
 import Cv from "./windows/Cv.jsx";
 import Projects from "./windows/Projects.jsx";
@@ -11,10 +11,9 @@ import Contact from "./windows/Contact.jsx";
 import Display from "./windows/Display.jsx";
 import Links from "./windows/Links.jsx";
 import Notes from "./windows/Notes.jsx";
-import { activeComponents } from "./signals.js";
 
 export default function MainDesktop({
-  // activeComponents,
+  activeComponents,
   removeActiveComponent,
   addActiveComponent,
   backgroundChoice,
@@ -22,11 +21,14 @@ export default function MainDesktop({
   flicker,
   setFlicker,
 }) {
+  useEffect(() => {
+    console.log(activeComponents.value, "main desktop");
+  }, [activeComponents.value]);
+
   const handleLinkClick = (componentName) => {
     removeActiveComponent(componentName);
     addActiveComponent(componentName);
   };
-
   return (
     <div className="">
       <div className="">

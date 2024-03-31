@@ -1,8 +1,7 @@
 import React from "react";
-import { activeComponents } from "../signals";
 
 export default function WindowLayout({
-  // activeComponents,
+  activeComponents,
   removeActiveComponent,
   windowType,
   windowIcon,

@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import LocalTime from "./components/LocalTime";
 import displayicon from "/icons/16x16/display-tab.png";
-import { activeComponents } from "./signals";
 
 export default function BottomDesktopBar({
-  // activeComponents,
+  activeComponents,
   // setActiveComponents,
   addActiveComponent,
   removeActiveComponent,

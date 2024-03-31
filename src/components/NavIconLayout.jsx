@@ -1,12 +1,11 @@
 import React from "react";
-import { activeComponents } from "../signals";
 
 export default function NavIconLayout({
   iconSrc,
   alt,
   title,
   linkTo,
-  // activeComponents,
+  activeComponents,
   handleLinkClick,
 }) {
   return (

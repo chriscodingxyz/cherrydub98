@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { flicker } from "../signals";
 
 export default function DisplayContent({
   backgroundChoice,
   setBackgroundChoice,
-  // flicker,
+  flicker,
   // setFlicker,
 }) {
   const [isMobile, setIsMobile] = useState(false);

@@ -4,42 +4,31 @@ import LeftDesktopNav from "./LeftDesktopNav";
 import MainDesktop from "./MainDesktop";
 import { useLocalStorage } from "@uidotdev/usehooks";
 import "./flicker.css";
-import { flicker, activeComponents } from "./signals";
+import { useSignal } from "@preact/signals-react"; // Import useSignal hook
 
 export default function App() {
+  const flicker = useSignal(true); // Use useSignal hook to create flicker signal
+  const activeComponents = useSignal(["Welcome", "Display"]); // Use useSignal hook to create activeComponents signal
+  const count = useSignal(0);
   useEffect(() => {
     console.log(activeComponents.value);
   }, [activeComponents.value]);
 
-  // const [activeComponents, setActiveComponents] = useState([
-  //   "Welcome",
-  //   "Display",
-  // ]);
   const [backgroundChoice, setBackgroundChoice] = useLocalStorage(
     "backgroundChoice",
     "background-pepe1"
   );
-  // const [flicker, setFlicker] = useState(true);
-  // const handleContactFormClose = (componentName) => {
-  //   setActiveComponents((prevActiveComponents) =>
-  //     prevActiveComponents.filter((name) => name !== componentName)
-  //   );
-  // };
 
   const addActiveComponent = (componentName) => {
     activeComponents.value = [
       componentName,
       ...activeComponents.value.filter((name) => name !== componentName),
     ];
-    // setActiveComponents((prevActiveComponents) => [
-    //   componentName,
-    //   ...prevActiveComponents.filter((name) => name !== componentName),
-    // ]);
   };
 
   const removeActiveComponent = (componentName) => {
-    setActiveComponents((prevActiveComponents) =>
-      prevActiveComponents.filter((name) => name !== componentName)
+    activeComponents.value = activeComponents.value.filter(
+      (name) => name !== componentName
     );
   };
 
@@ -49,19 +38,19 @@ export default function App() {
       style={{ height: "100vh" }}
     >
       <LeftDesktopNav
-        // activeComponents={activeComponents}
+        activeComponents={activeComponents}
         addActiveComponent={addActiveComponent}
         removeActiveComponent={removeActiveComponent}
       />
       <MainDesktop
-        // activeComponents={activeComponents}
+        flicker={flicker}
+        activeComponents={activeComponents}
         addActiveComponent={addActiveComponent}
         removeActiveComponent={removeActiveComponent}
         setBackgroundChoice={setBackgroundChoice}
       />
       <BottomDesktopBar
-        // activeComponents={activeComponents}
-        // setActiveComponents={setActiveComponents}
+        activeComponents={activeComponents}
         addActiveComponent={addActiveComponent}
         backgroundChoice={backgroundChoice}
         removeActiveComponent={removeActiveComponent}
