@@ -166,17 +166,6 @@ export default function NftList() {
                       </div>
                     </div>
                   </td>
-                  {inEth ? (
-                    <td className="text-right border">
-                      {item.floorEth?.toFixed(2)}
-                      <i class="lab la-ethereum"></i>
-                    </td>
-                  ) : (
-                    <td className="text-right border">
-                      {abbreviateNumber(item.floorUsd.toFixed(0))}{" "}
-                      <i class="las la-dollar-sign"></i>
-                    </td>
-                  )}
 
                   <td className="text-right border">
                     {item.totalSupply.toLocaleString()}
