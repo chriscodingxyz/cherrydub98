@@ -33,11 +33,11 @@ export default function CvContent() {
             <Page key={`page_${pageIndex + 1}`} pageNumber={pageIndex + 1} />
           ))}
         </Document>
-        {numPages && (
+        {/* {numPages && (
           <p>
             Page {pageNumber} of {numPages}
           </p>
-        )}
+        )} */}
       </div>
     </div>
   );
