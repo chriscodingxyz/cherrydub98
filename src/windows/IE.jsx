@@ -35,7 +35,7 @@ export default function IE({
           ></input>
           <i
             onClick={openNewWindow}
-            style={{ fontSize: "1.2rem" }}
+            style={{ fontSize: "1rem" }}
             className="cursor-pointer absolute right-0 top-1 bottom-0 m-auto mr-1 las la-external-link-square-alt "
           ></i>
         </div>

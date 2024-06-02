@@ -1,19 +1,11 @@
 import { useState } from "react";
+import { siteObj } from "./lib/data";
 import BottomDesktopBar from "./BottomDesktopBar";
 import LeftDesktopNav from "./LeftDesktopNav";
 import MainDesktop from "./MainDesktop";
 import { useLocalStorage, useWindowSize } from "@uidotdev/usehooks";
 import "./flicker.css";
 import Landing from "./components/Landing";
-
-const siteObj = {
-  Nft: "https://nft.cherrydub.com",
-  Portfolio: "https://portfolio.cherrydub.com",
-  JSON: "https://json.cherrydub.com",
-  Smartbrain: "https://smartbrain.cherrydub.com",
-  PizzaShop: "https://pizza.cherrydub.com",
-  Crypto: "https://crypto1.cherrydub.com/",
-};
 
 export default function App() {
   const [activeComponents, setActiveComponents] = useState([

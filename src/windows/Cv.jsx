@@ -26,7 +26,10 @@ export default function Cv({ activeComponents, removeActiveComponent }) {
         </div>
         <div className="status-bar -mt-2 ">
           <span className="status-bar-field text-center">
-            <a href="https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf">
+            <a
+              download
+              href="https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf"
+            >
               <img className="inline" src={floppy} width={"14px"} alt="" />
             </a>
           </span>
