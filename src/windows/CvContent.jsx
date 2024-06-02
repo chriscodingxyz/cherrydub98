@@ -26,7 +26,7 @@ export default function CvContent() {
     >
       <div className="flex flex-col flex-wrap">
         <Document
-          file="https://raw.githubusercontent.com/cherrydub/cherrydub/main/public/Chris_Wisniewski_CV.pdf"
+          file="https://raw.githubusercontent.com/chriscodingxyz/cherrydub98/main/public/ChrisWisniewskiCV2024.pdf"
           onLoadSuccess={onDocumentLoadSuccess}
         >
           {[...Array(numPages).keys()].map((pageIndex) => (
