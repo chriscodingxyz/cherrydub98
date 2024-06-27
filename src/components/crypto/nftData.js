@@ -85302,7 +85302,7 @@ const nftArr = [
 // };
 // Function to generate the image URL based on the slug
 const getImageUrl = (slug) =>
-  `https://nftpricefloor.com/_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fcdn.nftpricefloor%2Fprojects%2Fv1%2F${slug}.png%3Fversion%3D6&w=256&q=75`;
+  `https://s3.amazonaws.com/cdn.nftpricefloor/projects/v1/${slug}.png?version=6`;
 
 // Function to generate the OpenSea collection URL based on the slug
 const getOpenSeaUrl = (slug) => {

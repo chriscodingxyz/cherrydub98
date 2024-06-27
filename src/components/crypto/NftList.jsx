@@ -25,10 +25,10 @@ const abbreviateNumber = (value) => {
 };
 
 const getImageUrl = (slug) =>
-  `https://nftpricefloor.com/_next/image?url=https%3A%2F%2Fs3.amazonaws.com%2Fcdn.nftpricefloor%2Fprojects%2Fv1%2F${slug}.png%3Fversion%3D6&w=256&q=75`;
+  `https://s3.amazonaws.com/cdn.nftpricefloor/projects/v1/${slug}.png?version=6`;
 
 const getOpenSeaUrl = (slug) =>
-  `https://nftpricefloor.com/${slug}`.toLowerCase();
+  `https://nft.chriscoding.xyz/collections/${slug}`.toLowerCase();
 
 export default function NftList() {
   const [nftStuff, setNftStuff] = useState(null);
