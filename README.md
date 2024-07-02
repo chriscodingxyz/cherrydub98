@@ -68,37 +68,46 @@ Once the development server is running, you can access the application at `http:
 
 ## npm Packages Used
 
-### react-pdf
+1. **react-pdf**
 
-Adding PDF preview functionality. Easy to use by adding files in the public folder.
+   - [react-pdf](https://projects.wojtekmaj.pl/react-pdf/)
+   - Adding PDF preview functionality. Easy to use by adding files in the public folder.
 
-### react-draggable
+2. **react-draggable**
 
-Allows the creation of draggable window divs that users can move around. It provides ways to omit certain areas that will not allow dragging (via CSS class).
+   - [npm](https://www.npmjs.com/package/react-draggable)
+   - Allows the creation of draggable window divs that users can move around. It provides ways to omit certain areas that will not allow dragging (via CSS class).
 
-### usehooks
+3. **usehooks**
 
-A great library of various useful hooks for React.
+   - [usehooks](https://usehooks.com/)
+   - A great library of various useful hooks for React.
 
-### 98.css
+4. **98.css**
 
-Utilized for most of the CSS on my themed site.
+   - [98.css](https://jdan.github.io/98.css/)
+   - Utilized for most of the CSS on my themed site.
 
-### win98icons
+5. **win98icons**
 
-98 styled icons used throughout this site.
+   - [win98icons](https://win98icons.alexmeub.com/)
+   - 98 styled icons used throughout this site.
 
-### crt-screen-effect
+6. **crt-screen-effect**
 
-Oldschool CRT screen flicker effect.
+   - [flicker](https://aleclownes.com/2017/02/01/crt-display.html)
+   - Oldschool CRT screen flicker effect.
 
-### react-twitter-embed
+7. **react-twitter-embed**
 
-Add Twitter timelines in React, not only certain tweets.
+   - [react-twitter-embed](https://github.com/saurabhnemade/react-twitter-embed)
+   - Add Twitter timelines in React, not only certain tweets.
 
-### NFTPriceFloor
+8. **NFTPriceFloor**
+   - [nft-price-floor-api](https://nftpricefloor.quickapi.io/)
+   - Amazing API for all your NFT needs! Have a look at their homepage for a great overview of what can be achieved with love and style!
 
-An amazing API for all your NFT needs! Have a look at their homepage for a great overview of what can be achieved with love and style!
+More features to come...
 
 ## Contributing
 
