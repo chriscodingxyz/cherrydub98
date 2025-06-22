@@ -104,4 +104,11 @@
 - **Consolidated data sources** - All crypto components use same service
 - **Better user feedback** - Loading states and retry options
 
+## ✅ Window Selection Logic Improvements
+- **Separated visual selection from z-index** - Taskbar clicks now only highlight windows
+- **Dual state system** - `selectedWindow` for styling, `activeComponents` for z-index
+- **Preserved functionality** - Clicking windows still brings them to front
+- **Better UX** - Taskbar selection without unwanted window reordering
+- **Authentic Windows 98 behavior** - Matches expected taskbar interaction patterns
+
 All modernization work completed while maintaining the authentic Windows 98 aesthetic and functionality.

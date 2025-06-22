@@ -9,7 +9,7 @@ export default function WindowLayout({
   hyperlink,
   children,
 }) {
-  const { activeComponents, removeActiveComponent, isWindowActive } = useAppContext();
+  const { activeComponents, removeActiveComponent, isWindowSelected } = useAppContext();
 
   const handleCloseClick = (event) => {
     // This prevents any background event clickers to work, such as removing and readding the active component
@@ -17,8 +17,8 @@ export default function WindowLayout({
     removeActiveComponent(windowType);
   };
 
-  const isActive = isWindowActive(windowType);
-  const titleBarClassName = `title-bar${isActive ? "" : " inactive"}`;
+  const isSelected = isWindowSelected(windowType);
+  const titleBarClassName = `title-bar${isSelected ? "" : " inactive"}`;
 
   return (
     <div className="">

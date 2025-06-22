@@ -5,17 +5,17 @@ import LocalTime from "./components/LocalTime";
 export default function BottomDesktopBar() {
   const {
     activeComponents,
+    openWindows,
     setActiveComponents,
     addActiveComponent,
     removeActiveComponent,
+    selectWindow,
+    isWindowSelected,
   } = useAppContext();
 
-  const handleLinkClick = (componentName) => {
-    if (activeComponents.includes(componentName)) {
-      addActiveComponent(componentName);
-    } else {
-      addActiveComponent(componentName);
-    }
+  const handleTaskbarClick = (componentName) => {
+    // Only select the window for visual feedback, don't change z-index
+    selectWindow(componentName);
   };
 
   const [isMobile, setIsMobile] = useState(false);
@@ -95,14 +95,18 @@ export default function BottomDesktopBar() {
           />
         </div> */}
 
-        {activeComponents.map((window) => {
-          // if (window === "Display") {
-          //   return null; // Skip rendering "Display" component
-          // }
-          return activeComponents[0] === window ? (
+        {openWindows.map((window) => {
+          const isSelected = isWindowSelected(window);
+          
+          return (
             <div
-              className=" bg-gray-300 start-bar-tabs-active flex-auto text-center justify-center items-center inline cursor-default"
+              className={`${
+                isSelected 
+                  ? "bg-gray-300 start-bar-tabs-active" 
+                  : "start-bar-tabs-inactive"
+              } flex-auto text-center justify-center items-center inline cursor-pointer`}
               key={window}
+              onClick={() => handleTaskbarClick(window)}
             >
               <img
                 className="inline"
@@ -110,34 +114,18 @@ export default function BottomDesktopBar() {
                 alt=""
                 width={"14px"}
               />{" "}
-              {(!isMobile && <span className="font-bold ">{window}</span>) ||
-                (activeComponents.length <= 3 && (
-                  <span className="font-bold ">{window}</span>
+              {(!isMobile && (
+                <span className={isSelected ? "font-bold" : ""}>
+                  {window}
+                </span>
+              )) ||
+                (openWindows.length <= 3 && (
+                  <span className={isSelected ? "font-bold" : ""}>
+                    {window}
+                  </span>
                 ))}
             </div>
-          ) : (
-            <div
-              className="start-bar-tabs-inactive flex-auto text-center justify-center items-center inline cursor-default"
-              key={window}
-              onClick={() => handleLinkClick(window)}
-            >
-              <img
-                className="inline"
-                src={icons[window]}
-                alt=""
-                width={"14px"}
-              />{" "}
-              {(!isMobile && <span>{window}</span>) ||
-                (activeComponents.length <= 3 && <span>{window}</span>)}
-            </div>
           );
-
-          // <div
-          //   className="start-bar-tabs flex-auto text-center justify-center items-center"
-          //   key={window}
-          // >
-          //   {window}
-          // </div>
         })}
       </div>
 
@@ -147,21 +135,21 @@ export default function BottomDesktopBar() {
             <div className="flex items-start">
               <img
                 className="inline mr-1 hover:opacity-50"
-                onClick={() => handleLinkClick("Welcome")}
+                onClick={() => addActiveComponent("Welcome")}
                 src="https://win98icons.alexmeub.com/icons/png/console_prompt-1.png"
                 alt=""
                 width="14px"
               />
               <img
                 className="inline mr-1 hover:opacity-50"
-                onClick={() => handleLinkClick("Display")}
+                onClick={() => addActiveComponent("Display")}
                 src="https://win98icons.alexmeub.com/icons/png/display_properties-1.png"
                 alt=""
                 width="14px"
               />
               <img
                 className="inline mr-1 hover:opacity-50"
-                onClick={() => handleLinkClick("IE")}
+                onClick={() => addActiveComponent("IE")}
                 src="https://win98icons.alexmeub.com/icons/png/msie1-4.png"
                 alt=""
                 width="14px"
