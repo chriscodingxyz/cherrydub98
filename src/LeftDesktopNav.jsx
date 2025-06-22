@@ -1,19 +1,13 @@
 import React from "react";
+import { useAppContext } from "./context/AppContext";
 import NavIconLayout from "./components/NavIconLayout";
 import NavIconHrefLayout from "./components/NavIconHrefLayout";
 
-export default function LeftDesktopNav({
-  activeComponents,
-  addActiveComponent,
-  removeActiveComponent,
-}) {
+export default function LeftDesktopNav() {
+  const { activeComponents, addActiveComponent } = useAppContext();
+
   const handleLinkClick = (componentName) => {
-    if (activeComponents.includes(componentName)) {
-      removeActiveComponent(componentName);
-      addActiveComponent(componentName);
-    } else {
-      addActiveComponent(componentName);
-    }
+    addActiveComponent(componentName);
   };
   return (
     <div className="navigation-desktop fixed left-2 top-3 text-white">

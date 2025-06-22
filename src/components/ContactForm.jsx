@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useForm, ValidationError } from "@formspree/react";
+import { useAppContext } from "../context/AppContext";
 
 const formID = import.meta.env.VITE_FORM_KEY;
 
-export default function ContactForm({ removeActiveComponent }) {
+export default function ContactForm() {
+  const { removeActiveComponent } = useAppContext();
   const [state, handleSubmit] = useForm(formID);
   const [name, setName] = useState("");
   const [countdown, setCountdown] = useState(5);
@@ -14,12 +16,15 @@ export default function ContactForm({ removeActiveComponent }) {
         setCountdown((prevCountdown) => prevCountdown - 1);
       }, 1000);
 
-      setTimeout(() => {
+      const closeTimer = setTimeout(() => {
         clearInterval(countdownInterval);
         removeActiveComponent("Contact");
       }, 5000);
 
-      return () => clearInterval(countdownInterval);
+      return () => {
+        clearInterval(countdownInterval);
+        clearTimeout(closeTimer);
+      };
     }
   }, [state.succeeded, removeActiveComponent]);
 

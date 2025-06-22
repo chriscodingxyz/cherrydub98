@@ -1,203 +1,116 @@
-import React, { useState } from "react";
+import React, { lazy, Suspense } from "react";
 import Draggable from "react-draggable";
-import Cv from "./windows/Cv.jsx";
-import Projects from "./windows/Projects.jsx";
-import Memes from "./windows/Memes.jsx";
-import Todo from "./windows/Todo.jsx";
-import Timer from "./windows/Timer.jsx";
-import Welcome from "./windows/Welcome.jsx";
-import IE from "./windows/IE.jsx";
-import Contact from "./windows/Contact.jsx";
-import Display from "./windows/Display.jsx";
-import Links from "./windows/Links.jsx";
-import Notes from "./windows/Notes.jsx";
-import Crypto from "./windows/Crypto.jsx";
+import { useAppContext } from "./context/AppContext";
+import ErrorBoundary from "./components/ErrorBoundary";
 
-export default function MainDesktop({
-  activeComponents,
-  removeActiveComponent,
-  addActiveComponent,
-  backgroundChoice,
-  setBackgroundChoice,
-  flicker,
-  setFlicker,
-  site,
-  setSite,
-  windowSize,
-  siteObj,
-}) {
-  const handleLinkClick = (componentName) => {
-    removeActiveComponent(componentName);
+// Lazy load window components
+const Cv = lazy(() => import("./windows/Cv.jsx"));
+const Projects = lazy(() => import("./windows/Projects.jsx"));
+const Memes = lazy(() => import("./windows/Memes.jsx"));
+const Todo = lazy(() => import("./windows/Todo.jsx"));
+const Timer = lazy(() => import("./windows/Timer.jsx"));
+const Welcome = lazy(() => import("./windows/Welcome.jsx"));
+const IE = lazy(() => import("./windows/IE.jsx"));
+const Contact = lazy(() => import("./windows/Contact.jsx"));
+const Display = lazy(() => import("./windows/Display.jsx"));
+const Links = lazy(() => import("./windows/Links.jsx"));
+const Notes = lazy(() => import("./windows/Notes.jsx"));
+const Crypto = lazy(() => import("./windows/Crypto.jsx"));
+
+export default function MainDesktop() {
+  const {
+    activeComponents,
+    addActiveComponent,
+    removeActiveComponent,
+    getWindowZIndex,
+    backgroundChoice,
+    setBackgroundChoice,
+    flicker,
+    setFlicker,
+    site,
+    setSite,
+    windowSize,
+    siteObj,
+  } = useAppContext();
+
+  const handleWindowClick = (componentName) => {
+    // Bring the clicked window to the front (make it active)
     addActiveComponent(componentName);
+  };
+
+  const getWindowPosition = (componentName) => {
+    const positions = {
+      Projects: "absolute ml-14 top-1/4",
+      Notes: "absolute ml-14 top-1/4", 
+      Cv: "ml-14 absolute",
+      Todo: "left-1/4 top-1/3 absolute",
+      Crypto: "ml-14 absolute",
+      Memes: "ml-14 top-3/4 absolute",
+      IE: "ml-14 absolute",
+      Display: "ml-4 bottom-1/4 absolute",
+      Contact: "ml-14 bottom-0 right-1/4 absolute",
+      Timer: "ml-14 mt-12 absolute",
+      Links: "absolute ml-14 top-1/2",
+      Welcome: "left-1/4 mt-6 absolute"
+    };
+    return positions[componentName] || "ml-14 absolute";
+  };
+
+  const renderComponent = (componentName) => {
+    const commonProps = {
+      key: componentName,
+    };
+
+    const components = {
+      Projects: <Projects {...commonProps} />,
+      Notes: <Notes {...commonProps} />,
+      Cv: <Cv {...commonProps} />,
+      Todo: <Todo {...commonProps} />,
+      Crypto: <Crypto {...commonProps} />,
+      Memes: <Memes {...commonProps} />,
+      IE: <IE {...commonProps} />,
+      Display: <Display {...commonProps} />,
+      Contact: <Contact {...commonProps} />,
+      Timer: <Timer {...commonProps} />,
+      Links: <Links {...commonProps} />,
+      Welcome: <Welcome {...commonProps} />
+    };
+
+    return components[componentName] || components.Welcome;
   };
 
   return (
     <div className="">
       <div className="">
-        {activeComponents.map((componentName, index) => {
-          let component = null;
-          let containerClassName = "ml-14 absolute"; // Default container class name
-
-          switch (componentName) {
-            case "Projects":
-              component = (
-                <Projects
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  addActiveComponent={addActiveComponent}
-                  removeActiveComponent={removeActiveComponent}
-                  site={site}
-                  setSite={setSite}
-                  siteObj={siteObj}
-                />
-              );
-              containerClassName = "absolute ml-14 top-1/4"; // UPDATING THIS SO MAYBE USE PADDING INSTAED OF MARGIN FOR RESIZING
-              break;
-            case "Notes":
-              component = (
-                <Notes
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "absolute ml-14 top-1/4"; // UPDATING THIS SO MAYBE USE PADDING INSTAED OF MARGIN FOR RESIZING
-              break;
-            case "Cv":
-              component = (
-                <Cv
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "ml-14 absolute"; // Positioning for Cv component
-              break;
-            case "Todo":
-              component = (
-                <Todo
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "left-1/4 top-1/3 absolute"; // Centering for Todo component
-              break;
-            case "Crypto":
-              component = (
-                <Crypto
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                  windowSize={windowSize}
-                />
-              );
-              containerClassName = "ml-14 absolute";
-              break;
-            case "Memes":
-              component = (
-                <Memes
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "ml-14 top-3/4 absolute"; // Centering for Memes component
-              break;
-            case "IE":
-              component = (
-                <IE
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                  windowSize={windowSize}
-                  site={site}
-                  setSite={setSite}
-                  siteObj={siteObj}
-                />
-              );
-              containerClassName = "ml-14  absolute"; // Positioning for IE component
-              break;
-            case "Display":
-              component = (
-                <Display
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                  backgroundChoice={backgroundChoice}
-                  setBackgroundChoice={setBackgroundChoice}
-                  flicker={flicker}
-                  setFlicker={setFlicker}
-                />
-              );
-              containerClassName = "ml-4 bottom-1/4  absolute"; // Positioning for Cv component
-              break;
-            case "Contact":
-              component = (
-                <Contact
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "ml-14 bottom-0 right-1/4 absolute"; // Positioning for Cv component
-              break;
-            case "Timer":
-              component = (
-                <Timer
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "ml-14 mt-12 absolute"; // Positioning for Timer component
-              break;
-
-            case "Links":
-              component = (
-                <Links
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "absolute ml-14 top-1/2"; // UPDATING THIS SO MAYBE USE PADDING INSTAED OF MARGIN FOR RESIZING
-              break;
-            default:
-              component = (
-                <Welcome
-                  key={componentName}
-                  activeComponents={activeComponents}
-                  removeActiveComponent={removeActiveComponent}
-                />
-              );
-              containerClassName = "left-1/4 mt-6 absolute";
-              break;
-          }
-
-          return (
-            <Draggable
-              cancel=".btn"
-              key={componentName}
-              defaultPosition={{ x: 0, y: 0 }}
-              handle=".title-bar"
+        {activeComponents.map((componentName) => (
+          <Draggable
+            cancel=".btn"
+            key={componentName}
+            defaultPosition={{ x: 0, y: 0 }}
+            handle=".title-bar"
+          >
+            <div
+              onClick={() => handleWindowClick(componentName)}
+              className={getWindowPosition(componentName)}
+              style={{
+                zIndex: getWindowZIndex(componentName),
+              }}
             >
-              <div
-                onClick={() => handleLinkClick(componentName)}
-                className={containerClassName}
-                style={{
-                  zIndex: activeComponents.length - index,
-                }}
-              >
-                {component}
-                <div>
-                  <br />
-                  <br />
-                </div>
-              </div>
-            </Draggable>
-          );
-        })}
+              <ErrorBoundary>
+                <Suspense fallback={
+                  <div className="window">
+                    <div className="title-bar">
+                      <div className="title-bar-text">Loading...</div>
+                    </div>
+                    <div className="window-body">Loading window...</div>
+                  </div>
+                }>
+                  {renderComponent(componentName)}
+                </Suspense>
+              </ErrorBoundary>
+            </div>
+          </Draggable>
+        ))}
       </div>
     </div>
   );

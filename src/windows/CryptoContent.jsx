@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import TwitterEmbed from "../components/TwitterEmbed";
 import axios from "axios";
 import CryptoList from "../components/crypto/CryptoList";
 import NftList from "../components/crypto/NftList";

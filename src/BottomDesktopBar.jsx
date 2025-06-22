@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { useAppContext } from "./context/AppContext";
 import LocalTime from "./components/LocalTime";
-import displayicon from "/icons/16x16/display-tab.png";
 
-export default function BottomDesktopBar({
-  activeComponents,
-  setActiveComponents,
-  addActiveComponent,
-  removeActiveComponent,
-}) {
+export default function BottomDesktopBar() {
+  const {
+    activeComponents,
+    setActiveComponents,
+    addActiveComponent,
+    removeActiveComponent,
+  } = useAppContext();
+
   const handleLinkClick = (componentName) => {
     if (activeComponents.includes(componentName)) {
-      removeActiveComponent(componentName);
       addActiveComponent(componentName);
     } else {
       addActiveComponent(componentName);

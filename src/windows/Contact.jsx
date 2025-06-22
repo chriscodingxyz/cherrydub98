@@ -1,20 +1,19 @@
 import React from "react";
+import { useAppContext } from "../context/AppContext";
 import ContactContent from "./ContactContent";
 import WindowLayout from "../components/WindowLayout";
 
-export default function Projects({ activeComponents, removeActiveComponent }) {
+export default function Contact() {
   return (
     <div>
       <WindowLayout
-        activeComponents={activeComponents}
-        removeActiveComponent={removeActiveComponent}
         windowType={"Contact"}
         windowIcon={
           "https://win98icons.alexmeub.com/icons/png/outlook_express-2.png"
         }
       >
         <div className="window-body">
-          <ContactContent removeActiveComponent={removeActiveComponent} />
+          <ContactContent />
         </div>
       </WindowLayout>
     </div>

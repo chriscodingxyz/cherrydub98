@@ -7,7 +7,7 @@ const MAX_NAME_LENGTH = 15;
 
 const handleImageError = (event) => {
   event.target.src =
-    "https://twirpz.files.wordpress.com/2015/06/twitter-avi-gender-balanced-figure.png";
+    "https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-3.png";
 };
 
 const abbreviateNumber = (value) => {
