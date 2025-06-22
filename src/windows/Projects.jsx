@@ -1,10 +1,12 @@
 import React from "react";
-import { useAppContext } from "../context/AppContext";
-import ProjectsContent from "./ProjectsContent";
+import { siteObj } from "../lib/data";
 import WindowLayout from "../components/WindowLayout";
 
 export default function Projects() {
-  const { site, setSite, siteObj } = useAppContext();
+
+  const handleClick = (site) => {
+    window.open(site, "_blank");
+  };
 
   return (
     <div>
@@ -17,11 +19,32 @@ export default function Projects() {
         <div className="window-body">
           <div className="bg-white">
             <div className="bg-white border-l border-t border-gray-500">
-              <ProjectsContent
-                site={site}
-                setSite={setSite}
-                siteObj={siteObj}
-              />
+              <div className="flex flex-wrap p-4 gap-4" style={{ color: "#0000ff" }}>
+                {Object.entries(siteObj).map(([key, url]) => (
+                  <div
+                    key={key}
+                    onClick={() => handleClick(url)}
+                    className="flex flex-col items-center overflow-auto hover:cursor-pointer"
+                  >
+                    <img
+                      src="https://win98icons.alexmeub.com/icons/png/html-5.png"
+                      alt={key}
+                    />
+                    <div className="text-center">{key}</div>
+                  </div>
+                ))}
+                <a
+                  target="_blank"
+                  href="https://northcoders.com/projects/may-2023/blocklist"
+                  className="flex flex-col items-center"
+                >
+                  <img
+                    src="https://win98icons.alexmeub.com/icons/png/html2_new-4.png"
+                    alt="Blocklist"
+                  />
+                  <div className="text-center">Blocklist</div>
+                </a>
+              </div>
             </div>
           </div>
         </div>

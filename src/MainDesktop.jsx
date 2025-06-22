@@ -10,7 +10,6 @@ const Memes = lazy(() => import('./windows/Memes.jsx'))
 const Todo = lazy(() => import('./windows/Todo.jsx'))
 const Timer = lazy(() => import('./windows/Timer.jsx'))
 const Welcome = lazy(() => import('./windows/Welcome.jsx'))
-const IE = lazy(() => import('./windows/IE.jsx'))
 const Contact = lazy(() => import('./windows/Contact.jsx'))
 const Display = lazy(() => import('./windows/Display.jsx'))
 const Links = lazy(() => import('./windows/Links.jsx'))
@@ -46,7 +45,6 @@ export default function MainDesktop () {
       Todo: 'left-1/4 top-1/3 absolute',
       Crypto: 'ml-14 absolute',
       Memes: 'ml-14 top-3/4 absolute',
-      IE: 'ml-14 absolute',
       Display: 'ml-4 bottom-1/4 absolute',
       Contact: 'ml-14 bottom-0 right-1/4 absolute',
       Timer: 'ml-14 mt-12 absolute',
@@ -68,7 +66,6 @@ export default function MainDesktop () {
       Todo: <Todo {...commonProps} />,
       Crypto: <Crypto {...commonProps} />,
       Memes: <Memes {...commonProps} />,
-      IE: <IE {...commonProps} />,
       Display: <Display {...commonProps} />,
       Contact: <Contact {...commonProps} />,
       Timer: <Timer {...commonProps} />,

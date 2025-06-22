@@ -18,9 +18,6 @@ function AppContent() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    console.log(new Date());
-  }, []);
 
   return (
     <div

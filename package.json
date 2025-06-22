@@ -21,9 +21,7 @@
     "react-draggable": "^4.4.6",
     "react-markdown": "^9.0.1",
     "react-pdf": "^9.1.1",
-    "scriptjs": "^2.5.9",
-    "tailwindcss": "^3.4.17",
-    "use-local-storage": "^3.0.0"
+    "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
     "@types/react": "18.2.46",
@@ -33,7 +31,6 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.0.0",
     "eslint-plugin-react-refresh": "^0.4.16",
-    "tailwindcss": "^3.4.17",
     "url-loader": "^4.1.1",
     "vite": "5.2.8"
   }
