@@ -1,31 +1,10 @@
 // Centralized crypto data service with fallback APIs
+// Caching is now handled by TanStack Query
 import axios from 'axios';
 
 class CryptoService {
   constructor() {
-    this.cache = new Map();
-    this.cacheTimeout = 5 * 60 * 1000; // 5 minutes
-  }
-
-  // Check if cached data is still valid
-  isCacheValid(key) {
-    const cached = this.cache.get(key);
-    if (!cached) return false;
-    return Date.now() - cached.timestamp < this.cacheTimeout;
-  }
-
-  // Get cached data
-  getCached(key) {
-    const cached = this.cache.get(key);
-    return cached ? cached.data : null;
-  }
-
-  // Set cache
-  setCache(key, data) {
-    this.cache.set(key, {
-      data,
-      timestamp: Date.now()
-    });
+    // TanStack Query handles caching - no need for manual cache
   }
 
   // Primary: CoinGecko API (free tier)
@@ -84,18 +63,11 @@ class CryptoService {
 
   // Get simple prices (Bitcoin, Ethereum, etc.)
   async getSimplePrices(coins = ['bitcoin', 'ethereum']) {
-    const cacheKey = `simple-prices-${coins.join(',')}`;
-    
-    if (this.isCacheValid(cacheKey)) {
-      return this.getCached(cacheKey);
-    }
-
     const coinsStr = coins.join(',');
     
     try {
       // Try CoinGecko first
       const data = await this.fetchFromCoinGecko(`/simple/price?ids=${coinsStr}&vs_currencies=usd`);
-      this.setCache(cacheKey, data);
       return data;
     } catch (error) {
       try {
@@ -105,14 +77,12 @@ class CryptoService {
           coin === 'ethereum' ? 'ETH' : coin.toUpperCase()
         );
         const data = await this.fetchFromCryptoCompare(symbols);
-        this.setCache(cacheKey, data);
         return data;
       } catch (fallbackError) {
         try {
           // Last resort: CoinDesk for Bitcoin only
           if (coins.includes('bitcoin')) {
             const btcData = await this.fetchBitcoinFromCoinDesk();
-            this.setCache(cacheKey, btcData);
             return btcData;
           }
         } catch (lastError) {
@@ -125,22 +95,15 @@ class CryptoService {
 
   // Get market data for crypto list
   async getMarketData(currency = 'usd', perPage = 25, page = 1) {
-    const cacheKey = `market-data-${currency}-${perPage}-${page}`;
-    
-    if (this.isCacheValid(cacheKey)) {
-      return this.getCached(cacheKey);
-    }
-
     try {
       const data = await this.fetchFromCoinGecko(
         `/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${perPage}&page=${page}&sparkline=false&locale=en`
       );
-      this.setCache(cacheKey, data);
       return data;
     } catch (error) {
-      // For market data, we don't have good fallbacks, so return empty array
+      // For market data, we don't have good fallbacks, so throw error
       console.warn('Failed to fetch market data:', error);
-      return [];
+      throw new Error('Unable to fetch crypto market data');
     }
   }
 

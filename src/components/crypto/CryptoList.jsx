@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { cryptoService } from "../../services/cryptoService";
+import React, { useState } from "react";
+import { useMarketData } from "../../hooks/useCrypto";
 
 // Function to abbreviate numbers (e.g., 10K, 1M, 1.3M)
 const abbreviateNumber = (value) => {
@@ -25,30 +25,15 @@ const currencyObj = {
 export default function CryptoList() {
   const [displayAmount, setDisplayAmount] = useState(25);
   const [currency, setCurrency] = useState("usd");
-  const [coins, setCoins] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(false);
-      
-      try {
-        const data = await cryptoService.getMarketData(currency, displayAmount, 1);
-        setCoins(data);
-        setLoading(false);
-        console.log("CryptoList data loaded successfully");
-      } catch (err) {
-        console.warn("CryptoList failed to load:", err);
-        setError(true);
-        setLoading(false);
-        setCoins([]);
-      }
-    };
-
-    fetchData();
-  }, [currency, displayAmount]);
+  
+  // Use TanStack Query hook instead of manual state management
+  const { 
+    data: coins = [], 
+    isLoading: loading, 
+    isError: error,
+    isFetching,
+    refetch
+  } = useMarketData(currency, displayAmount, 1);
 
   function currencyOnChange(e) {
     setCurrency(e.target.value);
@@ -58,16 +43,13 @@ export default function CryptoList() {
     setDisplayAmount(e.target.value);
   }
 
-  function sortOnChange(e) {
-    setOrderSort(e.target.value);
-  }
 
   if (error) {
     return (
       <div className="text-center p-4">
         <div className="text-sm text-gray-600 mb-2">📡 Crypto data temporarily unavailable</div>
         <button 
-          onClick={() => window.location.reload()} 
+          onClick={() => refetch()} 
           className="text-blue-600 hover:underline text-sm"
         >
           Retry
@@ -107,8 +89,7 @@ export default function CryptoList() {
           <thead>
             <tr>
               <th>#</th>
-              <th className="col-span-2">Coin</th>{" "}
-              {/* Use col-span-2 to span two columns */}
+              <th className="col-span-2">Coin</th>
               <th className="text-right">Price</th>
               <th className="text-right">Market Cap</th>
             </tr>
@@ -122,7 +103,7 @@ export default function CryptoList() {
                     <img
                       src={coin.image}
                       alt={coin.name}
-                      className="w-4 h-4 rounded-full "
+                      className="w-4 h-4 rounded-full"
                       style={{ margin: "1px" }}
                     />
                     <span className="text-md font-bold">{coin.symbol}</span>

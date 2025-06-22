@@ -1,42 +1,22 @@
 import React, { useState, useEffect } from "react";
-import {
-  fetchBitcoinPrice,
-  fetchEthereumPrice,
-} from "../services/cryptoService";
+import { useBitcoinPrice, useEthereumPrice } from "../hooks/useCrypto";
 import LastGitPush from "../components/LastGitPush";
 import ESTtime from "../components/ESTtime";
 import ConsoleCrypto from "../components/ConsoleCrypto";
 
 export default function WelcomeContent() {
-  const [btcPrice, setBtcPrice] = useState("--");
-  const [ethPrice, setEthPrice] = useState("--");
   const [lastPushTime, setLastPushTime] = useState(null);
   const [dataErrors, setDataErrors] = useState({});
   const [openCrypto, setOpenCrypto] = useState(false);
+
+  // Use TanStack Query hooks for crypto prices
+  const { data: btcPrice = "--", isError: btcError } = useBitcoinPrice();
+  const { data: ethPrice = "--", isError: ethError } = useEthereumPrice();
 
   useEffect(() => {
     const fetchData = async () => {
       const errors = {};
       
-      // Fetch each data source independently with individual error handling
-      try {
-        const btcPrice = await fetchBitcoinPrice();
-        setBtcPrice(btcPrice);
-      } catch (error) {
-        console.warn("Failed to fetch Bitcoin price:", error);
-        setBtcPrice("--");
-        errors.btc = true;
-      }
-
-      try {
-        const ethPrice = await fetchEthereumPrice();
-        setEthPrice(ethPrice);
-      } catch (error) {
-        console.warn("Failed to fetch Ethereum price:", error);
-        setEthPrice("--");
-        errors.eth = true;
-      }
-
       try {
         const pushTime = await LastGitPush();
         setLastPushTime(pushTime);
@@ -51,6 +31,15 @@ export default function WelcomeContent() {
 
     fetchData();
   }, []);
+
+  // Update data errors when crypto queries fail
+  useEffect(() => {
+    setDataErrors(prev => ({
+      ...prev,
+      btc: btcError,
+      eth: ethError
+    }));
+  }, [btcError, ethError]);
 
   const toggleCrypto = () => {
     setOpenCrypto((curr) => !curr);

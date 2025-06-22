@@ -111,4 +111,36 @@
 - **Better UX** - Taskbar selection without unwanted window reordering
 - **Authentic Windows 98 behavior** - Matches expected taskbar interaction patterns
 
+## ✅ Randomized Window Positioning
+- **Dynamic window placement** - Windows now open at random positions instead of fixed locations
+- **Viewport constraints** - Windows stay within screen bounds on all screen sizes
+- **Left navigation avoidance** - Windows never overlap the left desktop icons
+- **Conservative positioning** - Safe margins ensure full visibility
+- **Responsive behavior** - Adapts to different screen sizes automatically
+
+## ✅ TanStack Query Integration
+- **Modern state management** - Replaced manual caching with industry-standard TanStack Query v5
+- **Eliminated custom cache logic** - Removed Map-based cache from cryptoService
+- **Enhanced user experience** - Background data updates, optimistic UI, better error handling
+- **Query optimization** - Smart retry logic, stale-while-revalidate caching
+- **Developer experience** - React Query DevTools for debugging and monitoring
+
+### Query Infrastructure
+- **Created QueryClient** - Optimized cache settings for crypto/NFT data patterns
+- **Query keys factory** - Consistent, type-safe query key management
+- **Custom hooks** - useMarketData, useBitcoinPrice, useEthereumPrice
+- **Error boundaries** - Proper error handling with retry mechanisms
+
+### Component Migrations
+- **CryptoList.jsx** - Migrated from useEffect/useState to useQuery
+- **ConsoleCrypto.jsx** - Updated to use TanStack Query hooks
+- **WelcomeContent.jsx** - Converted Bitcoin/Ethereum price fetching to hooks
+- **Background updates** - All crypto data refreshes automatically every 60 seconds
+
+### Performance Benefits
+- **Intelligent caching** - 30s stale time, 5min garbage collection
+- **Background refetch** - Data updates on window focus and network reconnect
+- **Retry logic** - Exponential backoff for failed requests
+- **Optimistic updates** - UI remains responsive during data fetching
+
 All modernization work completed while maintaining the authentic Windows 98 aesthetic and functionality.

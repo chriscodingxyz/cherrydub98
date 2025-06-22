@@ -9,10 +9,13 @@ This is a personal portfolio website themed around the classic Windows 98 aesthe
 ## Development Commands
 
 ### Essential Commands
-- `npm run dev` - Start development server (Vite)
-- `npm run build` - Build for production
-- `npm run lint` - Run ESLint with JS/JSX files
-- `npm run preview` - Preview production build
+- `pnpm run dev` - Start development server (Vite)
+- `pnpm run build` - Build for production
+- `pnpm run lint` - Run ESLint with JS/JSX files
+- `pnpm run preview` - Preview production build
+
+### Package Management
+This project uses **pnpm** as the package manager. Always use `pnpm` instead of npm or yarn for consistency and performance.
 
 ### Testing
 No test framework is currently configured in this project.
@@ -35,6 +38,7 @@ The application uses a window-based interface where each feature is a separate d
 ### Key Technologies
 - **React 18** with functional components and hooks
 - **Vite** for build tooling and development server
+- **TanStack Query v5** for server state management and caching
 - **Tailwind CSS** for utility-first styling
 - **98.css** for authentic Windows 98 UI components
 - **react-draggable** for window dragging functionality
@@ -42,9 +46,10 @@ The application uses a window-based interface where each feature is a separate d
 - **@uidotdev/usehooks** for utility hooks like useLocalStorage and useWindowSize
 
 ### State Management
-- Uses React's built-in state management (useState, useLocalStorage)
-- Global state passed down through props
-- Local storage integration for persisting user preferences (background, flicker effect)
+- **TanStack Query** for server state management (crypto/NFT API data)
+- **React Context** for global UI state (AppContext with useWindowManager)
+- **Local Storage** integration for persisting user preferences (background, flicker effect)
+- **Custom hooks** for crypto data: useMarketData, useBitcoinPrice, useEthereumPrice
 
 ### Styling Approach
 - Combination of Tailwind CSS and 98.css for retro theming
@@ -61,6 +66,20 @@ The application uses a window-based interface where each feature is a separate d
 
 - `src/components/` - Reusable components (forms, crypto widgets, etc.)
 - `src/windows/` - Main window components
+- `src/hooks/` - Custom React hooks (useCrypto, useWindowManager)
+- `src/context/` - React Context providers (AppContext)
+- `src/lib/` - Utility libraries (queryClient, queryKeys)
+- `src/services/` - External API services (cryptoService)
 - `src/assets/` - Static assets
 - `public/` - Static files including PDFs, images, and icons
 - `public/icons/` - Windows 98 style icons organized by size
+
+## Data Fetching & Caching
+
+### TanStack Query Implementation
+- **QueryClient** configured with optimized settings for crypto data
+- **Background refetch** every 60 seconds for real-time price updates
+- **Stale-while-revalidate** strategy for smooth user experience
+- **Query keys factory** for consistent cache invalidation
+- **Error handling** with exponential backoff retry logic
+- **Dev tools** available in development for query debugging

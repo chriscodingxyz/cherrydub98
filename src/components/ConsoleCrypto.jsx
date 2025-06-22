@@ -1,32 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { cryptoService } from "../services/cryptoService";
+import React, { useState } from "react";
+import { useMarketData } from "../hooks/useCrypto";
 
 export default function ConsoleCrypto() {
-  const [coins, setCoins] = useState([]);
   const [page, setPage] = useState(1);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      setError(false);
-      
-      try {
-        const data = await cryptoService.getMarketData('usd', 10, page);
-        setCoins(data);
-        setLoading(false);
-        console.log("ConsoleCrypto data loaded successfully");
-      } catch (err) {
-        console.warn("ConsoleCrypto failed to load:", err);
-        setError(true);
-        setLoading(false);
-        setCoins([]);
-      }
-    };
-
-    fetchData();
-  }, [page]);
+  
+  // Use TanStack Query hook
+  const { 
+    data: coins = [], 
+    isLoading: loading, 
+    isError: error,
+    refetch
+  } = useMarketData('usd', 10, page);
 
   const goToPrevPage = () => {
     setPage((prevPage) => prevPage - 1);
@@ -42,7 +26,7 @@ export default function ConsoleCrypto() {
         <div className="text-xs text-gray-400">📡 crypto data offline</div>
         <div className="text-xs mt-1">
           <span 
-            onClick={() => window.location.reload()} 
+            onClick={() => refetch()} 
             className="cursor-pointer text-blue-400 hover:underline"
           >
             retry
