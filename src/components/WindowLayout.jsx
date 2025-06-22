@@ -9,12 +9,17 @@ export default function WindowLayout({
   hyperlink,
   children,
 }) {
-  const { activeComponents, removeActiveComponent, isWindowSelected } = useAppContext();
+  const { activeComponents, removeActiveComponent, isWindowSelected, minimizeWindow } = useAppContext();
 
   const handleCloseClick = (event) => {
     // This prevents any background event clickers to work, such as removing and readding the active component
     event.stopPropagation();
     removeActiveComponent(windowType);
+  };
+
+  const handleMinimizeClick = (event) => {
+    event.stopPropagation();
+    minimizeWindow(windowType);
   };
 
   const isSelected = isWindowSelected(windowType);
@@ -51,7 +56,7 @@ export default function WindowLayout({
               <>
                 {" "}
                 <button
-                  onClick={handleCloseClick}
+                  onClick={handleMinimizeClick}
                   className="bg-gray-300 btn hover:bg-gray-100"
                   aria-label="Minimize"
                 ></button>

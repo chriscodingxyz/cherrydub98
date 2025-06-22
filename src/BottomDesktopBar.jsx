@@ -11,11 +11,18 @@ export default function BottomDesktopBar() {
     removeActiveComponent,
     selectWindow,
     isWindowSelected,
+    restoreWindow,
+    isWindowMinimized,
   } = useAppContext();
 
   const handleTaskbarClick = (componentName) => {
-    // Only select the window for visual feedback, don't change z-index
-    selectWindow(componentName);
+    if (isWindowMinimized(componentName)) {
+      // If window is minimized, restore it
+      restoreWindow(componentName);
+    } else {
+      // If window is visible, just select it for visual feedback
+      selectWindow(componentName);
+    }
   };
 
   const [isMobile, setIsMobile] = useState(false);
@@ -97,6 +104,7 @@ export default function BottomDesktopBar() {
 
         {openWindows.map((window) => {
           const isSelected = isWindowSelected(window);
+          const isMinimized = isWindowMinimized(window);
           
           return (
             <div

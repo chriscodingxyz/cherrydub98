@@ -116,10 +116,10 @@ export const useWindowManager = (initialComponents = ["Welcome", "Display"]) => 
         newStates[componentName] = { 
           ...newStates[componentName], 
           isMinimized: true,
-          isSelected: true, // Keep selected when minimized
+          isSelected: false, // Minimized windows should not be selected
         };
         
-        // If this was the top window, select the next visible window
+        // Select the next visible window (highest z-index)
         const visibleWindows = Object.keys(newStates).filter(name => 
           newStates[name].isOpen && !newStates[name].isMinimized && name !== componentName
         );
@@ -128,7 +128,7 @@ export const useWindowManager = (initialComponents = ["Welcome", "Display"]) => 
           const topWindow = visibleWindows.reduce((top, current) => 
             newStates[current].zIndex > newStates[top].zIndex ? current : top
           );
-          newStates[topWindow] = { ...newStates[topWindow], isSelected: false };
+          newStates[topWindow] = { ...newStates[topWindow], isSelected: true };
         }
       }
       
