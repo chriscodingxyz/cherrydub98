@@ -17,7 +17,7 @@ const Notes = lazy(() => import('./windows/Notes.jsx'))
 const Crypto = lazy(() => import('./windows/Crypto.jsx'))
 
 export default function MainDesktop () {
-  const { activeComponents, addActiveComponent, getWindowZIndex } =
+  const { activeComponents, addActiveComponent, getWindowZIndex, windowSize } =
     useAppContext()
 
   const handleWindowClick = componentName => {
@@ -25,21 +25,34 @@ export default function MainDesktop () {
     addActiveComponent(componentName)
   }
 
-  const getWindowPosition = componentName => {
-    const positions = {
-      Projects: 'absolute ml-14 top-1/4',
-      Notes: 'absolute ml-14 top-1/4',
-      Cv: 'ml-14 absolute',
-      Todo: 'left-1/4 top-1/3 absolute',
-      Crypto: 'ml-14 absolute',
-      Memes: 'ml-14 top-3/4 absolute',
-      Display: 'ml-4 bottom-1/4 absolute',
-      Contact: 'ml-14 bottom-0 right-1/4 absolute',
-      Timer: 'ml-14 mt-12 absolute',
-      Links: 'absolute ml-14 top-1/2',
-      Welcome: 'left-1/4 mt-6 absolute'
-    }
-    return positions[componentName] || 'ml-14 absolute'
+  const getRandomPosition = () => {
+    const leftNavWidth = 100 // Increased space for left navigation
+    const padding = 40 // Increased padding from edges
+    const windowWidth = 500 // More conservative estimate for larger windows
+    const windowHeight = 400 // More conservative estimate for taller windows
+    
+    // Use current viewport size or fallback to reasonable defaults
+    const viewportWidth = windowSize.width || 1200
+    const viewportHeight = windowSize.height || 800
+    
+    // Calculate safe positioning area with more conservative bounds
+    const minX = leftNavWidth
+    const maxX = viewportWidth - windowWidth - padding
+    const minY = padding
+    const maxY = viewportHeight - windowHeight - padding
+    
+    // Fallback to safe defaults if screen is too small
+    const safeX = Math.max(minX, Math.min(maxX, minX + 50))
+    const safeY = Math.max(minY, Math.min(maxY, minY + 50))
+    
+    // If we have room to randomize, do it, otherwise use safe position
+    const rangeX = Math.max(0, maxX - minX)
+    const rangeY = Math.max(0, maxY - minY)
+    
+    const x = rangeX > 0 ? Math.random() * rangeX + minX : safeX
+    const y = rangeY > 0 ? Math.random() * rangeY + minY : safeY
+    
+    return { x: Math.floor(x), y: Math.floor(y) }
   }
 
   const renderComponent = componentName => {
@@ -71,12 +84,12 @@ export default function MainDesktop () {
           <Draggable
             cancel='.btn'
             key={componentName}
-            defaultPosition={{ x: 0, y: 0 }}
+            defaultPosition={getRandomPosition()}
             handle='.title-bar'
           >
             <div
               onClick={() => handleWindowClick(componentName)}
-              className={getWindowPosition(componentName)}
+              className="absolute"
               style={{
                 zIndex: getWindowZIndex(componentName)
               }}
