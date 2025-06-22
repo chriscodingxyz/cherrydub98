@@ -7,7 +7,7 @@ const siteObj = {
   Crypto: "https://crypto1.cherrydub.com/",
   JSON: "https://json.cherrydub.com",
   // BlockList: "https://northcoders.com/projects/may-2023/blocklist",
-  // GitHub: "https://github.com/cherrydub",
+  // GitHub: "https://github.com/chriscodingxyz",
 };
 
 export default function Memes({ activeComponents, removeActiveComponent }) {

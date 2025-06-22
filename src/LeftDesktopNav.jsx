@@ -52,7 +52,7 @@ export default function LeftDesktopNav() {
         iconSrc={"https://win98icons.alexmeub.com/icons/png/msie1-2.png"}
         alt={"GitHub"}
         title={"GitHub"}
-        linkTo={"https://github.com/cherrydub"}
+        linkTo={"https://github.com/chriscodingxyz"}
         target={"blank"}
       />
 

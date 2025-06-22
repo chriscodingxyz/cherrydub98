@@ -130,7 +130,7 @@ export default function Cv({ activeComponents, removeActiveComponent }) {
 //           <span className="status-bar-field text-center">
 //             <a
 //               target="_blank"
-//               href="https://github.com/cherrydub/cherrydub/blob/main/ChrisWisniewskiCV.pdf"
+//               href="https://github.com/chriscodingxyz/cherrydub/blob/main/ChrisWisniewskiCV.pdf"
 //             >
 //               <img
 //                 className="inline"

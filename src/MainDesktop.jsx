@@ -17,20 +17,8 @@ const Notes = lazy(() => import('./windows/Notes.jsx'))
 const Crypto = lazy(() => import('./windows/Crypto.jsx'))
 
 export default function MainDesktop () {
-  const {
-    activeComponents,
-    addActiveComponent,
-    removeActiveComponent,
-    getWindowZIndex,
-    backgroundChoice,
-    setBackgroundChoice,
-    flicker,
-    setFlicker,
-    site,
-    setSite,
-    windowSize,
-    siteObj
-  } = useAppContext()
+  const { activeComponents, addActiveComponent, getWindowZIndex } =
+    useAppContext()
 
   const handleWindowClick = componentName => {
     // Bring the clicked window to the front (make it active)
