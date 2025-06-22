@@ -19,7 +19,7 @@ export default function Projects() {
         <div className="window-body">
           <div className="bg-white">
             <div className="bg-white border-l border-t border-gray-500">
-              <div className="flex flex-wrap p-4 gap-4" style={{ color: "#0000ff" }}>
+              <div className="flex flex-wrap p-4 gap-4 max-w-xs sm:max-w-none" style={{ color: "#0000ff" }}>
                 {Object.entries(siteObj).map(([key, url]) => (
                   <div
                     key={key}
