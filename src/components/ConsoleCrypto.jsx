@@ -1,23 +1,32 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { cryptoService } from "../services/cryptoService";
 
 export default function ConsoleCrypto() {
   const [coins, setCoins] = useState([]);
   const [page, setPage] = useState(1);
-
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=10&page=${page}&sparkline=false&locale=en`;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-        setCoins(res.data);
-        console.log("data:", res.data);
-      })
-      .catch((err) => {
-        console.log("error:", err);
-      });
-  }, [url, page]);
+    const fetchData = async () => {
+      setLoading(true);
+      setError(false);
+      
+      try {
+        const data = await cryptoService.getMarketData('usd', 10, page);
+        setCoins(data);
+        setLoading(false);
+        console.log("ConsoleCrypto data loaded successfully");
+      } catch (err) {
+        console.warn("ConsoleCrypto failed to load:", err);
+        setError(true);
+        setLoading(false);
+        setCoins([]);
+      }
+    };
+
+    fetchData();
+  }, [page]);
 
   const goToPrevPage = () => {
     setPage((prevPage) => prevPage - 1);
@@ -26,6 +35,22 @@ export default function ConsoleCrypto() {
   const goToNextPage = () => {
     setPage((prevPage) => prevPage + 1);
   };
+
+  if (error) {
+    return (
+      <div className="text-center p-2">
+        <div className="text-xs text-gray-400">📡 crypto data offline</div>
+        <div className="text-xs mt-1">
+          <span 
+            onClick={() => window.location.reload()} 
+            className="cursor-pointer text-blue-400 hover:underline"
+          >
+            retry
+          </span>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -52,11 +77,17 @@ export default function ConsoleCrypto() {
             </div>
           </div>
         ))
+      ) : loading ? (
+        <div className="text-center text-xs text-gray-400 p-2">
+          fetching crypto prices...
+        </div>
       ) : (
-        <>fetching prices...</>
+        <div className="text-center text-xs text-gray-400 p-2">
+          no data available
+        </div>
       )}
 
-      {coins.length > 0 && (
+      {coins.length > 0 && !error && (
         <div className="mt-2 text-right">
           {page > 1 && (
             <span onClick={goToPrevPage} className="cursor-pointer">

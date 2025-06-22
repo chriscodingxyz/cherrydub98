@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { cryptoService } from "../../services/cryptoService";
 
 // Function to abbreviate numbers (e.g., 10K, 1M, 1.3M)
 const abbreviateNumber = (value) => {
@@ -26,20 +26,29 @@ export default function CryptoList() {
   const [displayAmount, setDisplayAmount] = useState(25);
   const [currency, setCurrency] = useState("usd");
   const [coins, setCoins] = useState([]);
-
-  const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&order=market_cap_desc&per_page=${displayAmount}&page=1&sparkline=false&locale=en`;
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
-    axios
-      .get(url)
-      .then((res) => {
-        setCoins(res.data);
-        console.log("data:", res.data);
-      })
-      .catch((err) => {
-        console.log("error:", err);
-      });
-  }, [url]);
+    const fetchData = async () => {
+      setLoading(true);
+      setError(false);
+      
+      try {
+        const data = await cryptoService.getMarketData(currency, displayAmount, 1);
+        setCoins(data);
+        setLoading(false);
+        console.log("CryptoList data loaded successfully");
+      } catch (err) {
+        console.warn("CryptoList failed to load:", err);
+        setError(true);
+        setLoading(false);
+        setCoins([]);
+      }
+    };
+
+    fetchData();
+  }, [currency, displayAmount]);
 
   function currencyOnChange(e) {
     setCurrency(e.target.value);
@@ -51,6 +60,20 @@ export default function CryptoList() {
 
   function sortOnChange(e) {
     setOrderSort(e.target.value);
+  }
+
+  if (error) {
+    return (
+      <div className="text-center p-4">
+        <div className="text-sm text-gray-600 mb-2">📡 Crypto data temporarily unavailable</div>
+        <button 
+          onClick={() => window.location.reload()} 
+          className="text-blue-600 hover:underline text-sm"
+        >
+          Retry
+        </button>
+      </div>
+    );
   }
 
   return (
@@ -75,45 +98,51 @@ export default function CryptoList() {
         </div>
       </div>
 
-      <table className="w-full">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th className="col-span-2">Coin</th>{" "}
-            {/* Use col-span-2 to span two columns */}
-            <th className="text-right">Price</th>
-            <th className="text-right">Market Cap</th>
-          </tr>
-        </thead>
-        <tbody>
-          {coins.map((coin, index) => (
-            <tr key={coin.id}>
-              <td className="border">{index + 1}</td>
-              <td className="border col-span-2">
-                <div className="flex items-center space-x-2">
-                  <img
-                    src={coin.image}
-                    alt={coin.name}
-                    className="w-4 h-4 rounded-full "
-                    style={{ margin: "1px" }}
-                  />
-                  <span className="text-md font-bold">{coin.symbol}</span>
-                </div>
-              </td>
-              <td className="border text-right">
-                {coin.current_price.toLocaleString("en-US", {
-                  minimumFractionDigits: 2,
-                  maximumFractionDigits: 2,
-                })}
-                <span className="font-bold">{" " + currencyObj[currency]}</span>
-              </td>
-              <td className="border text-right">
-                {abbreviateNumber(coin.market_cap)}
-              </td>
+      {loading ? (
+        <div className="text-center p-4 text-gray-600">
+          Loading crypto data...
+        </div>
+      ) : (
+        <table className="w-full">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th className="col-span-2">Coin</th>{" "}
+              {/* Use col-span-2 to span two columns */}
+              <th className="text-right">Price</th>
+              <th className="text-right">Market Cap</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {coins.map((coin, index) => (
+              <tr key={coin.id}>
+                <td className="border">{index + 1}</td>
+                <td className="border col-span-2">
+                  <div className="flex items-center space-x-2">
+                    <img
+                      src={coin.image}
+                      alt={coin.name}
+                      className="w-4 h-4 rounded-full "
+                      style={{ margin: "1px" }}
+                    />
+                    <span className="text-md font-bold">{coin.symbol}</span>
+                  </div>
+                </td>
+                <td className="border text-right">
+                  {coin.current_price.toLocaleString("en-US", {
+                    minimumFractionDigits: 2,
+                    maximumFractionDigits: 2,
+                  })}
+                  <span className="font-bold">{" " + currencyObj[currency]}</span>
+                </td>
+                <td className="border text-right">
+                  {abbreviateNumber(coin.market_cap)}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      )}
     </>
   );
 }
