@@ -8,15 +8,7 @@ import Landing from "./components/Landing";
 
 function AppContent() {
   const { backgroundChoice, flicker } = useAppContext();
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   return (

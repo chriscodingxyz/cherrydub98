@@ -338,8 +338,7 @@ button.active {
 }
 
 .main-app {
-  opacity: 0;
-  animation: fadeIn 0s 3s forwards;
+  opacity: 1;
 }
 
 @keyframes fadeIn {

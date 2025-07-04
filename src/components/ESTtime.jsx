@@ -61,11 +61,7 @@ export default function ESTtime() {
   const isBeforeFriday = dayWeek < 4;
   const isFridayBeforeOpening = dayWeek === 5 && formattedTime < openingTime;
 
-  // Console logs for troubleshooting
-  console.clear();
-  console.log("Formatted Time:", formattedTime);
-  console.log("Weekend:", isWeekend);
-  console.log("During Opening:", isDuringOpening);
+  // Console logs for troubleshooting (removed to improve performance)
 
   return (
     <div className="flex">

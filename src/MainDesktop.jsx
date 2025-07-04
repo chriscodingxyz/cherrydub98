@@ -4,17 +4,19 @@ import { useAppContext } from './context/AppContext'
 import ErrorBoundary from './components/ErrorBoundary'
 import { getResponsivePosition } from './lib/responsivePositioning'
 
-// Lazy load window components
-const Cv = lazy(() => import('./windows/Cv.jsx'))
-const Projects = lazy(() => import('./windows/Projects.jsx'))
-const Memes = lazy(() => import('./windows/Memes.jsx'))
-const Todo = lazy(() => import('./windows/Todo.jsx'))
-const Timer = lazy(() => import('./windows/Timer.jsx'))
-const Welcome = lazy(() => import('./windows/Welcome.jsx'))
-const Contact = lazy(() => import('./windows/Contact.jsx'))
-const Display = lazy(() => import('./windows/Display.jsx'))
-const Links = lazy(() => import('./windows/Links.jsx'))
-const Notes = lazy(() => import('./windows/Notes.jsx'))
+// Import basic windows directly for instant loading
+import Cv from './windows/Cv.jsx'
+import Projects from './windows/Projects.jsx'
+import Memes from './windows/Memes.jsx'
+import Todo from './windows/Todo.jsx'
+import Timer from './windows/Timer.jsx'
+import Welcome from './windows/Welcome.jsx'
+import Contact from './windows/Contact.jsx'
+import Display from './windows/Display.jsx'
+import Links from './windows/Links.jsx'
+import Notes from './windows/Notes.jsx'
+
+// Only lazy load components with heavy API calls
 const Crypto = lazy(() => import('./windows/Crypto.jsx'))
 
 export default function MainDesktop () {
@@ -32,12 +34,12 @@ export default function MainDesktop () {
       key: componentName
     }
 
-    const components = {
+    // Components that load instantly
+    const instantComponents = {
       Projects: <Projects {...commonProps} />,
       Notes: <Notes {...commonProps} />,
       Cv: <Cv {...commonProps} />,
       Todo: <Todo {...commonProps} />,
-      Crypto: <Crypto {...commonProps} />,
       Memes: <Memes {...commonProps} />,
       Display: <Display {...commonProps} />,
       Contact: <Contact {...commonProps} />,
@@ -46,7 +48,12 @@ export default function MainDesktop () {
       Welcome: <Welcome {...commonProps} />
     }
 
-    return components[componentName] || components.Welcome
+    // Lazy loaded components (only Crypto for now)
+    if (componentName === 'Crypto') {
+      return <Crypto {...commonProps} />
+    }
+
+    return instantComponents[componentName] || instantComponents.Welcome
   }
 
   return (
@@ -67,18 +74,22 @@ export default function MainDesktop () {
               }}
             >
               <ErrorBoundary>
-                <Suspense
-                  fallback={
-                    <div className='window'>
-                      <div className='title-bar'>
-                        <div className='title-bar-text'>Loading...</div>
+                {componentName === 'Crypto' ? (
+                  <Suspense
+                    fallback={
+                      <div className='window'>
+                        <div className='title-bar'>
+                          <div className='title-bar-text'>Loading Crypto...</div>
+                        </div>
+                        <div className='window-body'>Loading crypto data...</div>
                       </div>
-                      <div className='window-body'>Loading window...</div>
-                    </div>
-                  }
-                >
-                  {renderComponent(componentName)}
-                </Suspense>
+                    }
+                  >
+                    {renderComponent(componentName)}
+                  </Suspense>
+                ) : (
+                  renderComponent(componentName)
+                )}
               </ErrorBoundary>
             </div>
           </Draggable>
