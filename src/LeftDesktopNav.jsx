@@ -1,79 +1,79 @@
-import React from "react";
-import { useAppContext } from "./context/AppContext";
-import NavIconLayout from "./components/NavIconLayout";
-import NavIconHrefLayout from "./components/NavIconHrefLayout";
+import React from 'react'
+import { useAppContext } from './context/AppContext'
+import NavIconLayout from './components/NavIconLayout'
+import NavIconHrefLayout from './components/NavIconHrefLayout'
 
-export default function LeftDesktopNav() {
-  const { activeComponents, addActiveComponent } = useAppContext();
+export default function LeftDesktopNav () {
+  const { activeComponents, addActiveComponent } = useAppContext()
 
-  const handleLinkClick = (componentName) => {
-    addActiveComponent(componentName);
-  };
+  const handleLinkClick = componentName => {
+    addActiveComponent(componentName)
+  }
   return (
-    <div className="navigation-desktop fixed left-2 top-3 text-white">
+    <div className='fixed left-2 top-3 text-white navigation-desktop'>
       <NavIconHrefLayout
-        iconSrc={"/icons/48x48/computer_explorer_cool-0copy.png"}
-        alt={"Home"}
-        title={"Home"}
-        linkTo={""}
+        iconSrc={'/icons/48x48/computer_explorer_cool-0copy.png'}
+        alt={'Home'}
+        title={'Home'}
+        linkTo={''}
         target={null}
       />
 
       <NavIconLayout
         iconSrc={
-          "https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png"
+          'https://win98icons.alexmeub.com/icons/png/directory_open_file_mydocs-4.png'
         }
-        alt={"Projects"}
-        title={"Projects"}
-        linkTo={"Projects"}
+        alt={'Projects'}
+        title={'Projects'}
+        linkTo={'Projects'}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
-      <NavIconLayout
+      {/* <NavIconLayout
         iconSrc={"https://win98icons.alexmeub.com/icons/png/message_file-0.png"}
         alt={"CV"}
         title={"CV"}
         linkTo={"Cv"}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
-      />
+      /> */}
 
       <NavIconLayout
-        iconSrc={"https://win98icons.alexmeub.com/icons/png/notepad-5.png"}
-        alt={"Todo"}
-        title={"Todo"}
-        linkTo={"Todo"}
+        iconSrc={'https://win98icons.alexmeub.com/icons/png/notepad-5.png'}
+        alt={'Todo'}
+        title={'Todo'}
+        linkTo={'Todo'}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
       <NavIconHrefLayout
-        iconSrc={"https://win98icons.alexmeub.com/icons/png/msie1-2.png"}
-        alt={"GitHub"}
-        title={"GitHub"}
-        linkTo={"https://github.com/chriscodingxyz"}
-        target={"blank"}
+        iconSrc={'https://win98icons.alexmeub.com/icons/png/msie1-2.png'}
+        alt={'GitHub'}
+        title={'GitHub'}
+        linkTo={'https://github.com/chriscodingxyz'}
+        target={'blank'}
       />
 
       <NavIconLayout
         iconSrc={
-          "https://win98icons.alexmeub.com/icons/png/outlook_express-4.png"
+          'https://win98icons.alexmeub.com/icons/png/outlook_express-4.png'
         }
-        alt={"Contact"}
-        title={"Contact"}
-        linkTo={"Contact"}
+        alt={'Contact'}
+        title={'Contact'}
+        linkTo={'Contact'}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
 
       <NavIconLayout
         iconSrc={
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png"
+          'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/1024px-Bitcoin.svg.png'
         }
-        alt={"Crypto"}
-        title={"Crypto"}
-        linkTo={"Crypto"}
+        alt={'Crypto'}
+        title={'Crypto'}
+        linkTo={'Crypto'}
         activeComponents={activeComponents}
         handleLinkClick={handleLinkClick}
       />
@@ -123,5 +123,5 @@ export default function LeftDesktopNav() {
         handleLinkClick={handleLinkClick}
       /> */}
     </div>
-  );
+  )
 }
