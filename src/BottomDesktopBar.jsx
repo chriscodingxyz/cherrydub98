@@ -20,8 +20,8 @@ export default function BottomDesktopBar() {
       // If window is minimized, restore it
       restoreWindow(componentName);
     } else {
-      // If window is visible, just select it for visual feedback
-      selectWindow(componentName);
+      // If window is visible, bring it to front (same as clicking on window)
+      addActiveComponent(componentName);
     }
   };
 
