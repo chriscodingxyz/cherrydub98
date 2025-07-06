@@ -12,7 +12,7 @@ export const useMarketData = (currency = 'usd', perPage = 25, page = 1) => {
     refetchInterval: 60 * 1000, // Auto-refetch every minute
     refetchOnWindowFocus: true,
     retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
   })
 }
 
@@ -26,7 +26,7 @@ export const useSimplePrices = (coins = ['bitcoin', 'ethereum']) => {
     refetchInterval: 60 * 1000, // Auto-refetch every minute
     refetchOnWindowFocus: true,
     retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
   })
 }
 
@@ -40,7 +40,7 @@ export const useBitcoinPrice = () => {
     refetchInterval: 60 * 1000, // Auto-refetch every minute
     refetchOnWindowFocus: true,
     retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
   })
 }
 
@@ -54,6 +54,20 @@ export const useEthereumPrice = () => {
     refetchInterval: 60 * 1000, // Auto-refetch every minute
     refetchOnWindowFocus: true,
     retry: 3,
-    retryDelay: (attemptIndex) => Math.min(1000 * 2 ** attemptIndex, 30000),
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
+  })
+}
+
+// Hook for Solana price specifically
+export const useSolanaPrice = () => {
+  return useQuery({
+    queryKey: queryKeys.crypto.solanaPrice(),
+    queryFn: () => cryptoService.getSolanaPrice(),
+    staleTime: 30 * 1000, // 30 seconds
+    gcTime: 5 * 60 * 1000, // 5 minutes
+    refetchInterval: 60 * 1000, // Auto-refetch every minute
+    refetchOnWindowFocus: true,
+    retry: 3,
+    retryDelay: attemptIndex => Math.min(1000 * 2 ** attemptIndex, 30000)
   })
 }

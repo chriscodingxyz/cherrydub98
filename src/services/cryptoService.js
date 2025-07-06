@@ -127,6 +127,16 @@ class CryptoService {
       return '--';
     }
   }
+
+  async getSolanaPrice() {
+    try {
+      const data = await this.getSimplePrices(['solana']);
+      return Math.round(data.solana?.usd || 0);
+    } catch (error) {
+      console.warn('Failed to get Solana price:', error);
+      return '--';
+    }
+  }
 }
 
 // Export singleton instance
@@ -135,3 +145,4 @@ export const cryptoService = new CryptoService();
 // Export individual functions for backward compatibility
 export const fetchBitcoinPrice = () => cryptoService.getBitcoinPrice();
 export const fetchEthereumPrice = () => cryptoService.getEthereumPrice();
+export const fetchSolanaPrice = () => cryptoService.getSolanaPrice();

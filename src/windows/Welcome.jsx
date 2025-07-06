@@ -1,30 +1,30 @@
-import React from "react";
-import WelcomeContent from "./WelcomeContent";
+import React from 'react'
+import WelcomeContent from './WelcomeContent'
 
-import WindowLayout from "../components/WindowLayout";
+import WindowLayout from '../components/WindowLayout'
 
-const titleString = "C:\\WINDOWS\\System32.cmd.exe";
+const titleString = 'C:\\WINDOWS\\System32.cmd.exe'
 
-export default function Welcome({ activeComponents, removeActiveComponent }) {
+export default function Welcome ({ activeComponents, removeActiveComponent }) {
   return (
     <div>
       <WindowLayout
         activeComponents={activeComponents}
         removeActiveComponent={removeActiveComponent}
-        windowType={"Welcome"}
+        windowType={'Welcome'}
         windowTitle={titleString}
         windowIcon={
-          "https://win98icons.alexmeub.com/icons/png/console_prompt-1.png"
+          'https://win98icons.alexmeub.com/icons/png/console_prompt-1.png'
         }
-        buttonLayout={"?x"}
-        hyperlink={"https://crypto1.cherrydub.com/"}
+        buttonLayout={'?x'}
+        hyperlink={'https://chriswiz.vercel.app/'}
       >
         <div>
           <WelcomeContent />
         </div>
       </WindowLayout>
     </div>
-  );
+  )
 }
 
 // export default function Welcome({ activeComponents, removeActiveComponent }) {
@@ -41,11 +41,11 @@ export default function Welcome({ activeComponents, removeActiveComponent }) {
 //   return (
 //     <div className="">
 //       {/* <div className="flex justify-center"> */}
-//       <div className="window inline-flex flex-col">
+//       <div className="inline-flex flex-col window">
 //         <div className={titleBarClassName}>
-//           <div className="title-bar-text flex cursor-default">
+//           <div className="flex cursor-default title-bar-text">
 //             <img
-//               className="btn pr-1"
+//               className="pr-1 btn"
 //               src="https://win98icons.alexmeub.com/icons/png/console_prompt-1.png"
 //               alt="welcome"
 //             />

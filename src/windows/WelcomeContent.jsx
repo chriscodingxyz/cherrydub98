@@ -1,97 +1,119 @@
-import React, { useState, useEffect } from "react";
-import { useBitcoinPrice, useEthereumPrice } from "../hooks/useCrypto";
-import LastGitPush from "../components/LastGitPush";
-import ESTtime from "../components/ESTtime";
-import ConsoleCrypto from "../components/ConsoleCrypto";
+import React, { useState, useEffect } from 'react'
+import {
+  useBitcoinPrice,
+  useEthereumPrice,
+  useSolanaPrice
+} from '../hooks/useCrypto'
+import LastGitPush from '../components/LastGitPush'
+import ESTtime from '../components/ESTtime'
+import ConsoleCrypto from '../components/ConsoleCrypto'
+import SolanaAlt from '../components/icons/SolanaAlt'
 
-export default function WelcomeContent() {
-  const [lastPushTime, setLastPushTime] = useState(null);
-  const [dataErrors, setDataErrors] = useState({});
-  const [openCrypto, setOpenCrypto] = useState(false);
+export default function WelcomeContent () {
+  const [lastPushTime, setLastPushTime] = useState(null)
+  const [dataErrors, setDataErrors] = useState({})
+  const [openCrypto, setOpenCrypto] = useState(false)
 
   // Use TanStack Query hooks for crypto prices
-  const { data: btcPrice = "--", isError: btcError } = useBitcoinPrice();
-  const { data: ethPrice = "--", isError: ethError } = useEthereumPrice();
+  const { data: btcPrice = '--', isError: btcError } = useBitcoinPrice()
+  const { data: ethPrice = '--', isError: ethError } = useEthereumPrice()
+  const { data: solPrice = '--', isError: solError } = useSolanaPrice()
 
   useEffect(() => {
     const fetchData = async () => {
-      const errors = {};
-      
+      const errors = {}
+
       try {
-        const pushTime = await LastGitPush();
-        setLastPushTime(pushTime);
+        const pushTime = await LastGitPush()
+        setLastPushTime(pushTime)
       } catch (error) {
-        console.warn("Failed to fetch last push time:", error);
-        setLastPushTime(null);
-        errors.github = true;
+        console.warn('Failed to fetch last push time:', error)
+        setLastPushTime(null)
+        errors.github = true
       }
 
-      setDataErrors(errors);
-    };
+      setDataErrors(errors)
+    }
 
-    fetchData();
-  }, []);
+    fetchData()
+  }, [])
 
   // Update data errors when crypto queries fail
   useEffect(() => {
     setDataErrors(prev => ({
       ...prev,
       btc: btcError,
-      eth: ethError
-    }));
-  }, [btcError, ethError]);
+      eth: ethError,
+      sol: solError
+    }))
+  }, [btcError, ethError, solError])
 
   const toggleCrypto = () => {
-    setOpenCrypto((curr) => !curr);
-  };
+    setOpenCrypto(curr => !curr)
+  }
 
   return (
-    <div className="text-white cursor-not-allowed">
-      <pre className=" bg-black text-white text-center">
-        <div className="pre-extra">
-          <div className="flex">
-            <div className=" flex-1 text-left">cherrydub©</div>
+    <div className='text-white cursor-not-allowed'>
+      <pre className='text-center text-white bg-black'>
+        <div className='pre-extra'>
+          <div className='flex'>
+            <div className='flex-1 text-left'>cherrydub©</div>
 
             <div
-              style={{ cursor: "pointer" }}
+              style={{ cursor: 'pointer' }}
               onClick={() => toggleCrypto()}
-              className="flex-1 text-right border border-dotted border-x-0 border-t-0"
+              className='flex-1 text-right border-t-0 border-x-0'
             >
               {openCrypto ? (
-                "close [x]"
+                'close [x]'
               ) : (
                 <>
-                  <i class="lab la-bitcoin"></i> {btcPrice}{" "}
-                  <i class="lab la-ethereum"></i> {ethPrice}
+                  <i class='lab la-bitcoin'></i> {btcPrice}{' '}
+                  <i class='lab la-ethereum'></i> {ethPrice}{' '}
+                  <SolanaAlt className='inline self-center pb-[2px] size-[9px]' />{' '}
+                  {solPrice}
                   {/* Only show emoji if both prices are valid numbers */}
-                  {btcPrice !== "--" && ethPrice !== "--" && 
-                   !isNaN(ethPrice) && !isNaN(btcPrice) &&
-                   ethPrice > 1800 && btcPrice > 27000 ? " 🙂" : 
-                   btcPrice !== "--" && ethPrice !== "--" && 
-                   !isNaN(ethPrice) && !isNaN(btcPrice) ? " 🙃" : ""}
+                  {/* {btcPrice !== '--' &&
+                  ethPrice !== '--' &&
+                  !isNaN(ethPrice) &&
+                  !isNaN(btcPrice) &&
+                  ethPrice > 1800 &&
+                  btcPrice > 27000
+                    ? ' 🙂'
+                    : btcPrice !== '--' &&
+                      ethPrice !== '--' &&
+                      !isNaN(ethPrice) &&
+                      !isNaN(btcPrice)
+                    ? ' 🙃'
+                    : ''} */}
                 </>
               )}
             </div>
           </div>
           <div>{openCrypto && <ConsoleCrypto />}</div>
-          <div className="text-left">
+          <div className='text-left'>
             <ESTtime />
           </div>
           <br />
-          <div className="flex">
-            <div className="flex-initial">Latest push:</div>
-            <div className="flex-grow text-right">
+          <div className='flex'>
+            <div className='flex-initial'>Latest push:</div>
+            <div className='flex-grow text-right'>
               {lastPushTime
-                ? `${lastPushTime.split("T")[0]} @ ${
-                    lastPushTime.split("T")[1].substring(0, 5) + " UTC"
+                ? `${lastPushTime.split('T')[0]} @ ${
+                    lastPushTime.split('T')[1].substring(0, 5) + ' UTC'
                   }`
-                : dataErrors.github ? "offline" : "Loading..."}
+                : dataErrors.github
+                ? 'offline'
+                : 'Loading...'}
             </div>
           </div>
           {/* Small error indicator if any data failed to load */}
           {Object.keys(dataErrors).length > 0 && (
-            <div className="text-xs text-gray-400 text-right mt-1">
-              {dataErrors.btc && "₿"}{dataErrors.eth && "Ξ"}{dataErrors.github && "📡"} offline
+            <div className='mt-1 text-xs text-right text-gray-400'>
+              {dataErrors.btc && '₿'}
+              {dataErrors.eth && 'Ξ'}
+              {dataErrors.sol && '◎'}
+              {dataErrors.github && '📡'} offline
             </div>
           )}
         </div>
@@ -105,11 +127,11 @@ __  _  __ ____ |  |   ____  ____   _____   ____
              \\/          \\/            \\/     \\/
       `}
 
-        <div className="pre-extra text-left">
-          C:\WINDOWS{">"}
-          <span className="animate-blink">_</span>
+        <div className='text-left pre-extra'>
+          C:\WINDOWS{'>'}
+          <span className='animate-blink'>_</span>
         </div>
       </pre>
     </div>
-  );
+  )
 }

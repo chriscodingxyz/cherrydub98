@@ -6,40 +6,44 @@ export const queryKeys = {
   crypto: {
     // Base key for all crypto queries
     all: ['crypto'],
-    
+
     // Market data queries
     marketData: (currency, perPage, page) => [
       ...queryKeys.crypto.all,
       'marketData',
       { currency, perPage, page }
     ],
-    
+
     // Simple price queries
-    simplePrices: (coins) => [
+    simplePrices: coins => [
       ...queryKeys.crypto.all,
       'simplePrices',
       { coins: coins.sort() } // Sort to ensure consistent keys
     ],
-    
+
     // Individual coin price queries
     bitcoinPrice: () => [...queryKeys.crypto.all, 'bitcoinPrice'],
     ethereumPrice: () => [...queryKeys.crypto.all, 'ethereumPrice'],
+    solanaPrice: () => [...queryKeys.crypto.all, 'solanaPrice']
   },
-  
+
   // NFT-related query keys (for future use)
   nft: {
     all: ['nft'],
-    topCollections: (limit) => [...queryKeys.nft.all, 'topCollections', { limit }],
-    collection: (slug) => [...queryKeys.nft.all, 'collection', slug],
+    topCollections: limit => [
+      ...queryKeys.nft.all,
+      'topCollections',
+      { limit }
+    ],
+    collection: slug => [...queryKeys.nft.all, 'collection', slug]
   },
-  
+
   // Utility functions for query management
   utils: {
     // Get all crypto queries for invalidation
     getAllCryptoQueries: () => queryKeys.crypto.all,
-    
+
     // Get market data queries for specific currency
-    getMarketDataForCurrency: (currency) => 
-      queryKeys.crypto.marketData(currency),
+    getMarketDataForCurrency: currency => queryKeys.crypto.marketData(currency)
   }
 }
