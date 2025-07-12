@@ -27,9 +27,15 @@ export const queryKeys = {
     solanaPrice: () => [...queryKeys.crypto.all, 'solanaPrice']
   },
 
-  // NFT-related query keys (for future use)
+  // NFT-related query keys
   nft: {
     all: ['nft'],
+    // NFT collections with filtering for supported currencies
+    collections: (currencies = ['btc', 'eth', 'sol']) => [
+      ...queryKeys.nft.all,
+      'collections',
+      { currencies: currencies.sort() } // Sort for consistent keys
+    ],
     topCollections: limit => [
       ...queryKeys.nft.all,
       'topCollections',
