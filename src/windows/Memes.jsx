@@ -1,9 +1,19 @@
-import React, { useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import WindowLayout from '../components/WindowLayout'
 import Masonry, { ResponsiveMasonry } from 'react-responsive-masonry'
 import { useAppContext } from '../context/AppContext'
 
-const memeImages = [
+// Helper function to properly encode URLs
+const encodeImageUrl = url => {
+  const parts = url.split('/')
+  const filename = parts[parts.length - 1]
+  const encodedFilename = encodeURIComponent(filename)
+  parts[parts.length - 1] = encodedFilename
+  return parts.join('/')
+}
+
+// All meme images - complete collection
+const allMemeImages = [
   '/memes/20210707_181749.jpg',
   '/memes/20210831_190821.jpg',
   '/memes/325aa756-271c-42ad-8216-4d80b68c9f98.JPG',
@@ -159,7 +169,6 @@ const memeImages = [
   '/memes/Pepeslicebear.png',
   '/memes/Pepewindowpain.png',
   '/memes/QmdgaG3aErY76nkPfyULh8MbhFVBeJCPW9qPEdptVo6g1B.gif',
-  // '/memes/WhatsApp Image 2023-12-07 at 6.53.03 pm.jpeg',
   '/memes/b32ffa4a-61e4-41a3-b94d-466e5382ecf0.JPG',
   '/memes/ba0ea06d-4d50-4e4f-92e8-d1cefe11647f.JPG',
   '/memes/gXkply-ztvO86NX7-JqUajIFqVcv5lwoKcDfor36nh8N2stBNLjtNtEPx_D_7NbcSy7nQo9nucIthtypE7fV-G-eVHkyr9Ppd55wTAw600.png',
@@ -168,36 +177,57 @@ const memeImages = [
   '/memes/nf3rwX17v3Jf4evpE9GKw-kRP7NxBli4lwCrx7WajkDR_Jy32SsoXYAX4sRojRFaP6YVnvOy01kELJrjbhbvnMJD7oLuuUgQ0O5Is0.png',
   '/memes/pixelhaha.png',
   '/memes/unnamed.gif'
-]
+].map(encodeImageUrl)
+
+const INITIAL_COUNT = 24 // Start with 24 images
+const LOAD_MORE_COUNT = 16 // Load 16 more each time
 
 export default function Memes ({ activeComponents, removeActiveComponent }) {
   const { windowSize } = useAppContext()
+  const [visibleCount, setVisibleCount] = useState(INITIAL_COUNT)
+  const [isLoading, setIsLoading] = useState(false)
 
   // Calculate window dimensions ONCE when component mounts
   const windowConfig = useMemo(() => {
     const isMobile = windowSize.width < 768
     const viewportWidth = windowSize.width || 1200
 
-    // Dynamic window dimensions based on device (calculated once)
     const windowWidth = isMobile
-      ? Math.min(viewportWidth - 40, 400) // Mobile: leave 20px margin each side, max 400px
-      : Math.min(viewportWidth * 0.7, 800) // Desktop: 70% of screen, max 800px
+      ? Math.min(viewportWidth - 40, 400)
+      : Math.min(viewportWidth * 0.7, 800)
 
     const windowHeight = isMobile ? '50vh' : '60vh'
 
-    // Smart masonry breakpoints - always minimum 2 columns (calculated once)
-    const minColumnWidth = 120 // Minimum width per column for readability
-    const maxColumns = Math.floor(windowWidth / minColumnWidth)
+    return { windowWidth, windowHeight, isMobile }
+  }, [])
 
-    const columnsBreakPoints = {
-      0: Math.max(2, Math.min(maxColumns, 2)), // Always at least 2 columns
-      400: Math.max(2, Math.min(maxColumns, 3)),
-      600: Math.max(2, Math.min(maxColumns, 4)),
-      800: Math.max(2, Math.min(maxColumns, 5)) // Max 5 columns
+  // Get visible memes
+  const visibleMemes = allMemeImages.slice(0, visibleCount)
+  const hasMore = visibleCount < allMemeImages.length
+
+  // Load more function
+  const loadMore = () => {
+    if (isLoading || !hasMore) return
+
+    setIsLoading(true)
+    // Simulate loading delay to show off the cool loading icon
+    setTimeout(() => {
+      setVisibleCount(prev =>
+        Math.min(prev + LOAD_MORE_COUNT, allMemeImages.length)
+      )
+      setIsLoading(false)
+    }, 1500) // 1.5 seconds to enjoy the loading animation
+  }
+
+  // Scroll handler
+  const handleScroll = e => {
+    const { scrollTop, scrollHeight, clientHeight } = e.target
+    const isNearBottom = scrollHeight - scrollTop <= clientHeight * 1.5
+
+    if (isNearBottom && hasMore && !isLoading) {
+      loadMore()
     }
-
-    return { windowWidth, windowHeight, columnsBreakPoints, isMobile }
-  }, []) // Empty dependency array - only runs once when component mounts
+  }
 
   return (
     <div>
@@ -211,28 +241,47 @@ export default function Memes ({ activeComponents, removeActiveComponent }) {
           <div
             className='bg-white border-t border-l border-gray-500'
             style={{
-              overflow: 'auto',
               height: windowConfig.windowHeight,
-              width: `${windowConfig.windowWidth}px`
+              width: `${windowConfig.windowWidth}px`,
+              overflow: 'auto'
             }}
+            onScroll={handleScroll}
           >
             <ResponsiveMasonry
-              columnsCountBreakPoints={windowConfig.columnsBreakPoints}
+              columnsCountBreakPoints={{ 0: 2, 500: 3, 700: 4, 900: 5 }}
             >
               <Masonry gutter='0px'>
-                {memeImages.map((memeUrl, index) => (
+                {visibleMemes.map((memeUrl, index) => (
                   <img
                     key={index}
                     src={memeUrl}
                     alt={`Meme ${index + 1}`}
                     className='w-full h-auto'
-                    style={{
-                      display: 'block'
-                    }}
+                    style={{ display: 'block' }}
+                    loading='lazy'
                   />
                 ))}
               </Masonry>
             </ResponsiveMasonry>
+
+            {isLoading && (
+              <div className='flex justify-center items-center py-2'>
+                <img
+                  src='https://win98icons.alexmeub.com/icons/png/search_file_2_cool-5.png'
+                  alt='Loading'
+                  width='20'
+                  height='20'
+                  className='mr-2'
+                />
+                Loading more memes...
+              </div>
+            )}
+
+            {!hasMore && visibleCount > INITIAL_COUNT && (
+              <div className='py-2 text-center text-gray-600'>
+                🎉 All memes loaded! ({visibleCount} total)
+              </div>
+            )}
           </div>
         </div>
       </WindowLayout>
