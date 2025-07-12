@@ -1,8 +1,7 @@
 export const siteObj = {
-  TailsID: "https://tailsid.chriscoding.xyz",
-  Portfolio: "https://chriscoding.xyz",
-  Evento: "https://evento.chriscoding.xyz/",
-  Nft: "https://nft.chriscoding.xyz",
-  JSON: "https://jsonformatter-livid.vercel.app/",
-  RemoteDev: "https://remotedev.chriscoding.xyz/",
-};
+  Portfolio: 'https://chriswiz.vercel.app',
+  CoffeeDial: 'https://coffeedial.vercel.app',
+  LayoutLab: 'https://layoutlab.vercel.app',
+  BeanWall: 'https://beanwall.vercel.app/',
+  StreakGit: 'https://streakgit.vercel.app'
+}
