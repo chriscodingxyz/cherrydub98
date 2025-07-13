@@ -28,7 +28,7 @@ export default function CryptoContent({}) {
   //       console.log("error:", err);
   //     });
   // }, [url]);
-  const [choice, setChoice] = useState("nft");
+  const [choice, setChoice] = useState("crypto");
 
   const [isCryptoHovered, setIsCryptoHovered] = useState(false);
   const [isNftHovered, setIsNftHovered] = useState(false);

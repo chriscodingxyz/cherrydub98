@@ -23,7 +23,7 @@ const currencyObj = {
 };
 
 export default function CryptoList() {
-  const [displayAmount, setDisplayAmount] = useState(25);
+  const [displayAmount, setDisplayAmount] = useState(100);
   const [currency, setCurrency] = useState("usd");
   
   // Use TanStack Query hook instead of manual state management
@@ -35,12 +35,12 @@ export default function CryptoList() {
     refetch
   } = useMarketData(currency, displayAmount, 1);
 
-  function currencyOnChange(e) {
-    setCurrency(e.target.value);
-  }
-
-  function displayOnChange(e) {
-    setDisplayAmount(e.target.value);
+  const currencies = ['usd', 'eur', 'gbp'];
+  
+  function cycleCurrency() {
+    const currentIndex = currencies.indexOf(currency);
+    const nextIndex = (currentIndex + 1) % currencies.length;
+    setCurrency(currencies[nextIndex]);
   }
 
 
@@ -60,24 +60,8 @@ export default function CryptoList() {
 
   return (
     <>
-      <div className="flex">
-        <h4 className="text-center">Top {displayAmount} Crypto</h4>
-        <div className="flex-1 text-center">
-          Currency{" "}
-          <select name="" id="" onChange={currencyOnChange} value={currency}>
-            <option value="usd">$</option>
-            <option value="gbp">£</option>
-            <option value="eur">€</option>
-          </select>
-        </div>
-        <div className="flex-1">
-          Display
-          <select name="" id="" onChange={displayOnChange}>
-            <option value="25">25</option>
-            <option value="100">100</option>
-            <option value="250">250</option>
-          </select>
-        </div>
+      <div className="text-center mb-2">
+        <h4>Top {displayAmount} Crypto</h4>
       </div>
 
       {loading ? (
@@ -90,7 +74,7 @@ export default function CryptoList() {
             <tr>
               <th>#</th>
               <th className="col-span-2">Coin</th>
-              <th className="text-right">Price</th>
+              <th className="text-right cursor-pointer hover:bg-gray-100" onClick={cycleCurrency}>Price {currencyObj[currency]}</th>
               <th className="text-right">Market Cap</th>
             </tr>
           </thead>
@@ -114,7 +98,6 @@ export default function CryptoList() {
                     minimumFractionDigits: 2,
                     maximumFractionDigits: 2,
                   })}
-                  <span className="font-bold">{" " + currencyObj[currency]}</span>
                 </td>
                 <td className="border text-right">
                   {abbreviateNumber(coin.market_cap)}

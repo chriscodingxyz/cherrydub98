@@ -109,8 +109,7 @@ export default function NftList() {
       ) : nftCollections && nftCollections.length > 0 ? (
         // Render NFT data with background refresh indicator
         <div>
-          <div className="flex justify-between items-center">
-            <h4 className="text-left">Top NFTs (BTC/ETH/SOL)</h4>
+          <div className="flex justify-end items-center">
             {isFetching && !isLoading && (
               <div className="flex items-center text-xs text-gray-500">
                 <span className="animate-pulse">↻</span>
