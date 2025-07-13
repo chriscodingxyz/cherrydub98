@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import CryptoList from "../components/crypto/CryptoList";
-import NftList from "../components/crypto/NftList";
+import React, { useState } from 'react'
+import CryptoList from '../components/crypto/CryptoList'
+import NftList from '../components/crypto/NftList'
 
-export default function CryptoContent({}) {
+export default function CryptoContent ({}) {
   // const [displayAmount, setDisplayAmount] = useState(25);
   // const [currency, setCurrency] = useState("usd");
 
@@ -28,32 +27,31 @@ export default function CryptoContent({}) {
   //       console.log("error:", err);
   //     });
   // }, [url]);
-  const [choice, setChoice] = useState("crypto");
+  const [choice, setChoice] = useState('crypto')
 
-  const [isCryptoHovered, setIsCryptoHovered] = useState(false);
-  const [isNftHovered, setIsNftHovered] = useState(false);
+  const [isNftHovered, setIsNftHovered] = useState(false)
 
   return (
     <div
-      className="flex flex-col p-0 gap-4"
+      className='flex flex-col gap-4 p-0'
       // style={{ maxHeightheight: "75vh", minWidth: "300px" }}
     >
-      <div className="flex justify-center">
+      <div className='flex justify-center'>
         <button
-          className={choice === "nft" && "active font-bold"}
-          onClick={() => setChoice("nft")}
+          className={choice === 'nft' && 'active font-bold'}
+          onClick={() => setChoice('nft')}
         >
           NFT
         </button>
         <button
-          className={choice === "crypto" && "active font-bold"}
-          onClick={() => setChoice("crypto")}
+          className={choice === 'crypto' && 'active font-bold'}
+          onClick={() => setChoice('crypto')}
         >
           Crypto
         </button>
       </div>
 
-      <div className="flex justify-around">
+      {/* <div className="flex justify-around">
         {choice === "nft" && (
           <img
             onClick={() => setChoice("crypto")}
@@ -84,11 +82,11 @@ export default function CryptoContent({}) {
             onMouseLeave={() => setIsNftHovered(false)}
           />
         )}
-      </div>
+      </div> */}
       <section>
         {/* crypto prices */}
 
-        {choice === "crypto" && (
+        {choice === 'crypto' && (
           <CryptoList
           // currency={currency}
           // coins={coins}
@@ -97,7 +95,7 @@ export default function CryptoContent({}) {
           />
         )}
 
-        {choice === "nft" && <NftList />}
+        {choice === 'nft' && <NftList />}
       </section>
       {/* <section>nft</section> */}
       {/* <section> */}
@@ -106,5 +104,5 @@ export default function CryptoContent({}) {
       {/* <TwitterEmbed /> */}
       {/* </section> */}
     </div>
-  );
+  )
 }
